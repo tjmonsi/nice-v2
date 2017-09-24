@@ -25,6 +25,8 @@ node_modules/
 # Bower stuff.
 bower_components/
 
+settings
+
 build
 public
 prod.json

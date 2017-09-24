@@ -6,9 +6,7 @@
     "Toni-Jan Keith Monserrat"
   ],
   "license": "MIT",
-  
   "homepage": "https://github.com.com/tjmonsi/nice-v2",
-  
   "ignore": [
     "**/.*",
     "node_modules",
@@ -22,7 +20,8 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.1",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.0",
     "iron-icon": "PolymerElements/iron-icon#^2.0.1",
-    "iron-iconset-svg": "PolymerElements/iron-iconset-svg#^2.0.1"
+    "iron-iconset-svg": "PolymerElements/iron-iconset-svg#^2.0.1",
+    "paper-toast": "PolymerElements/paper-toast#^2.0.0"
   },
   "devDependencies": {
     "web-component-tester": "^6.0.0"

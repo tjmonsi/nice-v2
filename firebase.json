@@ -91,6 +91,6 @@
         "destination": "/index.html"
       }
     ],
-    "public": "dist/public"
+    "public": "./dist/public"
   }
 }

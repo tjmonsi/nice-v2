@@ -7,6 +7,11 @@ import routing from '../../src/routing.js'
 import httpCodes from '../../src/http-codes.js'
 import partials from '../../src/partials.js'
 import auth from '../../src/authentication/index.js'
+import firebaseConfig from '../../src/firebase.js'
+
+if (firebaseConfig[0]) {
+  firebase.initializeApp(firebaseConfig[0])
+}
 
 const messages = []
 

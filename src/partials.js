@@ -1,6 +1,6 @@
 
     export default {
-      'header': () => { return import(/* webpackChunkName: "example-header" */ './modules/example-module/components/example-header/example-header.js') }, 
-'drawer': () => { return import(/* webpackChunkName: "example-drawer" */ './modules/example-module/components/example-drawer/example-drawer.js') }
+      'header': () => { return import(/* webpackChunkName: "nice-header" */ './modules/nice-module/components/nice-header/nice-header.js') }, 
+'drawer': () => { return import(/* webpackChunkName: "nice-drawer" */ './modules/nice-module/components/nice-drawer/nice-drawer.js') }
     }
   

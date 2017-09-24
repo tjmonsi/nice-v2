@@ -1,0 +1,48 @@
+<dom-module id="nice-nav">
+  <template>
+    <link rel="stylesheet" href="./nice-nav.scss">
+
+    <template is="dom-if" if="[[!drawer]]">
+      <nav class="">
+        <ul class="nav-bar">
+          <li class="nav-item">
+            <a href="/" class="">
+              Home
+            </a>
+          </li>
+          <li class="">
+            <a href="#" class="">
+              About
+            </a>
+          </li>
+
+          <template is="dom-repeat" items="[[navList]]" as="navItem">
+            <template is="dom-if" if="[[_checkRole(user.uid, profile.role, navItem.role)]]">
+              <li class="">
+                <a href="[[navItem.url]]" class="">
+                  [[navItem.label]]
+                </a>
+              </li>
+            </template>
+          </template>
+
+          <li class="">
+            <a href="/search" class="">
+              Search
+            </a>
+          </li>
+
+          <li class="">
+            <a href="/login" class="">
+              Login
+            </a>
+          </li>
+
+          <!-- <template is="dom-if" if="[[user]]">
+
+          </template> -->
+        </ul>
+      </nav>
+    </template>
+  </template>
+</dom-module>

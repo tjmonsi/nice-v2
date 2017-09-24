@@ -1,0 +1,25 @@
+<dom-module id="nice-header">
+  <template>
+    <link rel="stylesheet" href="./nice-header.scss">
+
+    <app-header>
+      <app-toolbar class="logo-bar">
+        <paper-icon-button class="menu" icon="nice:menu" on-tap="openDrawer"></paper-icon-button>
+        <h1 main-title>
+          <picture>
+            <source srcset="/images/assets/desktop.jpg" media="(min-width: 970px)">
+            <source srcset="/images/assets/tablet.jpg" media="(min-width: 610px) and (max-width: 970px)">
+            <source srcset="/images/assets/mobile.png" media="(max-width: 609px)">
+            <img class="logo" src="/images/assets/mobile.png">
+          </picture>
+        </h1>
+      </app-toolbar>
+
+      <app-toolbar class="nav-bar" sticky>
+        <span main-title></span>
+
+        <nice-nav></nice-nav>
+      </app-toolbar>
+    </app-header>
+  </template>
+</dom-module>

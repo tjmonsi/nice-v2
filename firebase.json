@@ -83,11 +83,7 @@
         "destination": "/index.html"
       },
       {
-        "source": "style-guide",
-        "destination": "/index.html"
-      },
-      {
-        "source": "/auth",
+        "source": "/login",
         "destination": "/index.html"
       }
     ],

@@ -6,37 +6,54 @@
       <nav class="">
         <ul class="nav-bar">
           <li class="nav-item">
-            <a href="/" class="">
+            <a href="/" class="link">
+              <paper-ripple></paper-ripple>
               Home
             </a>
           </li>
-          <li class="">
-            <a href="#" class="">
+          <li class="nav-item">
+            <a href="#" class="link">
+              <paper-ripple></paper-ripple>
               About
             </a>
           </li>
 
           <template is="dom-repeat" items="[[navList]]" as="navItem">
             <template is="dom-if" if="[[_checkRole(user.uid, profile.role, navItem.role)]]">
-              <li class="">
-                <a href="[[navItem.url]]" class="">
+              <li class="nav-item">
+                <a href="[[navItem.url]]" class="link">
+                  <paper-ripple></paper-ripple>
                   [[navItem.label]]
                 </a>
               </li>
             </template>
           </template>
 
-          <li class="">
-            <a href="/search" class="">
+          <li class="nav-item">
+            <a href="/search" class="link">
+              <paper-ripple></paper-ripple>
               Search
             </a>
           </li>
 
-          <li class="">
-            <a href="/login" class="">
-              Login
-            </a>
-          </li>
+          <template is="dom-if" if="[[!user]]">
+            <li class="nav-item">
+              <a href="/login" class="link">
+                <paper-ripple></paper-ripple>
+                Login
+              </a>
+            </li>
+          </template>
+
+          <template is="dom-if" if="[[user]]">
+            <li class="nav-item">
+              <a href="#" class="link" on-tap="logout">
+                <paper-ripple></paper-ripple>
+                Logout
+              </a>
+            </li>
+          </template>
+
 
           <!-- <template is="dom-if" if="[[user]]">
 

@@ -1,4 +1,5 @@
 import 'polymer/polymer.html'
+import 'paper-ripple/paper-ripple.html'
 import Redux from '../nice-redux/nice-redux.js'
 import User from '../nice-user/nice-user.js'
 import './nice-nav.html'

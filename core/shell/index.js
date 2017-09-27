@@ -101,7 +101,6 @@ class AppShell extends QueryParamsMixin(LocationMixin(Polymer.Element)) {
         ::slotted(.page) {
           position: absolute;
           background-color: white;
-          width: 100%;
           top: 0;
           opacity: 0;
           z-index: -1;
@@ -112,7 +111,6 @@ class AppShell extends QueryParamsMixin(LocationMixin(Polymer.Element)) {
         ::slotted(*) > .page {
           position: absolute;
           background-color: white;
-          width: 100%;
           top: 0;
           opacity: 0;
           z-index: -1;

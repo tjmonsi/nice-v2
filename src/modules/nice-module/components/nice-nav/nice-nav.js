@@ -1,10 +1,10 @@
 import 'polymer/polymer.html'
 import 'paper-ripple/paper-ripple.html'
-import Redux from '../nice-redux/nice-redux.js'
-import User from '../nice-user/nice-user.js'
+import User from '../user-model/user-model.js'
+import Permission from '../permission-model/permission-model.js'
 import './nice-nav.html'
 
-class NiceNav extends Redux(User(Polymer.Element)) {
+class NiceNav extends Permission(User(Polymer.Element)) {
   static get is () { return 'nice-nav' }
 
   static get properties () {

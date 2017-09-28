@@ -1,17 +1,17 @@
 export default [
   {
-    label: 'Products & Services',
-    url: '/products-services',
+    label: 'Center for Bayanihan Economics',
+    url: '/ceb',
     role: null
   },
   {
-    label: 'Research',
-    url: '/research',
+    label: 'Digital Library',
+    url: '/digital-library',
     role: null
   },
   {
-    label: 'CBE Recommends',
-    url: '/recommends',
+    label: 'Stories',
+    url: '/stories',
     role: null
   },
   {
@@ -20,9 +20,9 @@ export default [
     role: null
   },
   {
-    label: 'Stories',
-    url: '/stories',
-    role: null
+    label: 'Community',
+    url: '/community',
+    role: 'member'
   },
   {
     label: 'Dashboard',

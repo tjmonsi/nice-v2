@@ -1,11 +1,10 @@
 import 'polymer/polymer.html'
 import 'paper-button/paper-button.html'
 import 'paper-material/paper-material.html'
-import Redux from '../../components/nice-redux/nice-redux.js'
-import User from '../../components/nice-user/nice-user.js'
+import User from '../../components/user-model/user-model.js'
 import './login-page.html'
 
-class LoginPage extends Redux(User(Polymer.Element)) {
+class LoginPage extends User(Polymer.Element) {
   static get is () { return 'login-page' }
 
   static get observers () {

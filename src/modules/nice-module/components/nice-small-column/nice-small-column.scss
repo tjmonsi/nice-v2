@@ -1,0 +1,16 @@
+.header {
+  height: 120px;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+
+  @media screen and (max-width: 900px) {
+    height: auto;
+  }
+}
+
+:host {
+  display: block;
+  @media screen and (max-width: 900px) {
+    padding: 20px 20px 0;
+  }
+}

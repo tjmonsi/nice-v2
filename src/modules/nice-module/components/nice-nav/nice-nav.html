@@ -12,14 +12,14 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="link">
+            <a href="/about" class="link">
               <paper-ripple></paper-ripple>
               About
             </a>
           </li>
 
           <template is="dom-repeat" items="[[navList]]" as="navItem">
-            <template is="dom-if" if="[[_checkRole(user.uid, profile.role, navItem.role)]]">
+            <template is="dom-if" if="[[_checkRole(user.uid, permission.role, navItem.role)]]">
               <li class="nav-item">
                 <a href="[[navItem.url]]" class="link">
                   <paper-ripple></paper-ripple>

@@ -11,6 +11,12 @@
   }
 }
 
+.nav-bar {
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+}
+
 h1[main-title] {
   height: 160px;
 

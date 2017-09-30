@@ -2,10 +2,10 @@
   <template>
     <link rel="stylesheet" href="./nice-headline.scss">
 
-    <a class="banner" style="background: url([[article.bannerImage]]) center/cover no-repeat">
+    <a href="/[[type]]/[[articleId]]" class="banner" style="background: url([[article.bannerImage]]) center/cover no-repeat">
     </a>
 
-    <h1 class="title">[[article.title]]</h1>
+    <h1 class="title"><a href="/[[type]]/[[articleId]]" class="title-anchor">[[article.title]]</a></h1>
     Last Published: [[_renderDate(article.datePublished)]]
 
     <p class="summary">[[article.summary]]</p>

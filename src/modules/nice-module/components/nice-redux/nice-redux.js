@@ -1,12 +1,8 @@
-import PolymerRedux from 'polymer-redux'
-import navList from './nav-list'
-import { createStore } from 'redux'
+import { store, Redux } from '../../../../../core/shell/state.js'
+import { combineReducers } from 'redux'
+import navList from './nav-list.js'
 
-const initial = {
-  navList
-}
-
-const reducer = (state, action) => {
+const reducer = (state = {}, action) => {
   switch(action.type) {
     case 'UPDATE_PROFILE':
       return Object.assign({}, state, {
@@ -20,12 +16,20 @@ const reducer = (state, action) => {
       return Object.assign({}, state, {
         user: action.user
       })
+    case 'UPDATE_NAVLIST':
+    return Object.assign({}, state, {
+      navList: action.navList
+    })
     default:
       return state
   }
 }
 
-const store = createStore(reducer, initial)
+store.replaceReducer(combineReducers({main: reducer}))
+store.dispatch({
+  type: 'UPDATE_NAVLIST',
+  navList
+})
 
-export default PolymerRedux(store)
+export default Redux
 export { store }

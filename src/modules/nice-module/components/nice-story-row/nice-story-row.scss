@@ -1,0 +1,18 @@
+@import '../../styles/mixins/_flex.scss';
+
+:host {
+  @include layout-horizontal;
+  @include layout-wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 900px) {
+    display: block;
+  }
+}
+
+nice-small-column {
+  @include layout-flex;
+  min-width: 250px;
+  margin: 0 10px;
+}

@@ -1,0 +1,41 @@
+.banner {
+  width: 100%;
+  height: 400px;
+}
+
+.title {
+  padding: 20px 0px 10px;
+  margin: 0 auto;
+  max-width: 700px;
+  border-bottom: 1px solid black;
+
+  @media screen and (max-width: 750px) {
+    margin: 0 20px;
+  }
+}
+
+.meta {
+  padding: 10px 20px;
+  margin: 0 auto;
+  max-width: 700px;
+  font-size: 0.75em;
+}
+
+.body {
+  padding: 10px 20px;
+  margin: 0 auto;
+  max-width: 700px;
+  border-bottom: 1px solid black;
+}
+
+.footer-meta {
+  padding: 20px 20px;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.anchor {
+  color: inherit;
+  padding: 0 20px;
+  // text-decoration: none;
+}

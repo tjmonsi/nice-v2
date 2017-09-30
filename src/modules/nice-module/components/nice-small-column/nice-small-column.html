@@ -8,13 +8,12 @@
       </header>
     </template>
     <template is="dom-repeat" items="[[list]]">
-      [[list.$key]]
       <template is="dom-if" if="[[!index]]">
-        <nice-headline id="[[item.$key]]" type="[[type]]"></nice-headline>
+        <nice-headline article-id="[[item.$key]]" type="[[type]]"></nice-headline>
       </template>
 
       <template is="dom-if" if="[[index]]">
-        <nice-item id="[[item.$key]]" type="[[type]]"></nice-item>
+        <nice-item article-id="[[item.$key]]" type="[[type]]"></nice-item>
       </template>
     </template>
   </template>

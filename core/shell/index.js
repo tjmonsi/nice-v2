@@ -8,12 +8,14 @@ import httpCodes from '../../src/http-codes.js'
 import partials from '../../src/partials.js'
 import auth from '../../src/authentication/index.js'
 import firebaseConfig from '../../src/firebase.js'
+import { store } from './state.js'
+
+const messages = []
 
 if (firebaseConfig[0]) {
   firebase.initializeApp(firebaseConfig[0])
 }
 
-const messages = []
 
 class AppShell extends QueryParamsMixin(LocationMixin(Polymer.Element)) {
   static get is () { return 'app-shell' }
@@ -144,6 +146,7 @@ class AppShell extends QueryParamsMixin(LocationMixin(Polymer.Element)) {
   constructor () {
     super()
     this._routes = {}
+    this.state = {}
   }
 
   connectedCallback () {
@@ -162,6 +165,11 @@ class AppShell extends QueryParamsMixin(LocationMixin(Polymer.Element)) {
         }
       }, 5000)
     })
+
+    this._listener = store.subscribe(() => {
+      this.state = store.getState()
+      this._pathChanged(this.path)
+    })
   }
 
   disconnectedCallback () {
@@ -169,6 +177,7 @@ class AppShell extends QueryParamsMixin(LocationMixin(Polymer.Element)) {
       super.disconnectedCallback()
     }
     if (this._observer) this._observer.disconnect()
+    if (this._listener) this._listener()
   }
 
   showMessage (message, optTapHandler, optAction, optActionHandler, optDuration) {
@@ -292,3 +301,4 @@ for (var p in partials) {
 }
 
 export default AppShell
+

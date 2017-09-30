@@ -1,0 +1,31 @@
+<dom-module id="nice-article">
+  <template>
+    <link rel="stylesheet" href="./nice-article.scss">
+
+    <template is="dom-if" if="{{article.bannerImage}}">
+      <div style="background: url({{article.bannerImage}}) center/cover no-repeat" class="banner"></div>
+    </template>
+    <h1 class="title">{{article.title}}</h1>
+
+    <div class="meta">
+      {{_renderDate(article.datePublished)}}
+    </div>
+
+    <marked-element markdown="{{article.body}}">
+      <div slot="markdown-html" class="body"></div>
+    </marked-element>
+
+    <template is="dom-if" if="{{articleId}}">
+      <div class="footer-meta">
+        <a href="/{{type}}" class="anchor">
+          Go back
+        </a>
+
+        <a href="/{{type}}/{{articleId}}/edit" class="anchor">
+          Edit this Article
+        </a>
+      </div>
+    </template>
+
+  </template>
+</dom-module>

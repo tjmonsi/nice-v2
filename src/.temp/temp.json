@@ -30,6 +30,7 @@
   "fragments": {
     "landing-page": "modules/nice-module/pages/landing-page/landing-page.js",
     "login-page": "modules/nice-module/pages/login-page/login-page.js",
+    "story-page": "modules/nice-module/pages/story-page/story-page.js",
     "not-found-page": "modules/nice-module/pages/not-found-page/not-found-page.js",
     "not-authorized-page": "modules/nice-module/pages/not-authorized-page/not-authorized-page.js",
     "nice-header": "modules/nice-module/components/nice-header/nice-header.js",
@@ -37,7 +38,11 @@
   },
   "routing": {
     "/": "landing-page",
-    "/login": "login-page"
+    "/login": "login-page",
+    "/story/:id?/:edit?": {
+      "name": "story-page",
+      "auth": "checkRole"
+    }
   },
   "httpCodes": {
     "not-found": "not-found-page",

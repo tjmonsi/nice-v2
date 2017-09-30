@@ -2,11 +2,11 @@
   <template>
     <link rel="stylesheet" href="./nice-item.scss">
 
-    <div style="background: url([[article.bannerImage]]) center/cover no-repeat" class="image"></div>
+    <a href="/[[type]]/[[articleId]]" style="background: url([[article.bannerImage]]) center/cover no-repeat" class="image"></a>
 
     <section class="text-area">
       <h1 class="title">
-        [[article.title]]
+        <a href="/[[type]]/[[articleId]]" class="title-anchor">[[article.title]]</a>
       </h1>
       [[_renderDate(article.datePublished)]]
     </section>

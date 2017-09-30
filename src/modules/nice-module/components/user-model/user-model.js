@@ -29,11 +29,11 @@ export default (superClass) => {
       return {
         user: {
           type: Object,
-          statePath: 'user'
+          statePath: 'main.user'
         },
         profile: {
           type: Object,
-          statePath: 'profile'
+          statePath: 'main.profile'
         }
       }
     }

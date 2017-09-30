@@ -15,7 +15,7 @@ class NiceNav extends Permission(User(Polymer.Element)) {
       },
       navList: {
         type: Array,
-        statePath: 'navList'
+        statePath: 'main.navList'
       }
     }
   }

@@ -1,7 +1,7 @@
 export default [
   {
     label: 'Center for Bayanihan Economics',
-    url: '/ceb',
+    url: '/cbe',
     role: null
   },
   {
@@ -11,12 +11,12 @@ export default [
   },
   {
     label: 'Stories',
-    url: '/stories',
+    url: '/story',
     role: null
   },
   {
     label: 'Resources',
-    url: '/resources',
+    url: '/resource',
     role: null
   },
   {

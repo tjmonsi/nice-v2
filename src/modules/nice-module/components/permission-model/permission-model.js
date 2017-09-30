@@ -9,7 +9,7 @@ export default (superClass) => {
       return {
         permission: {
           type: Object,
-          statePath: 'permission'
+          statePath: 'main.permission'
         }
       }
     }

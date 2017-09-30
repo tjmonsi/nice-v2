@@ -8,7 +8,11 @@ class NiceList extends ArticleList(Polymer.Element) {
 
   static get properties () {
     return {
-      title: String
+      title: String,
+      limit: {
+        type: Number,
+        value: -1
+      }
     }
   }
 }

@@ -26,6 +26,7 @@ export default (superClass) => {
     }
 
     _checkType (type, query, limit) {
+
       if (type && query && limit) {
         this.__list = firebase.database().ref(`v2/${type}/query/${query}`).orderByChild('value')
         if (limit > 0) {
@@ -46,6 +47,7 @@ export default (superClass) => {
         })
         list.push(obj)
       })
+      console.log(list)
       this.list = list.sort((a, b) => {
         return b.value - a.value
       })

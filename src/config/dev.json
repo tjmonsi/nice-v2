@@ -31,6 +31,10 @@
     "landing-page": "modules/nice-module/pages/landing-page/landing-page.js",
     "login-page": "modules/nice-module/pages/login-page/login-page.js",
     "story-page": "modules/nice-module/pages/story-page/story-page.js",
+    "about-page": "modules/nice-module/pages/about-page/about-page.js",
+    "cbe-page": "modules/nice-module/pages/cbe-page/cbe-page.js",
+    "pas-page": "modules/nice-module/pages/pas-page/pas-page.js",
+    "cbe-recommends-page": "modules/nice-module/pages/cbe-recommends-page/cbe-recommends-page.js",
     "not-found-page": "modules/nice-module/pages/not-found-page/not-found-page.js",
     "not-authorized-page": "modules/nice-module/pages/not-authorized-page/not-authorized-page.js",
     "nice-header": "modules/nice-module/components/nice-header/nice-header.js",
@@ -39,10 +43,24 @@
   "routing": {
     "/": "landing-page",
     "/login": "login-page",
+    "/cbe": "cbe-page",
     "/story/:id?/:edit?": {
       "name": "story-page",
       "auth": "checkRole"
+    },
+    "/about/:id?/:edit?": {
+      "name": "about-page",
+      "auth": "checkRole"
+    },
+    "/cberecommends/:id?/:edit?": {
+      "name": "cbe-recommends-page",
+      "auth": "checkRole"
+    },
+    "/pas/:id?/:edit?": {
+      "name": "pas-page",
+      "auth": "checkRole"
     }
+
   },
   "httpCodes": {
     "not-found": "not-found-page",

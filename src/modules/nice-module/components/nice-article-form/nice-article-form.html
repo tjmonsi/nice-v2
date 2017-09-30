@@ -59,6 +59,19 @@
           </div>
         </div>
 
+        <template is="dom-if" if="[[_isEqual(type, 'dl')]]">
+          <hr>
+          <h1 class="form-title">Digital Library Category</h1>
+
+          <paper-toggle-button checked="[[article.type.stateuniversities.value]]">
+            Research is from State Universities
+          </paper-toggle-button>
+
+          <paper-toggle-button checked="[[article.type.otherpartners.value]]">
+            Research is from Other Partners
+          </paper-toggle-button>
+        </template>
+
         <hr>
         <h1 class="form-title">Album</h1>
         <paper-input label="Upload Images" placeholder="Upload Images" type="file" accept="image/*" db-type="image" multiple on-change="_uploadFiles"></paper-input>

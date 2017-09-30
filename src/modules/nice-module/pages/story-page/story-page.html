@@ -11,13 +11,13 @@
 
     </template>
 
-    <tempalte is="dom-if" if="[[params.id]]">
+    <template is="dom-if" if="[[params.id]]">
       <template is="dom-if" if="[[!_checkEdit(params.edit)]]">
         <nice-article type="story" article-id="[[params.id]]"></nice-article>
       </template>
       <template is="dom-if" if="[[_checkEdit(params.edit)]]">
         <nice-article-form type="story" article-id="[[params.id]]" preview="[[params.preview]]"></nice-article-form>
       </template>
-    </tempalte>
+    </template>
   </template>
 </dom-module>

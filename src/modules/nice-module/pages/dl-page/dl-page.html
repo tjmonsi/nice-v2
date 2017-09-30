@@ -1,0 +1,29 @@
+<dom-module id="dl-page">
+  <template>
+    <link rel="stylesheet" href="./dl-page.scss">
+
+    <template is="dom-if" if="[[!params.id]]">
+      <div class="row">
+        <nice-dl-nav class="sidebar"></nice-dl-nav>
+        <div class="main-list">
+          <template is="dom-if" if="[[_isEqual(params.query, 'published')]]">
+            <nav-dl-row></nav-dl-row>
+          </template>
+          <nice-list type="dl" title="Digital Library" query="published"></nice-list>
+        </div>
+
+      </div>
+
+    </template>
+
+    <template is="dom-if" if="[[params.id]]">
+      <template is="dom-if" if="[[!_checkEdit(params.edit)]]">
+        <nice-article type="dl" article-id="[[params.id]]"></nice-article>
+      </template>
+      <template is="dom-if" if="[[_checkEdit(params.edit)]]">
+        <nice-article-form type="dl" article-id="[[params.id]]" preview="[[params.preview]]"></nice-article-form>
+      </template>
+    </template>
+
+  </template>
+</dom-module>

@@ -137,6 +137,22 @@
       {
         "source": "/pas",
         "destination": "/index.html"
+      },
+      {
+        "source": "/dl/**/**/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dl/**/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dl/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dl",
+        "destination": "/index.html"
       }
     ],
     "public": "./dist/public"

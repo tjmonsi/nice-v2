@@ -46,7 +46,10 @@ export default (superClass) => {
         })
         list.push(obj)
       })
-      this.list = list
+      this.list = list.sort((a, b) => {
+        return b.value - a.value
+      })
+      // this.list = list
     }
 
     _onError (error) {

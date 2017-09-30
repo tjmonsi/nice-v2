@@ -15,14 +15,14 @@ class LoginPage extends User(Polymer.Element) {
 
   _checkUser (user) {
     if (user) {
-      window.history.pushState({}, '', '/')
+      window.history.pushState({}, '', '/user')
       window.dispatchEvent(new CustomEvent('location-changed'))
     }
   }
 
   reload () {
     if (this.user) {
-      window.history.pushState({}, '', '/')
+      window.history.pushState({}, '', '/user')
       window.dispatchEvent(new CustomEvent('location-changed'))
     }
   }

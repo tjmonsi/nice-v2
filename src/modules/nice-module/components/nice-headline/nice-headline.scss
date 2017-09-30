@@ -13,5 +13,9 @@
 
 :host {
   display: block;
-  height: 500px;
+  height: 600px;
+
+  @media screen and (max-width: 900px) {
+    height: auto;
+  }
 }

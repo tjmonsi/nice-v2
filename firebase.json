@@ -89,6 +89,14 @@
       {
         "source": "/story/**/**",
         "destination": "/index.html"
+      },
+      {
+        "source": "/story/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/story",
+        "destination": "/index.html"
       }
     ],
     "public": "./dist/public"

@@ -4,6 +4,7 @@ import 'paper-input/paper-textarea.html'
 import 'paper-progress/paper-progress.html'
 import 'paper-button/paper-button.html'
 import 'paper-toggle-button/paper-toggle-button.html'
+import 'paper-dialog/paper-dialog.html'
 import '../nice-article/nice-article.js'
 import '../nice-image-form/nice-image-form.js'
 import '../nice-file-form/nice-file-form.js'
@@ -165,93 +166,172 @@ class NiceArticleForm extends Category(Article(Polymer.Element)) {
     var published = el.checked
     var updates = {}
     var path = `v2/${this.type}/`
+    var promise = this._save()
 
-    this._save().then(() => {
-      if (published) {
-        if (this.article.categoryMain) {
-          for (var i in this.article.categoryMain) {
-            if (this.article.categoryMain[i] && this.article.categoryMain[i].value) {
-              updates[`${path}/query/${i}/${this.articleId}/value`] = this.article.datePublished
-            } else {
-              updates[`${path}/query/${i}/${this.articleId}/value`] = null
+    if (promise) {
+      promise.then(() => {
+        if (published) {
+          if (this.article.categoryMain) {
+            for (var i in this.article.categoryMain) {
+              if (this.article.categoryMain[i] && this.article.categoryMain[i].value) {
+                updates[`${path}/query/${i}/${this.articleId}/value`] = this.article.datePublished
+              } else {
+                updates[`${path}/query/${i}/${this.articleId}/value`] = null
+              }
             }
           }
-        }
 
 
-        if (this.article.categorySub) {
-          for (var j in this.article.categorySub) {
-            if (this.article.categorySub[j] && this.article.categorySub[j].value) {
-              updates[`${path}/query/${j}/${this.articleId}/value`] = this.article.datePublished
-            } else {
-              updates[`${path}/query/${j}/${this.articleId}/value`] = null
+          if (this.article.categorySub) {
+            for (var j in this.article.categorySub) {
+              if (this.article.categorySub[j] && this.article.categorySub[j].value) {
+                updates[`${path}/query/${j}/${this.articleId}/value`] = this.article.datePublished
+              } else {
+                updates[`${path}/query/${j}/${this.articleId}/value`] = null
+              }
             }
           }
-        }
 
-        if (this.article.type && this.article.type.farmer && this.article.type.farmer.value) {
-          updates[`${path}/query/farmer/${this.articleId}/value`] = this.article.datePublished
+          if (this.article.type && this.article.type.farmer && this.article.type.farmer.value) {
+            updates[`${path}/query/farmer/${this.articleId}/value`] = this.article.datePublished
+          } else {
+            updates[`${path}/query/farmer/${this.articleId}/value`] = null
+          }
         } else {
+          for (var i in this.article.categoryMain) {
+            updates[`${path}/query/${i}/${this.articleId}/value`] = null
+          }
+
+          for (var j in this.article.categoryMain) {
+            updates[`${path}/query/${j}/${this.articleId}/value`] = null
+          }
+
           updates[`${path}/query/farmer/${this.articleId}/value`] = null
         }
-      } else {
-        for (var i in this.article.categoryMain) {
-          updates[`${path}/query/${i}/${this.articleId}/value`] = null
-        }
 
-        for (var j in this.article.categoryMain) {
-          updates[`${path}/query/${j}/${this.articleId}/value`] = null
-        }
+        return firebase.database().ref().updates(update)
+      })
+      .then(() => {
+        document.querySelector('app-shell').showMessage(published ? 'Published' : 'Unpublished', null, null, null, 5000)
+      })
+    }
 
-        updates[`${path}/query/farmer/${this.articleId}/value`] = null
-      }
-    })
 
   }
 
   _save () {
     var updates = {}
-    var promises = []
     var path = `v2/${this.type}/data/${this.articleId}`
-    updates[`${path}/title`] = this.article.title
-    updates[`${path}/summary`] = this.article.summary
-    updates[`${path}/bannerImage`] = this.article.bannerImage
-    updates[`${path}/body`] = this.article.body
-    updates[`${path}/published`] = this.article.published
-    for (var i in this.article.categoryMain) {
-      updates[`${path}/categoryMain/${i}/value`] = this.article.categoryMain[i].value ? true : null
-    }
+    if (this.article) {
+      updates[`${path}/title`] = this.article.title || ''
+      updates[`${path}/summary`] = this.article.summary || ''
+      updates[`${path}/bannerImage`] = this.article.bannerImage || ''
+      updates[`${path}/body`] = this.article.body || ''
+      updates[`${path}/published`] = this.article.published || false
+      for (var i in this.article.categoryMain) {
+        updates[`${path}/categoryMain/${i}/value`] = this.article.categoryMain[i].value ? true : null
+      }
 
-    for (var j in this.article.categorySub) {
-      updates[`${path}/categorySub/${j}/value`] = this.article.categorySub[j].value ? true : null
-    }
+      for (var j in this.article.categorySub) {
+        updates[`${path}/categorySub/${j}/value`] = this.article.categorySub[j].value ? true : null
+      }
 
-    var images = this.shadowRoot.querySelectorAll('nice-image-form')
-    if (images && images.length) {
-      images.forEach(image => {
-        if (image._save) {
-          promises.push(image._save())
-        }
+      var images = this.shadowRoot.querySelectorAll('nice-image-form')
+      if (images && images.length) {
+        images.forEach(image => {
+          if (image._save) {
+            var imageUpdates = image._save()
+            for (var k in imageUpdates) {
+              updates[k] = imageUpdates[k]
+            }
+          }
+        })
+      }
+
+      var files = this.shadowRoot.querySelectorAll('nice-file-form')
+      if (files && files.length) {
+        files.forEach(file => {
+          if (file._save) {
+            var fileUpdates = file._save()
+            for (var l in fileUpdates) {
+              fileUpdates[l] = fileUpdates[l]
+            }
+          }
+        })
+      }
+
+      return firebase.database().ref().update(updates).then(() => {
+        document.querySelector('app-shell').showMessage('Saved', null, null, null, 5000)
+        return Promise.resolve()
+      }).catch(this._onError.bind(this))
+    }
+  }
+
+  _handleCancel () {
+    this.shadowRoot.querySelector('.cancel-dialog').open()
+  }
+
+  _handleDelete () {
+    this.shadowRoot.querySelector('.delete-dialog').open()
+  }
+
+  _closeCancel () {
+    this.shadowRoot.querySelector('.cancel-dialog').close()
+  }
+
+  _closeDelete () {
+    this.shadowRoot.querySelector('.delete-dialog').close()
+  }
+
+  _cancel () {
+    this.shadowRoot.querySelector('.cancel-dialog').close()
+    window.history.pushState({}, '', `/${this.type}/${this.articleId}`)
+    window.dispatchEvent(new CustomEvent('location-changed'))
+  }
+
+  _delete () {
+    var updates = {}
+    var path = `v2/${this.type}/`
+    if (this.article) {
+      updates[`v2/${this.type}/data/${this.articleId}`] = null
+      for (var i in this.article.categoryMain) {
+        updates[`${path}/query/${i}/${this.articleId}/value`] = null
+      }
+
+      for (var j in this.article.categoryMain) {
+        updates[`${path}/query/${j}/${this.articleId}/value`] = null
+      }
+
+      updates[`${path}/query/farmer/${this.articleId}/value`] = null
+      updates[`${path}/query/draft/${this.articleId}/value`] = null
+      updates[`${path}/query/published/${this.articleId}/value`] = null
+
+      var images = this.shadowRoot.querySelectorAll('nice-image-form')
+      if (images && images.length) {
+        images.forEach(image => {
+          if (image._delete) {
+            image._delete()
+          }
+        })
+      }
+
+      var files = this.shadowRoot.querySelectorAll('nice-file-form')
+      if (files && files.length) {
+        files.forEach(file => {
+          if (file._delete) {
+            file._delete()
+          }
+        })
+      }
+
+      return firebase.database().ref().update(updates).then(() => {
+        document.querySelector('app-shell').showMessage('Succesfully Deleted', null, null, null, 5000)
+        this.shadowRoot.querySelector('.delete-dialog').close()
+        window.history.pushState({}, '', `/${this.type}`)
+        window.dispatchEvent(new CustomEvent('location-changed'))
+        return Promise.resolve()
       })
     }
-
-    var files = this.shadowRoot.querySelectorAll('nice-file-form')
-    if (files && files.length) {
-      files.forEach(file => {
-        if (file._save) {
-          promises.push(file._save())
-        }
-      })
-    }
-
-    promises.push(firebase.database().ref().update(updates))
-
-    return Promise.all(promises)
-
-    // for (var k in this.articleImages) {
-    //   // var imagePath = `v2/image/data/${this.articleImages[k].$key}`
-    //   // updates[`${imagePath}/name`] =
-    // }
   }
 
   _isEqual(a, b) {

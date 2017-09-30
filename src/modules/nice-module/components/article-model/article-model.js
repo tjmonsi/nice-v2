@@ -83,7 +83,6 @@ export default (superClass) => {
           value: child.val().value
         })
       })
-      console.log(list)
       this.articleFiles = list
     }
 

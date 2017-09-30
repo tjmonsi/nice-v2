@@ -14,10 +14,10 @@ class NiceFileForm extends File(Polymer.Element) {
     }
   }
 
-  _delete (e) {
+  _delete () {
     var updates = {}
     var storagePath = this.file.storagePath
-    updates[`v2/${this.type}/list/file/${this.articleId}/${this.id}`] = null
+    updates[`v2/${this.type}/list/file/${this.articleId}/${this.fileId}`] = null
     updates[`v2/file/data/${this.id}`] = null
 
     var promises = [
@@ -29,6 +29,14 @@ class NiceFileForm extends File(Polymer.Element) {
       console.log('delete')
     })
 
+  }
+
+  _save () {
+    var updates = {}
+    updates[`v2/${this.type}/list/file/${this.articleId}/${this.fileId}/name`] = this.file.name || ''
+    updates[`v2/${this.type}/list/file/${this.articleId}/${this.fileId}/caption`] = this.file.caption || ''
+
+    return updates
   }
 }
 

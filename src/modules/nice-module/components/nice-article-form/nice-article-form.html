@@ -96,8 +96,22 @@
         </paper-toggle-button>
 
         <hr>
-        <paper-button class="button" on-tap="[[_save]]">
+        <paper-button class="button" on-tap="_save" raised>
           Save
+        </paper-button>
+
+        <a href="/[[type]]/[[articleId]]" class="anchor-button">
+          <paper-button class="button" on-tap="_save" raised>
+            Save and Close
+          </paper-button>
+        </a>
+
+        <paper-button class="button" raised on-tap="_handleCancel">
+          Cancel Edits and Close
+        </paper-button>
+
+        <paper-button class="button" raised on-tap="_handleDelete">
+          Delete
         </paper-button>
 
       </template>
@@ -106,5 +120,33 @@
     <template is="dom-if" if="[[preview]]" restamp>
       <nice-article article="{{article}}" article-images="{{articleImages}}"></nice-article>
     </template>
+
+    <paper-dialog class="cancel-dialog">
+      <h1 class="dialog-title">
+        Do you really want to exit without saving?
+      </h1>
+      <aside class="dialog-buttons">
+        <paper-button on-tap="_cancel" raised>
+          Yes
+        </paper-button>
+        <paper-button on-tap="_closeCancel" raised>
+          No
+        </paper-button>
+      </aside>
+    </paper-dialog>
+
+    <paper-dialog class="delete-dialog">
+      <h1 class="dialog-title">
+        Do you really want to Delete this article?
+      </h1>
+      <aside class="dialog-buttons">
+        <paper-button on-tap="_delete" raised>
+          Yes
+        </paper-button>
+        <paper-button on-tap="_closeDelete" raised>
+          No
+        </paper-button>
+      </aside>
+    </paper-dialog>
   </template>
 </dom-module>

@@ -2,7 +2,9 @@
   <template>
     <link rel="stylesheet" href="./nice-item.scss">
 
-    <a href="/[[type]]/[[articleId]]" style="background: url([[article.bannerImage]]) center/cover no-repeat" class="image"></a>
+    <template is="dom-if" if="[[article.bannerImage]]">
+      <a href="/[[type]]/[[articleId]]" style="background: url([[article.bannerImage]]) center/cover no-repeat" class="image"></a>
+    </template>
 
     <section class="text-area">
       <h1 class="title">

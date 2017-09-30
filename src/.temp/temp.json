@@ -36,6 +36,7 @@
     "pas-page": "modules/nice-module/pages/pas-page/pas-page.js",
     "cbe-recommends-page": "modules/nice-module/pages/cbe-recommends-page/cbe-recommends-page.js",
     "dl-page": "modules/nice-module/pages/dl-page/dl-page.js",
+    "resource-page": "modules/nice-module/pages/resource-page/resource-page.js",
     "not-found-page": "modules/nice-module/pages/not-found-page/not-found-page.js",
     "not-authorized-page": "modules/nice-module/pages/not-authorized-page/not-authorized-page.js",
     "nice-header": "modules/nice-module/components/nice-header/nice-header.js",
@@ -63,6 +64,10 @@
     },
     "/dl/:query?/:id?/:edit?": {
       "name": "dl-page",
+      "auth": "checkRole"
+    },
+    "/resource/:id?/:edit?": {
+      "name": "resource-page",
       "auth": "checkRole"
     }
 

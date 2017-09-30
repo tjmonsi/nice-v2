@@ -153,6 +153,18 @@
       {
         "source": "/dl",
         "destination": "/index.html"
+      },
+      {
+        "source": "/resource/**/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/resource/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/resource",
+        "destination": "/index.html"
       }
     ],
     "public": "./dist/public"

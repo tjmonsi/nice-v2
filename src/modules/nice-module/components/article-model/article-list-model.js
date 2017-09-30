@@ -26,7 +26,7 @@ export default (superClass) => {
     }
 
     _checkType (type, query, limit) {
-
+      console.log(type, query, limit)
       if (type && query && limit) {
         this.__list = firebase.database().ref(`v2/${type}/query/${query}`).orderByChild('value')
         if (limit > 0) {

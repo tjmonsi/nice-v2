@@ -1,10 +1,10 @@
-<dom-module id="story-page">
+<dom-module id="resource-page">
   <template>
-    <link rel="stylesheet" href="./story-page.scss">
+    <link rel="stylesheet" href="./resource-page.scss">
 
     <template is="dom-if" if="[[!params.id]]">
       <div class="row">
-        <nice-list class="main-list" type="story" title="Stories" query="published" limit="-1"></nice-list>
+        <nice-list class="main-list" type="resource" title="Data Resources" query="published"></nice-list>
         <aside class="sidebar">
         </aside>
       </div>
@@ -13,10 +13,10 @@
 
     <template is="dom-if" if="[[params.id]]">
       <template is="dom-if" if="[[!_checkEdit(params.edit)]]">
-        <nice-article type="story" article-id="[[params.id]]"></nice-article>
+        <nice-article type="resource" article-id="[[params.id]]"></nice-article>
       </template>
       <template is="dom-if" if="[[_checkEdit(params.edit)]]">
-        <nice-article-form type="story" article-id="[[params.id]]" preview="[[params.preview]]"></nice-article-form>
+        <nice-article-form type="resource" article-id="[[params.id]]" preview="[[params.preview]]"></nice-article-form>
       </template>
     </template>
   </template>

@@ -7,6 +7,7 @@
 '/about/:id?/:edit?': () => { return import(/* webpackChunkName: "about-page" */ './modules/nice-module/pages/about-page/about-page.js') }, 
 '/cberecommends/:id?/:edit?': () => { return import(/* webpackChunkName: "cbe-recommends-page" */ './modules/nice-module/pages/cbe-recommends-page/cbe-recommends-page.js') }, 
 '/pas/:id?/:edit?': () => { return import(/* webpackChunkName: "pas-page" */ './modules/nice-module/pages/pas-page/pas-page.js') }, 
-'/dl/:query?/:id?/:edit?': () => { return import(/* webpackChunkName: "dl-page" */ './modules/nice-module/pages/dl-page/dl-page.js') }
+'/dl/:query?/:id?/:edit?': () => { return import(/* webpackChunkName: "dl-page" */ './modules/nice-module/pages/dl-page/dl-page.js') }, 
+'/resource/:id?/:edit?': () => { return import(/* webpackChunkName: "resource-page" */ './modules/nice-module/pages/resource-page/resource-page.js') }
     }
   

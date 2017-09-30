@@ -1,5 +1,5 @@
 import 'polymer/polymer.html'
-import Article from '../article-model/article-model.js'
+import Article from '../article-model/article-summary-model.js'
 import './nice-item.html'
 
 class NiceItem extends Article(Polymer.Element) {

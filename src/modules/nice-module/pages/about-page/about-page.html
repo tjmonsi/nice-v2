@@ -10,7 +10,7 @@
       </div>
     </template>
 
-    <tempalte is="dom-if" if="[[params.id]]">
+    <template is="dom-if" if="[[params.id]]">
       <template is="dom-if" if="[[!_checkEdit(params.edit)]]">
         <div class="row">
           <nice-about-nav type="about" query="published" class="sidebar"></nice-about-nav>
@@ -21,7 +21,7 @@
       <template is="dom-if" if="[[_checkEdit(params.edit)]]">
         <nice-article-form type="about" article-id="[[params.id]]" preview="[[params.preview]]"></nice-article-form>
       </template>
-    </tempalte>
+    </template>
 
   </template>
 </dom-module>

@@ -37,6 +37,8 @@
     "cbe-recommends-page": "modules/nice-module/pages/cbe-recommends-page/cbe-recommends-page.js",
     "dl-page": "modules/nice-module/pages/dl-page/dl-page.js",
     "resource-page": "modules/nice-module/pages/resource-page/resource-page.js",
+    "community-page": "modules/nice-module/pages/community-page/community-page.js",
+    "thread-page": "modules/nice-module/pages/thread-page/thread-page.js",
     "not-found-page": "modules/nice-module/pages/not-found-page/not-found-page.js",
     "not-authorized-page": "modules/nice-module/pages/not-authorized-page/not-authorized-page.js",
     "nice-header": "modules/nice-module/components/nice-header/nice-header.js",
@@ -68,6 +70,14 @@
     },
     "/resource/:id?/:edit?": {
       "name": "resource-page",
+      "auth": "checkRole"
+    },
+    "/community/:id?/:edit?": {
+      "name": "community-page",
+      "auth": "checkRole"
+    },
+    "/thread/:id?": {
+      "name": "thread-page",
       "auth": "checkRole"
     }
 

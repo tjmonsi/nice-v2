@@ -165,6 +165,26 @@
       {
         "source": "/resource",
         "destination": "/index.html"
+      },
+      {
+        "source": "/community/**/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/community/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/community",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/thread/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/thread",
+        "destination": "/index.html"
       }
     ],
     "public": "./dist/public"

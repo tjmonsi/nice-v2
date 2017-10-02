@@ -6,9 +6,10 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
+  font-size: 0.75em;
 
-  @media screen and (max-width: 1000px) {
-    font-size: 0.75em
+  @media screen and (max-width: 870px) {
+    font-size: 0.6em;
   }
 }
 

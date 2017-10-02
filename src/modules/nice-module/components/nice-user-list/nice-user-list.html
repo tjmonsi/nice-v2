@@ -1,0 +1,14 @@
+<dom-module id="nice-user-list">
+  <template>
+    <link rel="stylesheet" href="./nice-user-list.scss">
+
+    <template is="dom-if" if="[[title]]">
+      <header class="header">
+        <h1 class="title">[[title]]</h1>
+      </header>
+    </template>
+    <template is="dom-repeat" items="[[members]]">
+      <nice-user-item user-id="[[item.$key]]" type="[[type]]"></nice-user-item>
+    </template>
+  </template>
+</dom-module>

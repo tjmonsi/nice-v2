@@ -1,0 +1,26 @@
+<dom-module id="community-page">
+  <template>
+    <link rel="stylesheet" href="./community-page.scss">
+
+    <template is="dom-if" if="[[!params.id]]">
+      <div class="row">
+        <nice-community-nav class="sidebar"></nice-community-nav>
+        <nice-user-list type="permission" query="member" class="main-list" title="The Community"></nice-user-list>
+      </div>
+    </template>
+
+    <template is="dom-if" if="[[params.id]]">
+      <template is="dom-if" if="[[!_checkEdit(params.edit)]]">
+        <div class="row">
+          <nice-community-nav class="sidebar"></nice-community-nav>
+          <nice-user class="main-list"  article-id="[[params.id]]"></nice-user>
+          <!-- <nice-list class="main-list" type="cberecommends" title="CBE Recommends" query="published"></nice-list> -->
+        </div>
+      </template>
+      <template is="dom-if" if="[[_checkEdit(params.edit)]]">
+        <nice-user-form user-id="[[params.id]]" preview="[[params.preview]]"></nice-user-form>
+      </template>
+    </template>
+
+  </template>
+</dom-module>

@@ -10,6 +10,10 @@
   @media screen and (max-width: 1440px) {
     margin: 0 20px;
   }
+
+  @media screen and (max-width: 900px) {
+    display: block;
+  }
 }
 
 .main-list {
@@ -19,8 +23,4 @@
 
 .sidebar {
   @include layout-flex-3;
-
-  @media screen and (max-width: 900px) {
-    display: none;
-  }
 }

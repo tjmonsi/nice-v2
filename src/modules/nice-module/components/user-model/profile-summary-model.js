@@ -12,7 +12,7 @@ export default (superClass) => {
         profile: {
           type: Object
         },
-        userId: {
+        profileId: {
           type: String
         }
       }
@@ -20,7 +20,7 @@ export default (superClass) => {
 
     static get observers () {
       return [
-        '_loadProfile(userId, user, permission.role)'
+        '_loadProfile(profileId, user, permission.role)'
       ]
     }
 

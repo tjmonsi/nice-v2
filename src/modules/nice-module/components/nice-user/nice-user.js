@@ -1,9 +1,9 @@
 import 'polymer/polymer.html'
 import Profile from '../user-model/profile-model.js'
-import './nice-item.html'
+import './nice-user.html'
 
-class NiceItem extends Profile(Polymer.Element) {
-  static get is () { return 'nice-item' }
+class NiceUser extends Profile(Polymer.Element) {
+  static get is () { return 'nice-user' }
 }
 
-customElements.define(NiceItem.is, NiceItem)
+customElements.define(NiceUser.is, NiceUser)

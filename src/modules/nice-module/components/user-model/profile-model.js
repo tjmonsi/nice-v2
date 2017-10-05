@@ -18,7 +18,7 @@ export default (superClass) => {
         profile: {
           type: Object
         },
-        userId: {
+        profileId: {
           type: String
         }
       }
@@ -26,7 +26,7 @@ export default (superClass) => {
 
     static get observers () {
       return [
-        '_loadProfile(userId, user, role)'
+        '_loadProfile(profileId, user, role)'
       ]
     }
 
@@ -75,6 +75,7 @@ export default (superClass) => {
     }
 
     _loadProfileSnapshot (snapshot) {
+      console.log(snapshot.val())
       this.profile = snapshot.val()
     }
 
@@ -111,6 +112,10 @@ export default (superClass) => {
       }
       var nd = new Date(date);
       return nd.toLocaleDateString() + ' - ' + nd.toLocaleTimeString();
+    }
+
+    isEqual (a, b) {
+      return a === b
     }
 
     _onError (error) {

@@ -13,12 +13,12 @@
       <template is="dom-if" if="[[!_checkEdit(params.edit)]]">
         <div class="row">
           <nice-community-nav class="sidebar"></nice-community-nav>
-          <nice-user class="main-list"  article-id="[[params.id]]"></nice-user>
+          <nice-user class="main-list"  profile-id="[[params.id]]"></nice-user>
           <!-- <nice-list class="main-list" type="cberecommends" title="CBE Recommends" query="published"></nice-list> -->
         </div>
       </template>
       <template is="dom-if" if="[[_checkEdit(params.edit)]]">
-        <nice-user-form user-id="[[params.id]]" preview="[[params.preview]]"></nice-user-form>
+        <nice-user-form profile-id="[[params.id]]" preview="[[params.preview]]"></nice-user-form>
       </template>
     </template>
 

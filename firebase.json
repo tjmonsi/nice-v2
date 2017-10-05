@@ -1,0 +1,192 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "hosting": {
+    "headers": [
+      {
+        "source": "**/*.@(jpg|jpeg|gif|png)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=7200"
+          }
+        ]
+      },
+      {
+        "source": "404.html",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=300"
+          }
+        ]
+      },
+      {
+        "source": "service-worker.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "service-worker-core/*.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "service-worker-src/*js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "sw.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "workbox-routing.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "workbox-sw.*.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/login",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/cbe",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/story/**/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/story/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/story",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/about/**/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/about/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/about",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/cberecommends/**/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/cberecommends/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/cberecommends",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/pas/**/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/pas/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/pas",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dl/**/**/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dl/**/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dl/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dl",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/resource/**/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/resource/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/resource",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/community/**/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/community/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/community",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/thread/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/thread",
+        "destination": "/index.html"
+      }
+    ],
+    "public": "./dist/public"
+  }
+}

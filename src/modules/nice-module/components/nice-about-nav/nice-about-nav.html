@@ -1,0 +1,16 @@
+<dom-module id="nice-about-nav">
+  <template>
+    <link rel="stylesheet" href="./nice-about-nav.scss">
+
+    <h1 class="title">Navigation</h1>
+    <nav>
+      <ul class="nav-list">
+        <template is="dom-repeat" items="[[list]]">
+          <li class="nav-item">
+            <nice-about-nav-item article-id="[[item.$key]]" type="about"></nice-about-nav-item>
+          </li>
+        </template>
+      </ul>
+    </nav>
+  </template>
+</dom-module>

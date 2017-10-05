@@ -1,0 +1,38 @@
+<dom-module id="nice-user-item">
+  <template>
+    <link rel="stylesheet" href="./nice-user-item.scss">
+
+    <template is="dom-if" if="[[profile.image]]">
+      <a href="/community/[[userId]]" style="background: url([[profile.image]]) center/cover no-repeat" class="image"></a>
+    </template>
+
+    <section class="text-area">
+      <h1 class="title">
+        <a href="/community/[[userId]]" class="title-anchor">[[profile.displayName]]</a>
+      </h1>
+
+      <template is="dom-if" if="[[_checkRole(user, permission.role, 'editor')]]">
+        <paper-dropdown-menu label="Role">
+          <paper-listbox slot="dropdown-content">
+            <template is="dom-if" if="[[_checkRole(user, permission.role, 'admin')]]">
+              <paper-item>Admin</paper-item>
+              <paper-item>Editor</paper-item>
+            </template>
+            <paper-item>Staff</paper-item>
+            <paper-item>Member</paper-item>
+          </paper-listbox>
+        </paper-dropdown-menu>
+
+        <template is="dom-if" if="[[_checkRole(user, permission.role, 'admin')]]">
+          <paper-button class="button" raised>Remove membership</paper-button>
+        </template>
+
+        <a href="/community/[[userId]]" class="title-anchor">
+          <paper-button class="button" raised>View Profile</paper-button>
+        </a>
+
+        <paper-button class="button" raised>Send Message</paper-button>
+      </template>
+    </section>
+  </template>
+</dom-module>

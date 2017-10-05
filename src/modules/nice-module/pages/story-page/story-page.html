@@ -1,0 +1,23 @@
+<dom-module id="story-page">
+  <template>
+    <link rel="stylesheet" href="./story-page.scss">
+
+    <template is="dom-if" if="[[!params.id]]">
+      <div class="row">
+        <nice-list class="main-list" type="story" title="Stories" query="published" limit="-1"></nice-list>
+        <aside class="sidebar">
+        </aside>
+      </div>
+
+    </template>
+
+    <template is="dom-if" if="[[params.id]]">
+      <template is="dom-if" if="[[!_checkEdit(params.edit)]]">
+        <nice-article type="story" article-id="[[params.id]]"></nice-article>
+      </template>
+      <template is="dom-if" if="[[_checkEdit(params.edit)]]">
+        <nice-article-form type="story" article-id="[[params.id]]" preview="[[params.preview]]"></nice-article-form>
+      </template>
+    </template>
+  </template>
+</dom-module>

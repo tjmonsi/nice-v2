@@ -1,0 +1,37 @@
+<dom-module id="nice-user">
+  <template>
+    <link rel="stylesheet" href="./nice-user.scss">
+
+    <section class="section">
+      <img class="avatar" src="{{profile.image}}">
+      <h1 class="title">{{profile.displayName}}</h1>
+
+      <address class="meta">
+        <p>{{profile.address}}</p>
+      </address>
+
+      <div class="work">
+        <h3 class="title-work">Work</h3>
+        <p>{{profile.work}}</p>
+      </div>
+
+      <div class="row">
+
+        <template is="dom-if" if="[[!isEqual(user.uid, profileId)]]">
+          <paper-button class="button" raised>
+            Message me
+          </paper-button>
+        </template>
+
+        <template is="dom-if" if="[[isEqual(user.uid, profileId)]]">
+          <a href="/community/[[profileId]]/edit" class="anchor-button">
+            <paper-button class="button" raised>
+              Edit Profile
+            </paper-button>
+          </a>
+        </template>
+      </div>
+    </section>
+
+  </template>
+</dom-module>

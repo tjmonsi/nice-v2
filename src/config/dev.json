@@ -1,0 +1,174 @@
+{
+  "app": {
+    "title": "Network for Information and Collaboration Exchange",
+    "shortTitle": "NICE",
+    "description": "An awesome web app project created from Polymer, bundled in Webpack, built from Gulp, and hosted in Firebase",
+    "twitter": "",
+    "image": ""
+  },
+  "build": {
+    "name": "dev",
+    "baseHref": "/",
+    "analytics": "UA-78769796-1",
+    "firebaseVersion": "4.2.0",
+    "database": "dev",
+    "sentryUrl": "https://1efca82241ea4656a68de88d43b6a46a@sentry.io/209061",
+    "firebaseConfig": [
+      {
+        "apiKey": "AIzaSyDi-X0Jsl7-Lx1p4-aACSULeuw349PhAnI",
+        "authDomain": "nice-v1.firebaseapp.com",
+        "databaseURL": "https://nice-v1.firebaseio.com",
+        "projectId": "nice-v1",
+        "storageBucket": "nice-v1.appspot.com",
+        "messagingSenderId": "726156351220"
+      }
+    ]
+  },
+  "theme": {
+    "src": "modules/nice-module"
+  },
+  "fragments": {
+    "landing-page": "modules/nice-module/pages/landing-page/landing-page.js",
+    "login-page": "modules/nice-module/pages/login-page/login-page.js",
+    "story-page": "modules/nice-module/pages/story-page/story-page.js",
+    "about-page": "modules/nice-module/pages/about-page/about-page.js",
+    "cbe-page": "modules/nice-module/pages/cbe-page/cbe-page.js",
+    "pas-page": "modules/nice-module/pages/pas-page/pas-page.js",
+    "cbe-recommends-page": "modules/nice-module/pages/cbe-recommends-page/cbe-recommends-page.js",
+    "dl-page": "modules/nice-module/pages/dl-page/dl-page.js",
+    "resource-page": "modules/nice-module/pages/resource-page/resource-page.js",
+    "community-page": "modules/nice-module/pages/community-page/community-page.js",
+    "thread-page": "modules/nice-module/pages/thread-page/thread-page.js",
+    "not-found-page": "modules/nice-module/pages/not-found-page/not-found-page.js",
+    "not-authorized-page": "modules/nice-module/pages/not-authorized-page/not-authorized-page.js",
+    "nice-header": "modules/nice-module/components/nice-header/nice-header.js",
+    "nice-drawer": "modules/nice-module/components/nice-drawer/nice-drawer.js"
+  },
+  "routing": {
+    "/": "landing-page",
+    "/login": "login-page",
+    "/cbe": "cbe-page",
+    "/story/:id?/:edit?": {
+      "name": "story-page",
+      "auth": "checkRole"
+    },
+    "/about/:id?/:edit?": {
+      "name": "about-page",
+      "auth": "checkRole"
+    },
+    "/cberecommends/:id?/:edit?": {
+      "name": "cbe-recommends-page",
+      "auth": "checkRole"
+    },
+    "/pas/:id?/:edit?": {
+      "name": "pas-page",
+      "auth": "checkRole"
+    },
+    "/dl/:query?/:id?/:edit?": {
+      "name": "dl-page",
+      "auth": "checkRole"
+    },
+    "/resource/:id?/:edit?": {
+      "name": "resource-page",
+      "auth": "checkRole"
+    },
+    "/community/:id?/:edit?": {
+      "name": "community-page",
+      "auth": "checkRole"
+    },
+    "/thread/:id?": {
+      "name": "thread-page",
+      "auth": "checkRole"
+    }
+
+  },
+  "httpCodes": {
+    "not-found": "not-found-page",
+    "not-authorized": "not-authorized-page"
+  },
+  "partials": {
+    "header": "nice-header",
+    "drawer": "nice-drawer"
+  },
+  "serviceWorker": {
+    "globIgnores": [],
+    "runtimeCaching": [],
+    "globPatterns": []
+  },
+  "hosting": {
+    "headers": [
+      {
+        "source" : "**/*.@(jpg|jpeg|gif|png)",
+        "headers" : [
+          {
+            "key" : "Cache-Control",
+            "value" : "max-age=7200"
+          }
+        ]
+      },
+      {
+        "source" : "404.html",
+        "headers" : [
+          {
+            "key" : "Cache-Control",
+            "value" : "max-age=300"
+          }
+        ]
+      },
+      {
+        "source": "service-worker.js",
+        "headers" : [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "service-worker-core/*.js",
+        "headers" : [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "service-worker-src/*js",
+        "headers" : [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "sw.js",
+        "headers" : [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "workbox-routing.js",
+        "headers" : [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "workbox-sw.*.js",
+        "headers" : [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      }
+    ]
+  }
+}

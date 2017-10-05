@@ -1,0 +1,23 @@
+<dom-module id="pas-page">
+  <template>
+    <link rel="stylesheet" href="./pas-page.scss">
+
+    <template is="dom-if" if="[[!params.id]]">
+      <div class="row">
+        <nice-pas-nav class="sidebar"></nice-pas-nav>
+        <nice-list class="main-list" type="pas" title="Products and Services" query="published" limit="-1"></nice-list>
+      </div>
+
+    </template>
+
+    <template is="dom-if" if="[[params.id]]">
+      <template is="dom-if" if="[[!_checkEdit(params.edit)]]">
+        <nice-article type="pas" article-id="[[params.id]]"></nice-article>
+      </template>
+      <template is="dom-if" if="[[_checkEdit(params.edit)]]">
+        <nice-article-form type="pas" article-id="[[params.id]]" preview="[[params.preview]]"></nice-article-form>
+      </template>
+    </template>
+
+  </template>
+</dom-module>

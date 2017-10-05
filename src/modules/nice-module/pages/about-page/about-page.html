@@ -1,0 +1,27 @@
+<dom-module id="about-page">
+  <template>
+    <link rel="stylesheet" href="./about-page.scss">
+
+    <template is="dom-if" if="[[!params.id]]">
+      <div class="row">
+        <nice-about-nav type="about" query="published" class="sidebar"></nice-about-nav>
+        <nice-article class="main-list" type="about" article-id="inclusive-value-chain"></nice-article>
+        <!-- <nice-list class="main-list" type="cberecommends" title="CBE Recommends" query="published"></nice-list> -->
+      </div>
+    </template>
+
+    <template is="dom-if" if="[[params.id]]">
+      <template is="dom-if" if="[[!_checkEdit(params.edit)]]">
+        <div class="row">
+          <nice-about-nav type="about" query="published" class="sidebar"></nice-about-nav>
+          <nice-article class="main-list" type="about" article-id="[[params.id]]"></nice-article>
+          <!-- <nice-list class="main-list" type="cberecommends" title="CBE Recommends" query="published"></nice-list> -->
+        </div>
+      </template>
+      <template is="dom-if" if="[[_checkEdit(params.edit)]]">
+        <nice-article-form type="about" article-id="[[params.id]]" preview="[[params.preview]]"></nice-article-form>
+      </template>
+    </template>
+
+  </template>
+</dom-module>

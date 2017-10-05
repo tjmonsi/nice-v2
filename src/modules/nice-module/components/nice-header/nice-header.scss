@@ -1,0 +1,38 @@
+@import '../../styles/components/typography';
+
+
+.logo-bar {
+  height: 160px;
+}
+
+.menu {
+  @media screen and (min-width: 800px) {
+    display: none
+  }
+}
+
+.nav-bar {
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+}
+
+h1[main-title] {
+  height: 160px;
+
+  @media screen and (min-width: 610px) and (max-width: 969px){
+    height: 90px;
+  }
+}
+
+.logo {
+  height: 160px;
+
+  @media screen and (min-width: 610px) and (max-width: 969px){
+    height: 90px;
+  }
+}
+
+.nav-bar {
+
+}

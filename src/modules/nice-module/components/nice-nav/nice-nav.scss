@@ -1,0 +1,30 @@
+@import '../../styles/mixins/flex';
+@import '../../styles/components/typography';
+
+.nav-bar {
+  @include layout-horizontal;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.75em;
+
+  @media screen and (max-width: 870px) {
+    font-size: 0.6em;
+  }
+}
+
+.nav-item {
+  .link {
+    padding: 15px;
+    text-decoration: none;
+    position: relative;
+    color: inherit;
+    font-size: inherit;
+
+    @media screen and (max-width: 1000px) {
+      padding: 10px;
+    }
+  }
+}
+
+

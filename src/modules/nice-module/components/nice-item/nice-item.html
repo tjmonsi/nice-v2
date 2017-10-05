@@ -1,0 +1,19 @@
+<dom-module id="nice-item">
+  <template>
+    <link rel="stylesheet" href="./nice-item.scss">
+
+    <template is="dom-if" if="[[article.bannerImage]]">
+      <a href="/[[type]]/[[articleId]]" style="background: url([[article.bannerImage]]) center/cover no-repeat" class="image"></a>
+    </template>
+
+    <section class="text-area">
+      <h1 class="title">
+        <a href="/[[type]]/[[articleId]]" class="title-anchor">[[article.title]]</a>
+      </h1>
+      <p class="meta">
+          [[_renderDate(article.datePublished)]]
+      </p>
+
+    </section>
+  </template>
+</dom-module>

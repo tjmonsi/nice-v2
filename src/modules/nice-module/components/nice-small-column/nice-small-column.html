@@ -1,0 +1,23 @@
+<dom-module id="nice-small-column">
+  <template>
+    <link rel="stylesheet" href="./nice-small-column.scss">
+
+    <template is="dom-if" if="[[list.length]]">
+      <template is="dom-if" if="[[title]]">
+        <header class="header">
+          <h1 class="title">[[title]]</h1>
+        </header>
+      </template>
+      <template is="dom-repeat" items="[[list]]">
+        <template is="dom-if" if="[[!index]]">
+          <nice-headline article-id="[[item.$key]]" type="[[type]]"></nice-headline>
+        </template>
+
+        <template is="dom-if" if="[[index]]">
+          <nice-item article-id="[[item.$key]]" type="[[type]]"></nice-item>
+        </template>
+      </template>
+    </template>
+
+  </template>
+</dom-module>

@@ -2,6 +2,11 @@
     <template>
       <link rel="stylesheet" href="./nice-user.scss">
 
+      <section class="section">
+        <paper-input label="First Name" value="{{profile.firstName}}"></paper-input>
+        <paper-input label="Last Name" value="{{profile.lastName}}"></paper-input>
+      </section>
+
       <!-- <section class="section">
         <img class="avatar" src="{{profile.image}}">
         <h1 class="title">{{profile.displayName}}</h1>

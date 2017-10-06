@@ -5,7 +5,7 @@ import User from '../../components/user-model/user-model.js'
 import Permission from '../../components/permission-model/permission-model.js'
 import './login-page.html'
 
-class LoginPage extends User(Polymer.Element) {
+class LoginPage extends Permission(User(Polymer.Element)) {
   static get is () { return 'login-page' }
 
   static get observers () {

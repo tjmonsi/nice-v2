@@ -21,6 +21,18 @@ export default {
     return true
   },
 
+  checkOwner: (self) => {
+    const main = store.getState().main
+
+    if (self.params) {
+      if (self.params.edit === 'edit') {
+        return main && main.permission && main.user && main.user.uid === self.params.id
+      }
+      return true
+    }
+    return true
+  },
+
   exampleAuthentication: () => {
     // returns a 'falsy' value, which means the user is not authenticated
     return false

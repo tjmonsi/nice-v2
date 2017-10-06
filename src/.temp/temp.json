@@ -74,7 +74,7 @@
     },
     "/community/:id?/:edit?": {
       "name": "community-page",
-      "auth": "checkRole"
+      "auth": "checkOwner"
     },
     "/thread/:id?": {
       "name": "thread-page",

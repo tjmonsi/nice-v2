@@ -74,7 +74,7 @@ class NiceArticleForm extends Category(Article(Polymer.Element)) {
       var file = files[0];
 
       if (firebase) {
-        var path = `v2/${this.type}/list/image`
+        var path = `v2/${this.type}/list/image/${this.articleId}`
         var key = firebase.database().ref(path).push().key
         this._bannerImageTask = firebase.storage().ref(path).child(`${key}--${file.name}`).put(file);
         this._bannerImageTask.on(

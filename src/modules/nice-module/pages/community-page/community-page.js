@@ -2,6 +2,7 @@ import 'polymer/polymer.html'
 import '../../components/nice-community-nav/nice-community-nav.js'
 import '../../components/nice-user-list/nice-user-list.js'
 import '../../components/nice-user/nice-user.js'
+import '../../components/nice-user-form/nice-user-form.js'
 import './community-page.html'
 
 class CommunityPage extends Polymer.Element {

@@ -75,7 +75,6 @@ export default (superClass) => {
     }
 
     _loadProfileSnapshot (snapshot) {
-      console.log(snapshot.val())
       this.profile = snapshot.val()
     }
 

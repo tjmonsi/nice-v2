@@ -34,3 +34,28 @@
 .meta {
   font-size: 12px;
 }
+
+.button {
+  padding: 10px 20px;
+  margin-right: 20px;
+}
+
+.anchor-button {
+  color: inherit;
+  text-decoration: none;
+}
+
+.row {
+  @include layout-horizontal;
+  @include layout-wrap;
+  @include layout-center;
+  padding: 10px;
+}
+
+.flex {
+  @include layout-flex;
+}
+
+.button-list {
+  margin-left: 10px;
+}

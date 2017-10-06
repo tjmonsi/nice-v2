@@ -10,10 +10,12 @@
         <p>{{profile.address}}</p>
       </address>
 
-      <div class="work">
-        <h3 class="title-work">Work</h3>
-        <p>{{profile.work}}</p>
-      </div>
+      <template is="dom-if" if="[[profile.position]]">
+        <div class="work">
+          <h3 class="title-work">Position: {{profile.position}}</h3>
+          <p>{{profile.work}}</p>
+        </div>
+      </template>
 
       <div class="row">
 

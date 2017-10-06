@@ -1,42 +1,63 @@
-<dom-module id="nice-user">
+<dom-module id="nice-user-form">
     <template>
-      <link rel="stylesheet" href="./nice-user.scss">
+      <link rel="stylesheet" href="./nice-user-form.scss">
 
       <section class="section">
+        <h1 class="title">Personal Information</h1>
         <paper-input label="First Name" value="{{profile.firstName}}"></paper-input>
         <paper-input label="Last Name" value="{{profile.lastName}}"></paper-input>
-      </section>
+        <paper-input label="Phone Number" value="{{profile.contact}}"></paper-input>
 
-      <!-- <section class="section">
-        <img class="avatar" src="{{profile.image}}">
-        <h1 class="title">{{profile.displayName}}</h1>
 
-        <address class="meta">
-          <p>{{profile.address}}</p>
-        </address>
-
-        <div class="work">
-          <h3 class="title-work">Work</h3>
-          <p>{{profile.work}}</p>
+        <div class="row center">
+          <img class="avatar" src="{{profile.image}}">
+          <div class="flex avatar-container">
+            <paper-input label="Profile Image" value="{{profile.image}}"></paper-input>
+            <paper-input label="Upload Profile Image" placeholder="Upload Profile Image" type="file" accept="image/*" on-change="_uploadProfileImage"></paper-input>
+            <template is="dom-if" if="[[profileImageProgress]]">
+              <paper-progress value="[[profileImageProgress]]" max="100" min="0" class="transiting"></paper-progress>
+            </template>
+          </div>
         </div>
 
+        <paper-textarea label="Address" value="{{profile.address}}"></paper-textarea>
+
+        <h1 class="title">Work Information</h1>
+        <paper-input label="Work" value="{{profile.position}}"></paper-input>
+        <paper-textarea label="Work Description" value="{{profile.work}}"></paper-textarea>
+
+        <hr>
         <div class="row">
 
-          <template is="dom-if" if="[[!isEqual(user.uid, profileId)]]">
-            <paper-button class="button" raised>
-              Message me
-            </paper-button>
-          </template>
+          <paper-button class="button" on-tap="_save" raised>
+            Save
+          </paper-button>
 
-          <template is="dom-if" if="[[isEqual(user.uid, profileId)]]">
-            <a href="/community/[[profileId]]/edit" class="anchor-button">
-              <paper-button class="button" raised>
-                Edit Profile
-              </paper-button>
-            </a>
-          </template>
+          <a href="/community/[[profileId]]" class="anchor-button">
+            <paper-button class="button" on-tap="_save" raised>
+              Save and Close
+            </paper-button>
+          </a>
+
+          <paper-button class="button" raised on-tap="_handleCancel">
+            Cancel Edits and Close
+          </paper-button>
         </div>
-      </section> -->
+      </section>
+
+      <paper-dialog class="cancel-dialog">
+        <h1 class="dialog-title">
+          Do you really want to exit without saving?
+        </h1>
+        <aside class="dialog-buttons">
+          <paper-button on-tap="_cancel" raised>
+            Yes
+          </paper-button>
+          <paper-button on-tap="_closeCancel" raised>
+            No
+          </paper-button>
+        </aside>
+      </paper-dialog>
 
     </template>
   </dom-module>

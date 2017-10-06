@@ -4,14 +4,14 @@
 
     <template is="dom-if" if="[[!params.id]]">
       <div class="row">
-        <nice-thread-nav class="sidebar"></nice-thread-nav>
+        <nice-community-nav class="sidebar"></nice-community-nav>
         <nice-thread-list class="main-list" title="The Community"></nice-thread-list>
       </div>
     </template>
 
     <template is="dom-if" if="[[params.id]]">
       <div class="row">
-        <nice-thread-nav class="sidebar"></nice-thread-nav>
+        <nice-community-nav class="sidebar"></nice-community-nav>
         <nice-thread class="main-list" article-id="[[params.id]]"></nice-thread>
         <!-- <nice-list class="main-list" type="cberecommends" title="CBE Recommends" query="published"></nice-list> -->
       </div>

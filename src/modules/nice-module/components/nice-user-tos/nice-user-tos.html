@@ -1,0 +1,61 @@
+<dom-module id="nice-user-tos">
+  <template>
+    <link rel="stylesheet" href="./nice-user-tos.scss">
+
+    <paper-dialog>
+      <div class="tos">
+        <marked-element>
+          <div slot="markdown-html" class="body"></div>
+          <script type="text/markdown">
+# Welcome to NICE Platform!
+
+The Network for Information and Collaboration Exchange Platform (“NICE”, “NICE Platform”, “Platform”) is the LifeBank Foundation, Inc. (“LBF”)’s hub for agricultural entrepreneurs (“agripreneurs”), state universities and colleges (SUCs), research and development institutions (RDIs), government offices, and civil society organizations (CSOs). NICE is built to host completed researches and information on mature technologies relevant to sustainable agriculture and make it accessible to a wider audience. It also seeks to provide a virtual platform for collaboration among the agripreneurs, processors, retailers, and consumers.
+
+In signing up for an account in NICE, the prospect user must agree with the following terms and conditions:
+
+1. The NICE logo, designs, images, and all the contents belong to the LBF, unless otherwise stated.
+The NICE platform should be properly acknowledged when using any content drawn from the
+Platform. Hence, the LBF can implement any changes, e.g. remove or edit content, in the
+Platform or can terminate the Platform without informing its users.
+
+2. The LBF shall not pay the users for the information the users provide and for any transactions
+made by the users in the Platform. Transactions can be in the form of messaging other users,
+providing personal information, providing comments, submitting photos for uploading,
+submitting content for features, and other activities conducted in the NICE Platform.
+
+3. The LBF may also keep, use, and share the users’ information with its partner institutions. The
+information may include home address, contact number, e-mail address, school, work, business
+information, private messages, and other information provided to the platform. User accounts
+and any content posted or provided by the users may also be removed from the Platform
+without informing the users.
+
+4. The users shall not be selling or promoting products in the name of the LBF or the NICE
+Platform. The users are also restricted from using the LBF or the NICE Platform in any way
+damaging to the Foundation, the Platform, and other users. The users must not use the NICE
+Platform in harassing, intimidating, and threatening other users and in promoting, arranging, or
+participating in unlawful activities.
+
+5. The LBF shall not be responsible if any of its users break the law or break the NICE Platform
+rules. If the users, in any way, break the law, for example, committed a fraudulent scheme
+through the NICE Platform, only the said users shall be liable and not the LBF or any of its
+ancillary offices or program teams.
+          </script>
+        </marked-element>
+
+        <div class="row">
+
+          <paper-button class="button" raised on-tap="accept">
+              I accept
+            </paper-button>
+
+
+          <paper-button class="button" raised on-tap="cancel">
+            I don't accept
+          </paper-button>
+
+
+        </div>
+      </div>
+    </paper-dialog>
+  </template>
+</dom-module>

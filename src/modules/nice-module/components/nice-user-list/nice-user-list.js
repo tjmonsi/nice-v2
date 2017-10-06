@@ -1,6 +1,6 @@
 import 'polymer/polymer.html'
 import '../nice-user-item/nice-user-item.js'
-import UserList from '../user-model/user-list-model.js'
+import UserList from '../user-model/member-list-model.js'
 import './nice-user-list.html'
 
 class NiceUserList extends UserList(Polymer.Element) {

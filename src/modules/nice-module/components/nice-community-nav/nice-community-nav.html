@@ -5,17 +5,20 @@
     <h1 class="title">Navigation</h1>
     <nav>
       <ul class="nav-list">
-        <li class="nav-item">
-          <a href="/community" class="nav-anchor">
-            Community Directory
-          </a>
-        </li>
 
-        <li class="nav-item">
-          <a href="/thread" class="nav-anchor">
-            Inbox
-          </a>
-        </li>
+        <template is="dom-if" if="[[_checkRole(user, permission.role, 'member')]]">
+          <li class="nav-item">
+            <a href="/community" class="nav-anchor">
+              Community Directory
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/thread" class="nav-anchor">
+              Inbox
+            </a>
+          </li>
+        </template>
 
         <li class="nav-item">
           <a href="/community/[[user.uid]]" class="nav-anchor">

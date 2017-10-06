@@ -9,22 +9,22 @@ class LoginPage extends User(Polymer.Element) {
 
   static get observers () {
     return [
-      '_checkUser(user)'
+      '_checkUser(user, profile, profile.agree)'
     ]
   }
 
-  _checkUser (user) {
-    if (user) {
-      window.history.pushState({}, '', '/user')
-      window.dispatchEvent(new CustomEvent('location-changed'))
+  _checkUser (user, profile, agree) {
+    if (user && profile) {
+      if (!agree) {
+        window.history.pushState({}, '', '/community/' + this.user.uid + '/edit')
+        window.dispatchEvent(new CustomEvent('location-changed'))
+      }
     }
   }
 
   reload () {
-    if (this.user) {
-      window.history.pushState({}, '', '/user')
-      window.dispatchEvent(new CustomEvent('location-changed'))
-    }
+    var agree = this.profile && this.profile.agree
+    this._checkUser(this.user, this.profile, agree)
   }
 }
 

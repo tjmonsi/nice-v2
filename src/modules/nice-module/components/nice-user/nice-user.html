@@ -3,30 +3,35 @@
     <link rel="stylesheet" href="./nice-user.scss">
 
     <section class="section">
-      <img class="avatar" src="{{profile.image}}">
-      <h1 class="title">{{profile.displayName}}</h1>
+      <img class="avatar" src="{{member.image}}">
+      <h1 class="title">
+        {{member.displayName}}
+        <template is="dom-if" if="{{member.agree}}">
+          <iron-icon icon="nice:check"></iron-icon>
+        </template>
+      </h1>
 
       <address class="meta">
-        <p>{{profile.address}}</p>
+        <p>{{member.address}}</p>
       </address>
 
-      <template is="dom-if" if="[[profile.position]]">
+      <template is="dom-if" if="[[member.position]]">
         <div class="work">
-          <h3 class="title-work">Position: {{profile.position}}</h3>
-          <p>{{profile.work}}</p>
+          <h3 class="title-work">Position: {{member.position}}</h3>
+          <p>{{member.work}}</p>
         </div>
       </template>
 
       <div class="row">
 
-        <template is="dom-if" if="[[!isEqual(user.uid, profileId)]]">
+        <template is="dom-if" if="[[!isEqual(user.uid, memberId)]]">
           <paper-button class="button" raised>
             Message me
           </paper-button>
         </template>
 
-        <template is="dom-if" if="[[isEqual(user.uid, profileId)]]">
-          <a href="/community/[[profileId]]/edit" class="anchor-button">
+        <template is="dom-if" if="[[isEqual(user.uid, memberId)]]">
+          <a href="/community/[[memberId]]/edit" class="anchor-button">
             <paper-button class="button" raised>
               Edit Profile
             </paper-button>

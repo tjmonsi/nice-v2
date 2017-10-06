@@ -4,27 +4,27 @@
 
       <section class="section">
         <h1 class="title">Personal Information</h1>
-        <paper-input label="First Name" value="{{profile.firstName}}"></paper-input>
-        <paper-input label="Last Name" value="{{profile.lastName}}"></paper-input>
-        <paper-input label="Phone Number" value="{{profile.contact}}"></paper-input>
+        <paper-input label="First Name" value="{{member.firstName}}"></paper-input>
+        <paper-input label="Last Name" value="{{member.lastName}}"></paper-input>
+        <paper-input label="Phone Number" value="{{member.contact}}"></paper-input>
 
 
         <div class="row center">
-          <img class="avatar" src="{{profile.image}}">
+          <img class="avatar" src="{{member.image}}">
           <div class="flex avatar-container">
-            <paper-input label="Profile Image" value="{{profile.image}}"></paper-input>
+            <paper-input label="Profile Image" value="{{member.image}}"></paper-input>
             <paper-input label="Upload Profile Image" placeholder="Upload Profile Image" type="file" accept="image/*" on-change="_uploadProfileImage"></paper-input>
-            <template is="dom-if" if="[[profileImageProgress]]">
-              <paper-progress value="[[profileImageProgress]]" max="100" min="0" class="transiting"></paper-progress>
+            <template is="dom-if" if="[[memberImageProgress]]">
+              <paper-progress value="[[memberImageProgress]]" max="100" min="0" class="transiting"></paper-progress>
             </template>
           </div>
         </div>
 
-        <paper-textarea label="Address" value="{{profile.address}}"></paper-textarea>
+        <paper-textarea label="Address" value="{{member.address}}"></paper-textarea>
 
         <h1 class="title">Work Information</h1>
-        <paper-input label="Work" value="{{profile.position}}"></paper-input>
-        <paper-textarea label="Work Description" value="{{profile.work}}"></paper-textarea>
+        <paper-input label="Work" value="{{member.position}}"></paper-input>
+        <paper-textarea label="Work Description" value="{{member.work}}"></paper-textarea>
 
         <hr>
         <div class="row">
@@ -33,7 +33,7 @@
             Save
           </paper-button>
 
-          <a href="/community/[[profileId]]" class="anchor-button">
+          <a href="/community/[[memberId]]" class="anchor-button">
             <paper-button class="button" on-tap="_save" raised>
               Save and Close
             </paper-button>
@@ -58,6 +58,8 @@
           </paper-button>
         </aside>
       </paper-dialog>
+
+      <nice-user-tos></nice-user-tos>
 
     </template>
   </dom-module>

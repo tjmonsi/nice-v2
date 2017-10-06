@@ -2,7 +2,8 @@ import 'polymer/polymer.html'
 import 'paper-input/paper-input.html'
 import 'paper-input/paper-textarea.html'
 import 'paper-dialog/paper-dialog.html'
-import Profile from '../user-model/profile-model.js'
+import '../nice-user-tos/nice-user-tos.js'
+import Profile from '../user-model/member-model.js'
 import './nice-user-form.html'
 
 class NiceUserForm extends Profile(Polymer.Element) {
@@ -10,7 +11,7 @@ class NiceUserForm extends Profile(Polymer.Element) {
 
   static get properties () {
     return {
-      profileImageProgress: {
+      memberImageProgress: {
         type: Number
       },
       _imageTasks: {
@@ -22,6 +23,18 @@ class NiceUserForm extends Profile(Polymer.Element) {
     }
   }
 
+  static get observers () {
+    return [
+      '_checkTos(user, profile, profile.agree)'
+    ]
+  }
+
+  _checkTos (user, profile, agree) {
+    if (user && profile && !agree) {
+      this.shadowRoot.querySelector('nice-user-tos').open()
+    }
+  }
+
   _uploadProfileImage (e) {
     var el = e.target
     var files = el.inputElement.files || el.inputElement.inputElement.files
@@ -30,19 +43,19 @@ class NiceUserForm extends Profile(Polymer.Element) {
       var file = files[0];
 
       if (firebase) {
-        var path = `v2/user/list/image/${this.profileId}`
+        var path = `v2/user/list/image/${this.memberId}`
         var key = firebase.database().ref(path).push().key
-        this._profileImageTask = firebase.storage().ref(path).child(`${key}--${file.name}`).put(file);
-        this._profileImageTask.on(
+        this._memberImageTask = firebase.storage().ref(path).child(`${key}--${file.name}`).put(file);
+        this._memberImageTask.on(
           firebase.storage.TaskEvent.STATE_CHANGED,
-          this._uploadTask.bind(this, 'profileImageProgress'),
+          this._uploadTask.bind(this, 'memberImageProgress'),
           this._onError.bind(this),
           () => {
-            this.set('profileImageProgress', 99.99);
+            this.set('memberImageProgress', 99.99);
             // console.log(this._bannerImageTask.snapshot.downloadURL)
-            this.set('profile.image', this._profileImageTask.snapshot.downloadURL);
+            this.set('member.image', this._memberImageTask.snapshot.downloadURL);
             setTimeout(() => {
-              this.set('profileImageProgress', 0)
+              this.set('memberImageProgress', 0)
               // this._bannerImageTask = null
             }, 100);
           }
@@ -58,15 +71,15 @@ class NiceUserForm extends Profile(Polymer.Element) {
 
   _save () {
     var updates = {}
-    var path = `v2/user/data/${this.profileId}`
-    if (this.profile) {
-      updates[`${path}/firstName`] = this.profile.firstName || ''
-      updates[`${path}/lastName`] = this.profile.lastName || ''
-      updates[`${path}/displayName`] = this.profile.firstName + ' ' + this.profile.lastName || ''
-      updates[`${path}/address`] = this.profile.address || ''
-      updates[`${path}/image`] = this.profile.image || ''
-      updates[`${path}/work`] = this.profile.work || ''
-      updates[`${path}/position`] = this.profile.position || ''
+    var path = `v2/user/data/${this.memberId}`
+    if (this.member) {
+      updates[`${path}/firstName`] = this.member.firstName || ''
+      updates[`${path}/lastName`] = this.member.lastName || ''
+      updates[`${path}/displayName`] = this.member.firstName + ' ' + this.member.lastName || ''
+      updates[`${path}/address`] = this.member.address || ''
+      updates[`${path}/image`] = this.member.image || ''
+      updates[`${path}/work`] = this.member.work || ''
+      updates[`${path}/position`] = this.member.position || ''
 
       var images = this.shadowRoot.querySelectorAll('nice-image-form')
       if (images && images.length) {

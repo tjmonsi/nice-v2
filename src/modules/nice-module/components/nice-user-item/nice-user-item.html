@@ -2,13 +2,13 @@
   <template>
     <link rel="stylesheet" href="./nice-user-item.scss">
 
-    <template is="dom-if" if="[[profile.image]]">
-      <a href="/community/[[profileId]]" style="background: url([[profile.image]]) center/cover no-repeat" class="image"></a>
+    <template is="dom-if" if="[[member.image]]">
+      <a href="/community/[[memberId]]" style="background: url([[member.image]]) center/cover no-repeat" class="image"></a>
     </template>
 
     <section class="text-area">
       <h1 class="title">
-        <a href="/community/[[profileId]]" class="title-anchor">[[profile.displayName]]</a>
+        <a href="/community/[[memberId]]" class="title-anchor">[[member.displayName]]</a>
       </h1>
 
       <div class="row">
@@ -29,7 +29,7 @@
               <paper-button class="button" raised>Remove membership</paper-button>
             </template>
 
-            <a href="/community/[[profileId]]" class="title-anchor">
+            <a href="/community/[[memberId]]" class="title-anchor">
               <paper-button class="button" raised>View Profile</paper-button>
             </a>
 

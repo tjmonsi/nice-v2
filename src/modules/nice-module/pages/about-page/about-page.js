@@ -1,4 +1,5 @@
 import 'polymer/polymer.html'
+import '../../components/nice-footer/nice-footer.js'
 import '../../components/nice-list/nice-list.js'
 import '../../components/nice-article/nice-article.js'
 import '../../components/nice-article-form/nice-article-form.js'

@@ -24,7 +24,7 @@ export default (superClass) => {
 
     _checkMessages (theadId, limit) {
       if (theadId && limit) {
-        this.__list = firebase.database().ref(`v2/thread/list/${theadId}`).orderByChild('value')
+        this.__list = firebase.database().ref(`v2/message/query/${theadId}`).orderByChild('value')
         if (limit > 0) {
           this.__list.limitToLast(limit)
         }
@@ -43,9 +43,8 @@ export default (superClass) => {
         })
         list.push(obj)
       })
-      console.log(list)
-      this.list = list.sort((a, b) => {
-        return b.value - a.value
+      this.messages = list.sort((a, b) => {
+        return a.value - b.value
       })
       // this.list = list
     }

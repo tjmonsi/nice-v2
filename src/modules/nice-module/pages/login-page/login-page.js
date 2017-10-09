@@ -1,4 +1,5 @@
 import 'polymer/polymer.html'
+import '../../components/nice-footer/nice-footer.js'
 import 'paper-button/paper-button.html'
 import 'paper-material/paper-material.html'
 import User from '../../components/user-model/user-model.js'
@@ -31,7 +32,7 @@ class LoginPage extends Permission(User(Polymer.Element)) {
 
   reload () {
     var agree = this.profile && this.profile.agree
-    this._checkUser(this.user, this.profile, agree)
+    this._checkUser(this.user, this.permission.role, this.profile, agree)
   }
 }
 

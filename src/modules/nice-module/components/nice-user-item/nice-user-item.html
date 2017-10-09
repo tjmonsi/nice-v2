@@ -23,19 +23,22 @@
               <paper-item>Member</paper-item>
             </paper-listbox>
           </paper-dropdown-menu>
-
-          <div class="flex button-list">
-            <template is="dom-if" if="[[_checkRole(user, permission.role, 'admin')]]">
-              <paper-button class="button" raised>Remove membership</paper-button>
-            </template>
-
-            <a href="/community/[[memberId]]" class="title-anchor">
-              <paper-button class="button" raised>View Profile</paper-button>
-            </a>
-
-            <paper-button class="button" raised>Send Message</paper-button>
-          </div>
         </template>
+
+        <div class="flex button-list">
+          <template is="dom-if" if="[[_checkRole(user, permission.role, 'admin')]]">
+            <!-- <paper-button class="button" raised>Remove membership</paper-button> -->
+          </template>
+
+          <a href="/community/[[memberId]]" class="title-anchor">
+            <paper-button class="button" raised>View Profile</paper-button>
+          </a>
+
+          <template is="dom-if" if="[[!isEqual(user.uid, memberId)]]">
+            <paper-button class="button" raised on-tap="sendMessage">Send Message</paper-button>
+          </template>
+        </div>
+
       </div>
     </section>
   </template>

@@ -1,0 +1,40 @@
+<dom-module id="nice-message-item">
+    <template>
+      <link rel="stylesheet" href="./nice-message-item.scss">
+
+      <section class="row">
+        <template is="dom-if" if="[[!_isEqual(user.uid, message.uid)]]">
+
+          <template is="dom-if" if="[[member.image]]">
+            <a href="/community/[[memberId]]" style="background: url([[member.image]]) center/cover no-repeat" class="image"></a>
+          </template>
+          <div class="text-area">
+            <p>
+              [[message.body]]
+            </p>
+            <span class="meta">
+              [[_renderDate(message.dateSent)]]
+            </span>
+          </div>
+          <div class="spacer"></div>
+        </template>
+        <template is="dom-if" if="[[_isEqual(user.uid, message.uid)]]">
+            <div class="spacer"></div>
+            <div class="text-area right">
+              <p>
+                [[message.body]]
+              </p>
+              <span class="meta">
+                  [[_renderDate(message.dateSent)]]
+              </span>
+            </div>
+
+          <template is="dom-if" if="[[member.image]]">
+            <div style="background: url([[member.image]]) center/cover no-repeat" class="image"></div>
+          </template>
+
+
+        </template>
+      </section>
+    </template>
+  </dom-module>

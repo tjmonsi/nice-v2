@@ -1,0 +1,78 @@
+@import '../../styles/mixins/_flex.scss';
+
+:host {
+  @include layout-horizontal;
+  @include layout-wrap;
+  @include layout-center;
+  padding: 10px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+}
+
+.image {
+  display: block;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+
+.text-area {
+  @include layout-flex;
+  min-width: 250px;
+  padding: 10px;
+  padding-left: 20px;
+}
+
+.body-area {
+  @include layout-flex;
+  margin-left: 20px;
+}
+
+.body {
+  width: 100%;
+
+}
+
+.send {
+  margin-left: 20px;
+}
+
+.title {
+  font-size: 16px;
+}
+
+.title-anchor {
+  text-decoration: none;
+  color: inherit;
+}
+
+.meta {
+  font-size: 12px;
+}
+
+.button {
+  padding: 10px 20px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.anchor-button {
+  color: inherit;
+  text-decoration: none;
+}
+
+.row {
+  @include layout-horizontal;
+  @include layout-wrap;
+  @include layout-center;
+  padding: 10px;
+  width: 100%;
+}
+
+.flex {
+  @include layout-flex;
+}
+
+.button-list {
+  margin-left: 10px;
+}

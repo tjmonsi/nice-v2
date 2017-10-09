@@ -122,7 +122,7 @@ class NiceUserForm extends Profile(Polymer.Element) {
 
   _cancel () {
     this.shadowRoot.querySelector('.cancel-dialog').close()
-    window.history.pushState({}, '', `/${this.type}/${this.articleId}`)
+    window.history.pushState({}, '', `/community/${this.memberId}`)
     window.dispatchEvent(new CustomEvent('location-changed'))
   }
 }

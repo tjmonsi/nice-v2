@@ -5,18 +5,19 @@
     <template is="dom-if" if="[[!params.id]]">
       <div class="row">
         <nice-community-nav class="sidebar"></nice-community-nav>
-        <nice-thread-list class="main-list" title="The Community"></nice-thread-list>
+        <nice-thread-list class="main-list" query="{{user.uid}}" title="Threads"></nice-thread-list>
       </div>
     </template>
 
     <template is="dom-if" if="[[params.id]]">
       <div class="row">
         <nice-community-nav class="sidebar"></nice-community-nav>
-        <nice-thread class="main-list" article-id="[[params.id]]"></nice-thread>
+        <nice-thread class="main-list" thread-id="[[params.id]]"></nice-thread>
         <!-- <nice-list class="main-list" type="cberecommends" title="CBE Recommends" query="published"></nice-list> -->
       </div>
 
     </template>
 
+    <nice-footer></nice-footer>
   </template>
 </dom-module>

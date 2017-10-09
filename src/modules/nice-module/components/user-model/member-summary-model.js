@@ -85,6 +85,38 @@ export default (superClass) => {
       return nd.toLocaleDateString() + ' - ' + nd.toLocaleTimeString();
     }
 
+    isEqual (a, b) {
+      return a === b
+    }
+
+    sendMessage () {
+      firebase.database().ref(`v2/thread/query/${this.user.uid}::${this.memberId}`).once('value').then(snapshot => {
+        if (snapshot.exists()) {
+          snapshot.forEach(child => {
+            var key = child.key;
+            window.history.pushState({}, '', '/thread/' + key)
+            window.dispatchEvent(new CustomEvent('location-changed'))
+          })
+        } else {
+          var updates = {}
+          var date = firebase.database.ServerValue.TIMESTAMP
+          var key = firebase.database().ref(`v2/thread/data`).push().key
+          updates[`v2/thread/query/${this.user.uid}::${this.memberId}/${key}/value`] = date;
+          updates[`v2/thread/query/${this.memberId}::${this.user.uid}/${key}/value`] = date;
+          updates[`v2/thread/query/${this.user.uid}/${key}/value`] = date;
+          updates[`v2/thread/query/${this.memberId}/${key}/value`] = date;
+          updates[`v2/thread/data/${key}/dateLastMessage`] = date;
+          updates[`v2/thread/data/${key}/title`] = 'Conversations';
+          updates[`v2/thread/data/${key}/members/${this.memberId}/value`] = true;
+          updates[`v2/thread/data/${key}/members/${this.user.uid}/value`] = true;
+          firebase.database().ref().update(updates).then(() => {
+            window.history.pushState({}, '', '/thread/' + key)
+            window.dispatchEvent(new CustomEvent('location-changed'))
+          })
+        }
+      })
+    }
+
     _onError (error) {
       console.log(error)
     }

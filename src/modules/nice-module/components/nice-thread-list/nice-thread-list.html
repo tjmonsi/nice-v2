@@ -1,0 +1,11 @@
+<dom-module id="nice-thread-list">
+  <template>
+    <link rel="stylesheet" href="./nice-thread-list.scss">
+
+    <h1 class="title">Inbox</h1>
+
+    <template is="dom-repeat" items="[[threads]]">
+      <nice-thread-item thread-id="[[item.$key]]"></nice-thread-item>
+    </template>
+  </template>
+</dom-module>

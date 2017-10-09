@@ -1,0 +1,27 @@
+<dom-module id="nice-thread">
+  <template>
+    <link rel="stylesheet" href="./nice-thread.scss">
+    <h1>Conversation with [[member.displayName]]</h1>
+
+    <nice-message-list thread-id="[[threadId]]"></nice-message-list>
+    <!-- <template is="dom-if" if="[[member.image]]">
+      <a href="/thread/[[threadId]]" style="background: url([[member.image]]) center/cover no-repeat" class="image"></a>
+    </template>
+
+    <section class="text-area">
+      <h1 class="title">
+        <a href="/thread/[[threadId]]" class="title-anchor">[[member.displayName]]</a>
+      </h1>
+
+      <div class="row">
+        <div class="flex button-list">
+          <a href="/thread/[[threadId]]" class="title-anchor">
+            <paper-button class="button" raised>View Thread</paper-button>
+          </a>
+        </div>
+      </div>
+    </section> -->
+
+    <nice-message-form thread-id="[[threadId]]"></nice-message-form>
+  </template>
+</dom-module>

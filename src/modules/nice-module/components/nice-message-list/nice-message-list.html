@@ -1,0 +1,9 @@
+<dom-module id="nice-message-list">
+  <template>
+    <link rel="stylesheet" href="./nice-message-list.scss">
+
+    <template is="dom-repeat" items="[[messages]]">
+      <nice-message-item message-id="[[item.$key]]"></nice-message-item>
+    </template>
+  </template>
+</dom-module>

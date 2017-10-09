@@ -9,19 +9,22 @@ export default (superClass) => {
         limit: {
           type: Number,
           value: 4
+        },
+        query: {
+          type: String
         }
       }
     }
 
     static get observers () {
       return [
-        '_checkThreads(user.uid, limit)'
+        '_checkType(query, limit)'
       ]
     }
 
-    _checkMessages (userId, limit) {
-      if (userId && limit) {
-        this.__list = firebase.database().ref(`v2/thread/query/users/${userId}`).orderByChild('value')
+    _checkType (query, limit) {
+      if (query && limit) {
+        this.__list = firebase.database().ref(`v2/thread/query/${query}`).orderByChild('value')
         if (limit > 0) {
           this.__list.limitToLast(limit)
         }
@@ -40,8 +43,7 @@ export default (superClass) => {
         })
         list.push(obj)
       })
-      console.log(list)
-      this.list = list.sort((a, b) => {
+      this.threads = list.sort((a, b) => {
         return b.value - a.value
       })
       // this.list = list

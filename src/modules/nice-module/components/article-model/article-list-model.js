@@ -15,6 +15,10 @@ export default (superClass) => {
         },
         query: {
           type: String
+        },
+        reverse: {
+          type: Boolean,
+          value: false
         }
       }
     }
@@ -47,9 +51,12 @@ export default (superClass) => {
         if (list.length < this.limit || this.limit < 0) {
           list.push(obj)
         }
-
       })
+      console.log(list)
       this.list = list.sort((a, b) => {
+        if (this.reverse) {
+          return a.value - b.value
+        }
         return b.value - a.value
       })
       // this.list = list

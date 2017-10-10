@@ -112,6 +112,10 @@
           Publish
         </paper-toggle-button>
 
+        <template is="dom-if" if="[[_isEqual(type, 'about')]]">
+          <paper-input label="Navigation Order" value="{{article.order}}"></paper-input>
+        </template>
+
         <hr>
         <paper-button class="button" on-tap="_save" raised>
           Save

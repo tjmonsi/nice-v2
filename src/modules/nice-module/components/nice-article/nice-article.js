@@ -1,5 +1,7 @@
 import 'polymer/polymer.html'
 import 'marked-element/marked-element.html'
+import '../nice-image/nice-image.js';
+import '../nice-file/nice-file.js';
 import marked from 'marked'
 import Article from '../article-model/article-model.js'
 import './nice-article.html'

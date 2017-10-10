@@ -1,0 +1,21 @@
+<dom-module id="nice-file">
+  <template>
+    <link rel="stylesheet" href="./nice-file.scss">
+
+    <div class="row">
+      <div class="text-area">
+        <a href="[[file.downloadURL]]" target="_blank" class="anchor-button">
+          [[file.name]]
+        </a>
+        <template is="dom-if" if="[[file.caption]]">
+          <br>[[file.caption]]
+        </template>
+
+      </div>
+      <a href="[[file.downloadURL]]" target="_blank" class="anchor-button">
+        <paper-button raised class="button">Download <iron-icon icon="nice:file-download" class="button-icon"></iron-icon></paper-button>
+      </a>
+    </div>
+
+  </template>
+</dom-module>

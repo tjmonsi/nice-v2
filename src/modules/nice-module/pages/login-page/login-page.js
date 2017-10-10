@@ -32,7 +32,7 @@ class LoginPage extends Permission(User(Polymer.Element)) {
 
   reload () {
     var agree = this.profile && this.profile.agree
-    this._checkUser(this.user, this.permission.role, this.profile, agree)
+    this._checkUser(this.user, this.permission && this.permission.role, this.profile, agree)
   }
 }
 

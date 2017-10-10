@@ -1,0 +1,33 @@
+@import '../../styles/mixins/_flex.scss';
+
+:host {
+  display: block;
+  background: white;
+  padding: 10px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+}
+
+.row {
+  @include layout-horizontal;
+  @include layout-center;
+  margin: 10px;;
+}
+
+.text-area {
+  @include layout-flex;
+}
+
+
+.anchor-button {
+  text-decoration: none;
+  color: inherit;
+}
+
+.button {
+  padding: 10px 20px;
+  margin-right: 20px;
+}
+
+.button-icon {
+  padding-left: 10px;
+}

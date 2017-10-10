@@ -15,6 +15,18 @@
       <div slot="markdown-html" class="body"></div>
     </marked-element>
 
+    <div class="file-row">
+      <template is="dom-repeat" items="[[articleFiles]]">
+        <nice-file class="image-flex" file-id="[[item.$key]]" type="[[type]]" article-id="[[articleId]]"></nice-file>
+      </template>
+    </div>
+
+    <div class="row">
+      <template is="dom-repeat" items="[[articleImages]]">
+        <nice-image class="image-flex" image-id="[[item.$key]]" type="[[type]]" article-id="[[articleId]]"></nice-image>
+      </template>
+    </div>
+
     <template is="dom-if" if="{{articleId}}">
       <div class="footer-meta">
         <a href="/{{type}}" class="anchor">

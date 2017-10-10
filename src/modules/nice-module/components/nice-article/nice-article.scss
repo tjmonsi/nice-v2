@@ -1,3 +1,22 @@
+@import '../../styles/mixins/_flex.scss';
+
+.row {
+  @include layout-horizontal;
+  @include layout-wrap;
+  margin: 20px auto;
+  max-width: 700px;
+}
+
+.file-row {
+  margin: 20px auto;
+  max-width: 700px;
+}
+
+.image-flex {
+  @include layout-flex;
+  min-width: 220px;
+}
+
 .banner {
   width: 100%;
   height: 400px;

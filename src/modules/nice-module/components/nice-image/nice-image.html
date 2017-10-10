@@ -1,0 +1,22 @@
+<dom-module id="nice-image">
+  <template>
+    <link rel="stylesheet" href="./nice-image.scss">
+
+    <div on-tap="openImage" style="background: url([[image.downloadURL]]) center/cover no-repeat" class="image">
+    </div>
+
+    <paper-dialog>
+      <div class="caption-container">
+        <div class="image-container">
+
+          <img src$="[[image.downloadURL]]" class="image-big">
+        </div>
+        <p class="caption">
+          [[image.name]]<br/>
+          [[image.caption]]<br>
+          <a on-tap="closeImage">Close</a>
+        </p>
+      </div>
+    </paper-dialog>
+  </template>
+</dom-module>

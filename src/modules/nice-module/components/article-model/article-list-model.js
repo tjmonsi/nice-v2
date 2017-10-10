@@ -40,13 +40,11 @@ export default (superClass) => {
 
     _loadListSnapshot (snapshot) {
       var list = []
-      console.log(this.limit)
       snapshot.forEach(child => {
-        console.log(child.key)
         var obj = Object.assign({}, child.val(), {
           $key: child.key
         })
-        if (list.length < this.limit) {
+        if (list.length < this.limit || this.limit < 0) {
           list.push(obj)
         }
 

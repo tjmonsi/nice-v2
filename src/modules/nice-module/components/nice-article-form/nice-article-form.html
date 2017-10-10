@@ -10,6 +10,9 @@
         <a class="anchor" on-tap="_preview">
           Preview
         </a>
+        <a class="anchor" on-tap="_save">
+          Save
+        </a>
       </nav>
 
       <template is="dom-if" if="[[!preview]]">
@@ -21,14 +24,15 @@
         <hr>
         <h1 class="form-title">Banner Image</h1>
         <paper-input label="Banner Image" placeholder="Banner Image" value="{{article.bannerImage}}"></paper-input>
-        <paper-input label="Upload Banner Image" placeholder="Upload Banner Image" type="file" accept="image/*" on-change="_uploadBannerImage"></paper-input>
+        <paper-input id="upload-banner-image" label="Upload Banner Image" placeholder="Upload Banner Image" type="file" accept="image/*" on-change="_uploadBannerImage"></paper-input>
         <template is="dom-if" if="[[bannerImageProgress]]">
           <paper-progress value="[[bannerImageProgress]]" max="100" min="0" class="transiting"></paper-progress>
         </template>
 
         <hr>
         <h1 class="form-title">Text Body</h1>
-        <paper-textarea class="body" label="Body" placeholder="Body" value="{{article.body}}"></paper-textarea>
+        Add an Image: <paper-icon-button icon="nice:add-to-photos" on-tap="addPhoto"></paper-icon-button>
+        <paper-textarea id="body" class="body" label="Body" placeholder="Body" value="{{article.body}}"></paper-textarea>
 
         <hr>
         <h1 class="form-title">Category</h1>
@@ -135,31 +139,45 @@
     </template>
 
     <paper-dialog class="cancel-dialog">
-      <h1 class="dialog-title">
-        Do you really want to exit without saving?
-      </h1>
-      <aside class="dialog-buttons">
-        <paper-button on-tap="_cancel" raised>
-          Yes
-        </paper-button>
-        <paper-button on-tap="_closeCancel" raised>
-          No
-        </paper-button>
-      </aside>
+      <div class="dialog-container">
+        <h1 class="dialog-title">
+          Do you really want to exit without saving?
+        </h1>
+        <aside class="dialog-buttons">
+          <paper-button on-tap="_cancel" raised>
+            Yes
+          </paper-button>
+          <paper-button on-tap="_closeCancel" raised>
+            No
+          </paper-button>
+        </aside>
+      </div>
     </paper-dialog>
 
     <paper-dialog class="delete-dialog">
-      <h1 class="dialog-title">
-        Do you really want to Delete this article?
-      </h1>
-      <aside class="dialog-buttons">
-        <paper-button on-tap="_delete" raised>
-          Yes
-        </paper-button>
-        <paper-button on-tap="_closeDelete" raised>
-          No
-        </paper-button>
-      </aside>
+      <div class="dialog-container">
+        <h1 class="dialog-title">
+          Do you really want to Delete this article?
+        </h1>
+        <aside class="dialog-buttons">
+          <paper-button on-tap="_delete" raised>
+            Yes
+          </paper-button>
+          <paper-button on-tap="_closeDelete" raised>
+            No
+          </paper-button>
+        </aside>
+      </div>
+    </paper-dialog>
+
+    <paper-dialog class="add-photo-dialog">
+      <div class="dialog-container">
+        <h1 class="form-title">Banner Image</h1>
+        <paper-input id="upload-body-image" label="Upload Image" placeholder="Upload Image" type="file" accept="image/*" on-change="_uploadBodyImage"></paper-input>
+        <template is="dom-if" if="[[bodyImageProgress]]">
+          <paper-progress value="[[bodyImageProgress]]" max="100" min="0" class="transiting"></paper-progress>
+        </template>
+      </div>
     </paper-dialog>
   </template>
 </dom-module>

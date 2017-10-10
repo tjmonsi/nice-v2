@@ -3,6 +3,7 @@ import 'paper-button/paper-button.html'
 import './nice-image-form.html'
 import '../nice-icon/nice-icon.html'
 import Image from '../image-model/image-model.js'
+import Clipboard from 'clipboard'
 
 class NiceImageForm extends Image(Polymer.Element) {
   static get is () { return 'nice-image-form' }
@@ -12,6 +13,11 @@ class NiceImageForm extends Image(Polymer.Element) {
       type: String,
       articleId: String
     }
+  }
+
+  connectedCallback () {
+    super.connectedCallback()
+    new Clipboard(this.shadowRoot.querySelector('.copy-button'))
   }
 
   _delete () {
@@ -38,6 +44,14 @@ class NiceImageForm extends Image(Polymer.Element) {
     updates[`v2/${this.type}/list/image/${this.articleId}/${this.imageId}/caption`] = this.image.caption || ''
 
     return updates
+  }
+
+  _copyLink (e) {
+
+  }
+
+  _copyLink2 (e) {
+    console.log(e.clipboardData)
   }
 }
 

@@ -11,7 +11,7 @@ export default (superClass) => {
         },
         limit: {
           type: Number,
-          value: 4
+          value: 3
         },
         query: {
           type: String
@@ -26,7 +26,6 @@ export default (superClass) => {
     }
 
     _checkType (type, query, limit) {
-      console.log(type, query, limit)
       if (type && query && limit) {
         this.__list = firebase.database().ref(`v2/${type}/query/${query}`).orderByChild('value')
         if (limit > 0) {
@@ -41,13 +40,17 @@ export default (superClass) => {
 
     _loadListSnapshot (snapshot) {
       var list = []
+      console.log(this.limit)
       snapshot.forEach(child => {
+        console.log(child.key)
         var obj = Object.assign({}, child.val(), {
           $key: child.key
         })
-        list.push(obj)
+        if (list.length < this.limit) {
+          list.push(obj)
+        }
+
       })
-      console.log(list)
       this.list = list.sort((a, b) => {
         return b.value - a.value
       })

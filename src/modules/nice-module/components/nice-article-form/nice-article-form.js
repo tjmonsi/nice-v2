@@ -246,19 +246,22 @@ class NiceArticleForm extends Category(Article(Polymer.Element)) {
 
     if (promise) {
       promise.then(() => {
+        var datePublished = firebase.databse.ServerValue.TIMESTAMP;
         if (published) {
+          
+          updates[`${path}/data/${this.articleId}/datePublished`] = datePublished
           updates[`${path}/query/draft/${this.articleId}/value`] = null
           if (this.type === 'about') {
             updates[`${path}/query/published/${this.articleId}/value`] = this.article.order
           } else {
-            updates[`${path}/query/published/${this.articleId}/value`] = this.article.datePublished
+            updates[`${path}/query/published/${this.articleId}/value`] = datePublished
           }
 
 
           if (this.article.categoryMain) {
             for (var i in this.article.categoryMain) {
               if (this.article.categoryMain[i] && this.article.categoryMain[i].value) {
-                updates[`${path}/query/${i}/${this.articleId}/value`] = this.article.datePublished
+                updates[`${path}/query/${i}/${this.articleId}/value`] = datePublished
               } else {
                 updates[`${path}/query/${i}/${this.articleId}/value`] = null
               }
@@ -268,7 +271,7 @@ class NiceArticleForm extends Category(Article(Polymer.Element)) {
           if (this.article.categorySub) {
             for (var j in this.article.categorySub) {
               if (this.article.categorySub[j] && this.article.categorySub[j].value) {
-                updates[`${path}/query/${j}/${this.articleId}/value`] = this.article.datePublished
+                updates[`${path}/query/${j}/${this.articleId}/value`] = datePublished
               } else {
                 updates[`${path}/query/${j}/${this.articleId}/value`] = null
               }
@@ -276,7 +279,7 @@ class NiceArticleForm extends Category(Article(Polymer.Element)) {
           }
 
           if (this.article.type && this.article.type.farmer && this.article.type.farmer.value) {
-            updates[`${path}/query/farmer/${this.articleId}/value`] = this.article.datePublished
+            updates[`${path}/query/farmer/${this.articleId}/value`] = datePublished
           } else {
             updates[`${path}/query/farmer/${this.articleId}/value`] = null
           }
@@ -285,7 +288,7 @@ class NiceArticleForm extends Category(Article(Polymer.Element)) {
           if (this.type === 'about') {
             updates[`${path}/query/draft/${this.articleId}/value`] = this.article.order
           } else {
-            updates[`${path}/query/draft/${this.articleId}/value`] = this.article.datePublished
+            updates[`${path}/query/draft/${this.articleId}/value`] = datePublished
           }
 
           for (var i in this.article.categoryMain) {

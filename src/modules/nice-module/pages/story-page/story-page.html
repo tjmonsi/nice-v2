@@ -19,7 +19,10 @@
         <nice-article-form type="story" article-id="[[params.id]]" preview="[[params.preview]]"></nice-article-form>
       </template>
     </template>
-
+    
+    <template is="dom-if" if="[[_checkRole(user, permission.role, 'staff')]]">
+      <paper-fab class="add" icon="nice:add" on-tap="addItem"></paper-fab>
+    </template>
     <nice-footer></nice-footer>
   </template>
 </dom-module>

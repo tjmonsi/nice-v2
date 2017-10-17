@@ -35,7 +35,7 @@ class StoryPage extends Permission(User(Polymer.Element))  {
     updates[`${path}/query/draft/${key}/value`] = firebase.database.ServerValue.TIMESTAMP
     
     return firebase.database().ref().update(updates).then(() => {
-        document.querySelector('app-shell').showMessage('Saved', null, null, null, 5000)
+        document.querySelector('app-shell').showMessage('Created an Story Article', null, null, null, 5000)
         window.history.pushState({}, '', `story/${key}/edit`)
         window.dispatchEvent(new CustomEvent('location-changed'))
         return Promise.resolve()

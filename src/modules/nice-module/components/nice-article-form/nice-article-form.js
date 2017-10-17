@@ -246,7 +246,7 @@ class NiceArticleForm extends Category(Article(Polymer.Element)) {
 
     if (promise) {
       promise.then(() => {
-        var datePublished = firebase.databse.ServerValue.TIMESTAMP;
+        var datePublished = firebase.database.ServerValue.TIMESTAMP;
         if (published) {
           
           updates[`${path}/data/${this.articleId}/datePublished`] = datePublished
@@ -259,7 +259,7 @@ class NiceArticleForm extends Category(Article(Polymer.Element)) {
 
 
           if (this.article.categoryMain) {
-            for (var i in this.article.categoryMain) {
+            for (var i in this.categoryMain) {
               if (this.article.categoryMain[i] && this.article.categoryMain[i].value) {
                 updates[`${path}/query/${i}/${this.articleId}/value`] = datePublished
               } else {
@@ -269,7 +269,7 @@ class NiceArticleForm extends Category(Article(Polymer.Element)) {
           }
 
           if (this.article.categorySub) {
-            for (var j in this.article.categorySub) {
+            for (var j in this.categorySub) {
               if (this.article.categorySub[j] && this.article.categorySub[j].value) {
                 updates[`${path}/query/${j}/${this.articleId}/value`] = datePublished
               } else {

@@ -15,12 +15,12 @@
     "sentryUrl": "https://1efca82241ea4656a68de88d43b6a46a@sentry.io/209061",
     "firebaseConfig": [
       {
-        "apiKey": "AIzaSyDi-X0Jsl7-Lx1p4-aACSULeuw349PhAnI",
-        "authDomain": "nice-v1.firebaseapp.com",
-        "databaseURL": "https://nice-v1.firebaseio.com",
-        "projectId": "nice-v1",
-        "storageBucket": "nice-v1.appspot.com",
-        "messagingSenderId": "726156351220"
+        "apiKey": "AIzaSyClp1LdLoybfAtQrastw0mCOevW_VlCdGE",
+        "authDomain": "lbf-nice.firebaseapp.com",
+        "databaseURL": "https://lbf-nice.firebaseio.com",
+        "projectId": "lbf-nice",
+        "storageBucket": "lbf-nice.appspot.com",
+        "messagingSenderId": "102094053186"
       }
     ]
   },
@@ -74,11 +74,11 @@
     },
     "/community/:id?/:edit?": {
       "name": "community-page",
-      "auth": "checkOwner"
+      "auth": "checkMember"
     },
     "/thread/:id?": {
       "name": "thread-page",
-      "auth": "checkRole"
+      "auth": "checkMember"
     }
 
   },

@@ -204,6 +204,7 @@ class AppShell extends QueryParamsMixin(LocationMixin(Polymer.Element)) {
   }
 
   _pathChanged (path) {
+    
     // load statistics if it went through here
     if (path === '/_statistic.html' || path === '/_bundle-sizes.html') {
       window.location.href = path

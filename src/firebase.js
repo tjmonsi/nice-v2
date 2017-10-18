@@ -1,3 +1,3 @@
 
-    export default [{"apiKey":"AIzaSyDi-X0Jsl7-Lx1p4-aACSULeuw349PhAnI","authDomain":"nice-v1.firebaseapp.com","databaseURL":"https://nice-v1.firebaseio.com","projectId":"nice-v1","storageBucket":"nice-v1.appspot.com","messagingSenderId":"726156351220"}]
+    export default [{"apiKey":"AIzaSyClp1LdLoybfAtQrastw0mCOevW_VlCdGE","authDomain":"lbf-nice.firebaseapp.com","databaseURL":"https://lbf-nice.firebaseio.com","projectId":"lbf-nice","storageBucket":"lbf-nice.appspot.com","messagingSenderId":"102094053186"}]
   

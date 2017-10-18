@@ -240,70 +240,13 @@ class NiceArticleForm extends Category(Article(Polymer.Element)) {
   _publish (e) {
     var el = e.target
     var published = el.checked
+    this.article.published = published;
     var updates = {}
     var path = `v2/${this.type}/`
     var promise = this._save()
 
     if (promise) {
-      promise.then(() => {
-        var datePublished = firebase.database.ServerValue.TIMESTAMP;
-        if (published) {
-          
-          updates[`${path}/data/${this.articleId}/datePublished`] = datePublished
-          updates[`${path}/query/draft/${this.articleId}/value`] = null
-          if (this.type === 'about') {
-            updates[`${path}/query/published/${this.articleId}/value`] = this.article.order
-          } else {
-            updates[`${path}/query/published/${this.articleId}/value`] = datePublished
-          }
-
-
-          if (this.article.categoryMain) {
-            for (var i in this.categoryMain) {
-              if (this.article.categoryMain[i] && this.article.categoryMain[i].value) {
-                updates[`${path}/query/${i}/${this.articleId}/value`] = datePublished
-              } else {
-                updates[`${path}/query/${i}/${this.articleId}/value`] = null
-              }
-            }
-          }
-
-          if (this.article.categorySub) {
-            for (var j in this.categorySub) {
-              if (this.article.categorySub[j] && this.article.categorySub[j].value) {
-                updates[`${path}/query/${j}/${this.articleId}/value`] = datePublished
-              } else {
-                updates[`${path}/query/${j}/${this.articleId}/value`] = null
-              }
-            }
-          }
-
-          if (this.article.type && this.article.type.farmer && this.article.type.farmer.value) {
-            updates[`${path}/query/farmer/${this.articleId}/value`] = datePublished
-          } else {
-            updates[`${path}/query/farmer/${this.articleId}/value`] = null
-          }
-        } else {
-          updates[`${path}/query/published/${this.articleId}/value`] = null
-          if (this.type === 'about') {
-            updates[`${path}/query/draft/${this.articleId}/value`] = this.article.order
-          } else {
-            updates[`${path}/query/draft/${this.articleId}/value`] = datePublished
-          }
-
-          for (var i in this.article.categoryMain) {
-            updates[`${path}/query/${i}/${this.articleId}/value`] = null
-          }
-
-          for (var j in this.article.categoryMain) {
-            updates[`${path}/query/${j}/${this.articleId}/value`] = null
-          }
-
-          updates[`${path}/query/farmer/${this.articleId}/value`] = null
-        }
-
-        return firebase.database().ref().update(updates)
-      })
+      promise
       .then(() => {
         document.querySelector('app-shell').showMessage(published ? 'Published' : 'Unpublished', null, null, null, 5000)
       })

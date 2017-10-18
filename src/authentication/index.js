@@ -32,6 +32,20 @@ export default {
     }
     return true
   },
+  
+  checkMember: (self) => {
+    const main = store.getState().main
+    
+    if (main.user) {
+      if (self.params) {
+        if (self.params.edit === 'edit') {
+          return main && main.permission && main.user && main.user.uid === self.params.id
+        }
+        return main && main.permission && main.user && getRoleNumber(main.permission.role) < 5
+      }
+    } 
+    return false;
+  },
 
   exampleAuthentication: () => {
     // returns a 'falsy' value, which means the user is not authenticated

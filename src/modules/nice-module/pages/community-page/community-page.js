@@ -13,7 +13,7 @@ class CommunityPage extends Permission(User(Polymer.Element)) {
 
   static get observers () {
     return [
-      '_checkTos(user, permission.role, profile, profile.agree)'
+      '_checkTos(user.uid, permission.role, profile, profile.agree)'
     ]
   }
 
@@ -22,9 +22,11 @@ class CommunityPage extends Permission(User(Polymer.Element)) {
   }
 
   _checkTos (user, role, profile, agree) {
+    console.log(user, role, profile, agree, this.classList, document.querySelector('app-shell').path) 
     if (user && role) {
       if (!this._checkRole(user, role, 'member')) {
         if (profile && !agree) {
+        
           window.history.pushState({}, '', '/community/' + this.user.uid + '/edit')
           window.dispatchEvent(new CustomEvent('location-changed'))
         } else {

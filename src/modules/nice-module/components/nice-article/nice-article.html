@@ -33,9 +33,12 @@
           Go back
         </a>
 
-        <a href="/{{type}}/{{articleId}}/edit" class="anchor">
-          Edit this Article
-        </a>
+        <template is="dom-if" if="[[_checkRole(user.uid, permission.role, 'staff')]]">
+          <a href="/{{type}}/{{articleId}}/edit" class="anchor">
+            Edit this Article
+          </a>  
+        </template>
+        
       </div>
     </template>
 

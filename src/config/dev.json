@@ -36,6 +36,8 @@
     "pas-page": "modules/nice-module/pages/pas-page/pas-page.js",
     "cbe-recommends-page": "modules/nice-module/pages/cbe-recommends-page/cbe-recommends-page.js",
     "dl-page": "modules/nice-module/pages/dl-page/dl-page.js",
+    "dl-state-universities-page": "modules/nice-module/pages/dl-state-universities-page/dl-state-universities-page.js",
+    "dl-other-partners-page": "modules/nice-module/pages/dl-other-partners-page/dl-other-partners-page.js",
     "resource-page": "modules/nice-module/pages/resource-page/resource-page.js",
     "community-page": "modules/nice-module/pages/community-page/community-page.js",
     "thread-page": "modules/nice-module/pages/thread-page/thread-page.js",
@@ -64,8 +66,16 @@
       "name": "pas-page",
       "auth": "checkRole"
     },
-    "/dl/:query?/:id?/:edit?": {
+    "/dl/:id?/:edit?": {
       "name": "dl-page",
+      "auth": "checkRole"
+    },
+    "/dl-state-universities/:id?/:edit?": {
+      "name": "dl-state-universities-page",
+      "auth": "checkRole"
+    },
+    "/dl-other-partners/:id?/:edit?": {
+      "name": "dl-other-partners-page",
       "auth": "checkRole"
     },
     "/resource/:id?/:edit?": {

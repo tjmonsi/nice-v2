@@ -139,10 +139,6 @@
         "destination": "/index.html"
       },
       {
-        "source": "/dl/**/**/**",
-        "destination": "/index.html"
-      },
-      {
         "source": "/dl/**/**",
         "destination": "/index.html"
       },
@@ -152,6 +148,30 @@
       },
       {
         "source": "/dl",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dl-state-universities/**/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dl-state-universities/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dl-state-universities",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dl-other-partners/**/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dl-other-partners/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dl-other-partners",
         "destination": "/index.html"
       },
       {

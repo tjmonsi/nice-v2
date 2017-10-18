@@ -94,6 +94,22 @@ class NiceArticleForm extends Category(Article(Polymer.Element)) {
       // this.article[cat][id].value = false
     }
   }
+  
+  toggleType (e) {
+    var el = e.target;
+    var id = el.getAttribute('data-key');
+    var checked = el.checked;
+    console.log(checked, el, id)
+    if (checked) {
+      this.set(`article.type`, this.article.type || {})
+      this.set(`article.type.${id}`, this.article.type[id] || {})
+      this.set(`article.type.${id}.value`, true)
+
+    } else {
+      this.set(`article.type.${id}.value`, false)
+      // this.article[cat][id].value = false
+    }
+  }
 
   _edit () {
     this.preview = false
@@ -240,17 +256,21 @@ class NiceArticleForm extends Category(Article(Polymer.Element)) {
   _publish (e) {
     var el = e.target
     var published = el.checked
-    this.article.published = published;
-    var updates = {}
-    var path = `v2/${this.type}/`
-    var promise = this._save()
-
-    if (promise) {
-      promise
-      .then(() => {
-        document.querySelector('app-shell').showMessage(published ? 'Published' : 'Unpublished', null, null, null, 5000)
-      })
+    if (this.article) {
+      this.article.published = published;  
+      var updates = {}
+      var path = `v2/${this.type}/`
+      var promise = this._save()
+  
+      if (promise) {
+        promise
+        .then(() => {
+          document.querySelector('app-shell').showMessage(published ? 'Published' : 'Unpublished', null, null, null, 5000)
+        })
+      }
     }
+    
+    
 
 
   }
@@ -294,6 +314,10 @@ class NiceArticleForm extends Category(Article(Polymer.Element)) {
             }
           }
         })
+      }
+      
+      for (var t in this.article.type) {
+        updates[`${path}/type/${t}/value`] = this.article.type[t].value ? true : null
       }
 
       return firebase.database().ref().update(updates).then(() => {

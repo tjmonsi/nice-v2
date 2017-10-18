@@ -46,9 +46,21 @@
               </paper-toggle-button><br/>
             </template>
 
-            <paper-toggle-button checked="[[article.type.farmer.value]]">
+            <paper-toggle-button checked="[[article.type.farmer.value]]" data-key="farmer" on-checked-changed="toggleType">
               Farmer
-            </paper-toggle-button>
+            </paper-toggle-button><br/>
+            
+            <template is="dom-if" if="[[_isEqual(type, 'story')]]">
+              <paper-toggle-button checked="[[article.type.socialagripreneurs.value]]" data-key="socialagripreneurs" on-checked-changed="toggleType">
+                Social Agripreneurs
+              </paper-toggle-button><br/>
+              <paper-toggle-button checked="[[article.type.agroprocessing.value]]" data-key="agroprocessing" on-checked-changed="toggleType">
+                Agro-Processing
+              </paper-toggle-button><br/>
+              <paper-toggle-button checked="[[article.type.bayanihan.value]]" data-key="bayanihan" on-checked-changed="toggleType">
+                Bayanihan
+              </paper-toggle-button><br/>
+            </template>
           </div>
 
           <div class="category-column">
@@ -67,11 +79,11 @@
           <hr>
           <h1 class="form-title">Digital Library Category</h1>
 
-          <paper-toggle-button checked="[[article.type.stateuniversities.value]]">
+          <paper-toggle-button checked="[[article.type.stateuniversities.value]]" data-key="stateuniversities" on-checked-changed="toggleType">
             Research is from State Universities
           </paper-toggle-button>
 
-          <paper-toggle-button checked="[[article.type.otherpartners.value]]">
+          <paper-toggle-button checked="[[article.type.otherpartners.value]]" data-key="otherpartners" on-checked-changed="toggleType">
             Research is from Other Partners
           </paper-toggle-button>
         </template>

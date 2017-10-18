@@ -35,8 +35,8 @@ class AboutPage extends Permission(User(Polymer.Element))  {
     updates[`${path}/query/draft/${key}/value`] = firebase.database.ServerValue.TIMESTAMP
     
     return firebase.database().ref().update(updates).then(() => {
-        document.querySelector('app-shell').showMessage('Created an Story Article', null, null, null, 5000)
-        window.history.pushState({}, '', `story/${key}/edit`)
+        document.querySelector('app-shell').showMessage('Created an About Page', null, null, null, 5000)
+        window.history.pushState({}, '', `about/${key}/edit`)
         window.dispatchEvent(new CustomEvent('location-changed'))
         return Promise.resolve()
       }).catch(this._onError.bind(this))

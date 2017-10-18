@@ -10,7 +10,7 @@ exports.saveBasedOnPublish = functions.database.ref('/v2/{model}/data/{id}/')
     // }
     
     var updates = {}
-    var model = event.data.adminRef.parent.parent.parent
+    var model = event.data.adminRef.parent.parent
     var root = model.root
     var type = event.params.model
     var id = event.params.id
@@ -79,6 +79,18 @@ exports.saveBasedOnPublish = functions.database.ref('/v2/{model}/data/{id}/')
         updates[`/query/bayanihan/${id}/value`] = admin.database.ServerValue.TIMESTAMP
       } else {
         updates[`/query/bayanihan/${id}`] = null
+      }
+      
+      if (data.type && data.type.stateuniversities && data.type.stateuniversities.value && data.published) {
+        updates[`/query/stateuniversities/${id}/value`] = admin.database.ServerValue.TIMESTAMP
+      } else {
+        updates[`/query/stateuniversities/${id}`] = null
+      }
+      
+      if (data.type && data.type.otherpartners && data.type.otherpartners.value && data.published) {
+        updates[`/query/otherpartners/${id}/value`] = admin.database.ServerValue.TIMESTAMP
+      } else {
+        updates[`/query/otherpartners/${id}`] = null
       }
       
       return model.update(updates);

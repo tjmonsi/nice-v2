@@ -8,10 +8,10 @@ import '../../components/nice-dl-nav/nice-dl-nav.js'
 import '../../components/nice-dl-row/nice-dl-row.js'
 import Permission from '../../components/permission-model/permission-model.js'
 import User from '../../components/user-model/user-model.js'
-import './dl-page.html'
+import './dl-other-partners-page.html'
 
-class DlPage extends Permission(User(Polymer.Element))  {
-  static get is () { return 'dl-page' }
+class DlOtherPartnersPage extends Permission(User(Polymer.Element))  {
+  static get is () { return 'dl-other-partners-page' }
 
   static get properties () {
     return {
@@ -52,4 +52,4 @@ class DlPage extends Permission(User(Polymer.Element))  {
   }
 }
 
-customElements.define(DlPage.is, DlPage)
+customElements.define(DlOtherPartnersPage.is, DlOtherPartnersPage)

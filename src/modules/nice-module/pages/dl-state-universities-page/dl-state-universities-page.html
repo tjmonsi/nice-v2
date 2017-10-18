@@ -1,12 +1,12 @@
-<dom-module id="dl-page">
+<dom-module id="dl-state-universities-page">
   <template>
-    <link rel="stylesheet" href="./dl-page.scss">
+    <link rel="stylesheet" href="./dl-state-universities-page.scss">
 
     <template is="dom-if" if="[[!params.id]]">
       <div class="row">
         <nice-dl-nav class="sidebar"></nice-dl-nav>
         <div class="main-list">
-          <nice-list type="dl" title="Digital Library" query="published"></nice-list>
+          <nice-list type="dl" title="Digital Library" query="stateuniversities"></nice-list>
         </div>
 
       </div>

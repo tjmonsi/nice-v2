@@ -1,0 +1,117 @@
+<!-- Polymer dependencies -->
+<link rel="import" href="../../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../../bower_components/paper-input/paper-input.html">
+<!--<link rel="import" href="./slug.html">-->
+<link rel="import" href="./price-watch-behavior.html">
+
+<dom-module id="pricewatch-form">
+  <template>
+    
+    <link rel="stylesheet" href="price-watch-form.scss">
+    <style is="custom-style">
+      :host {
+        display: block;
+      }
+    </style>
+
+    
+    <paper-input disable="{{_upload}}" label="Upload Price Watch Data in CSV here" type="file" multiple accept=".csv" on-change="_processFile"></paper-input>
+
+
+  </template>
+
+  <script>
+    import Papa from 'papaparse';
+    import slug from 'slug';
+    
+    Papa.SCRIPT_PATH = "/bower_components/papaparse/papaparse.js"
+    
+    Polymer({
+      is: 'pricewatch-form',
+      behaviors: [
+        NICEV1.PricewatchBehavior
+      ],
+      _processFile: function(e) {
+        this._showMessage('Uploading Files')
+        var files = e.target.inputElement.inputElement.files;
+        this._parseFile(files, 0);
+      },
+      _parseFile: function(files, i) {
+        if (i < files.length) {
+          var file = files[i];
+          var data = [];
+          Papa.parse(file, {
+            header: true,
+            dynamicTyping: true,
+            worker: true,
+            // skipEmptyLines: true,
+            step: (row) => {
+              data.push(row);
+            },
+            complete: (results) => {
+              console.log(results)
+              this._processData(data);
+              this._parseFile(files, i+1);
+            }
+          })
+        }
+      },
+      _processData: function(data) {
+        document.querySelector('app-shell').showMessage('Processing...', null, null, null, 5000)
+        this._upload = true;
+        // check meta
+        var updates = {};
+        var fields = data[0].meta.fields;
+        var commodityGroup = '';
+        var trueCommodityGroup = '';
+        var markets = {};
+        for (var j in fields) {
+          var name = fields[j].toLowerCase().trim().replace('"', '');
+          var sluggedName = slug(name.replace(/[\s]/g, ''));
+          if (j == 0) {
+            trueCommodityGroup = fields[j];
+            commodityGroup = sluggedName;
+            updates[this.pricewatchPath.commodityGroup + '/' + sluggedName + '/name'] =  this._capitalizeFirstLetter(name);
+          } else if (fields[j]) {
+            markets[sluggedName] = fields[j];
+            updates[this.pricewatchPath.markets + '/' + sluggedName + '/name'] =  this._capitalizeFirstLetter(name);
+          }
+        }
+        var subGroup = '';
+        for (var i in data) {
+          var d = data[i].data;
+          // console.log(d)
+          for (var k in d) {
+            // check if subgroup
+            var subGroupFlag = true;
+            var row = d[k];
+            var commodity = row[trueCommodityGroup];
+            var sluggedCommodity = slug(commodity.toLowerCase().trim());
+            var path = subGroup ? subGroup + '-' + sluggedCommodity : sluggedCommodity
+            for (var m in markets) {
+              if (row[markets[m]] !== '' && row[markets[m]] !== undefined) {
+                subGroupFlag = false;
+                var pricePath = this.pricewatchPath.prices + '/' + path + '/' + m;
+                var priceKey = firebase.database().ref(pricePath).push().key
+                // console.log(markets[m], row[markets[m]])
+                updates[pricePath + '/' + priceKey + '/price'] = row[markets[m]];
+                updates[pricePath + '/' + priceKey + '/date'] = firebase.database.ServerValue.TIMESTAMP;
+              }
+            }
+            if (subGroupFlag) {
+              subGroup = sluggedCommodity;
+            } else {
+              // console.log(subGroup)
+              updates[this.pricewatchPath.commodityGroup + '/' + commodityGroup + '/groups/' + path + '/name'] = subGroup ? commodity + ' (' + subGroup + ')' : commodity;;
+              updates[this.pricewatchPath.commodities + '/' + path + '/name'] = subGroup ? commodity + ' (' + subGroup + ')' : commodity;
+            }
+          }
+        }
+        firebase.database().ref().update(updates).then(() => {
+          document.querySelector('app-shell').showMessage('File Uploaded and Processed', null, null, null, 5000)
+          this._upload = false;
+        }).catch(this._catchError.bind(this));
+      }
+    });
+  </script>
+</dom-module>

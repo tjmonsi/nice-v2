@@ -1,5 +1,6 @@
 import 'polymer/polymer.html'
 import 'polymer/lib/utils/flattened-nodes-observer.html'
+// import '../../bower_components/web-animations-js/web-animations.html'
 import LocationMixin from '../mixins/location-mixin.js'
 import QueryParamsMixin from '../mixins/query-params-mixin.js'
 import pathToRegexp from 'path-to-regexp'

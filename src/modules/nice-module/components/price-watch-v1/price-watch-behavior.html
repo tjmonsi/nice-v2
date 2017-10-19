@@ -1,0 +1,44 @@
+<link rel="import" href="../../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="./utils-behavior.html">
+
+<script>
+  (function(){
+    'use strict';
+    /** @polymerBehavior NICEV1.ProjectNicePricewatchBehavior */
+    window.NICEV1 = window.NICEV1 || {}
+    NICEV1.PricewatchBehaviorImpl = {
+
+      properties: {
+        
+        pricewatchPath: {
+          type: Object,
+          readOnly: true,
+          value: function() { return this._pricewatchPath; }
+        },
+        pricewatchGroup: {
+          type: String,
+          readOnly: true,
+          value: function() { return this._pricewatchGroup; }
+        },
+      },
+
+      get _pricewatchGroup() {
+        return 'pricewatchGroup';
+      },
+
+      get _pricewatchPath() {
+        return {
+          markets: this._version + '/' + this._pricewatchGroup + '/markets', 
+          commodities: this._version + '/' + this._pricewatchGroup + '/commodities', 
+          commodityGroup: this._version + '/' + this._pricewatchGroup + '/commodityGroup',
+          prices: this._version + '/' + this._pricewatchGroup + '/prices'
+        };
+      },
+
+    };
+    NICEV1.PricewatchBehavior = [
+      NICEV1.UtilsBehavior,
+      NICEV1.PricewatchBehaviorImpl
+    ];
+  })();
+</script>

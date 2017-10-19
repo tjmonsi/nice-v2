@@ -46,6 +46,39 @@ export default {
     } 
     return false;
   },
+  
+  checkStaff: (self) => {
+    const main = store.getState().main
+    
+    if (main && main.user) {
+      if (main && main.permission) console.log(getRoleNumber(main.permission.role))
+      return main && main.permission && main.user && getRoleNumber(main.permission.role) < 4
+      
+    } 
+    return false;
+  },
+  
+  checkEditor: (self) => {
+    const main = store.getState().main
+    
+    if (main && main.user) {
+
+      return main && main.permission && main.user && getRoleNumber(main.permission.role) < 3
+      
+    } 
+    return false;
+  },
+  
+  checkAdmin: (self) => {
+    const main = store.getState().main
+    
+    if (main && main.user) {
+
+      return main && main.permission && main.user && getRoleNumber(main.permission.role) < 2
+      
+    } 
+    return false;
+  },
 
   exampleAuthentication: () => {
     // returns a 'falsy' value, which means the user is not authenticated

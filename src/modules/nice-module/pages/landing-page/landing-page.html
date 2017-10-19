@@ -1,9 +1,44 @@
 <dom-module id="landing-page">
   <template>
     <link rel="stylesheet" href="./landing-page.scss">
+    
+    <iron-ajax
+      auto
+      url="https://api.wunderground.com/api/598588d0da7f5d62/conditions/forecast/q/autoip.json"
+      handle-as="json"
+      on-response="handleResponse"
+      debounce-duration="300"></iron-ajax>
+    
+    <div class="banner" style="background: url('/images/assets/banner.jpg') center/cover no-repeat">
+      <img class="logo" src="/images/assets/logo1.png">
+      <template is="dom-if" if="[[!user]]">
+        <a href="/login">
+          <br/>
+          <paper-button class="cta">Login</paper-button>  
+        </a>
+      </template>
+      
+      <template is="dom-if" if="[[user]]">
+        <a href="/community">
+          <br/>
+          <paper-button class="cta-2">Explore the Community</paper-button>  
+        </a>
+      </template>
+    </div>
+    
+    <div class="row">
+      <div class="flex">
+        <nice-small-column query="published" limit="1" type="story" title="Latest Story"></nice-small-column>
+        <weather-component></weather-component>
+      </div>
+      
+      <pricewatch-viewer class="flex"></pricewatch-viewer>  
+    </div>
+    
 
     <nice-story-row></nice-story-row>
-    <!--<nice-pas-row></nice-pas-row>-->
+    <nice-pas-row></nice-pas-row>
+    <nice-dl-row></nice-dl-row>
 
     <nice-footer></nice-footer>
   </template>

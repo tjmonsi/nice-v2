@@ -22,7 +22,6 @@ class CommunityPage extends Permission(User(Polymer.Element)) {
   }
 
   _checkTos (user, role, profile, agree) {
-    console.log(user, role, profile, agree, this.classList, document.querySelector('app-shell').path) 
     if (user && role) {
       if (!this._checkRole(user, role, 'member')) {
         if (profile && !agree) {

@@ -11,22 +11,28 @@ class LoginPage extends Permission(User(Polymer.Element)) {
 
   static get observers () {
     return [
-      '_checkUser(user, permission.role, profile, profile.agree)'
+      '_checkUser(user.uid, permission.role, profile, profile.agree)'
     ]
   }
 
   _checkUser (user, role, profile, agree) {
-    if (user && profile) {
+    if (!user) {
+      this._loginDone = false;
+    }
+    if (user && role && profile) {
       if (!agree) {
         window.history.pushState({}, '', '/community/' + this.user.uid + '/edit')
         window.dispatchEvent(new CustomEvent('location-changed'))
-      } else if (!this._checkRole(user, role, 'member')) {
+      } else if (!this._checkRole(user, role, 'member') && !this._loginDone) {
         window.history.pushState({}, '', '/community/' + this.user.uid)
         window.dispatchEvent(new CustomEvent('location-changed'))
-      } else {
+        this._loginDone = true;
+      } else if (!this._loginDone) {
         window.history.pushState({}, '', '/community/')
         window.dispatchEvent(new CustomEvent('location-changed'))
+        this._loginDone = true;
       }
+      
     }
   }
 

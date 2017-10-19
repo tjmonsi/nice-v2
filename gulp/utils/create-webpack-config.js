@@ -62,6 +62,16 @@ module.exports = (test) => {
         from: path.resolve(__dirname, '../../bower_components/webcomponentsjs/*.map'),
         to: 'bower_components/webcomponentsjs/[name].[ext]'
       },
+      
+      {
+        from: path.resolve(__dirname, '../../bower_components/web-animations-js/*.js'),
+        to: 'bower_components/web-animations-js/[name].[ext]'
+      },
+      
+      {
+        from: path.resolve(__dirname, '../../bower_components/papaparse/*.js'),
+        to: 'bower_components/papaparse/[name].[ext]'
+      },
       {
         from: path.resolve(__dirname, '../../bower_components/web-component-tester/*.js'),
         to: 'bower_components/web-component-tester/[name].[ext]'

@@ -88,7 +88,7 @@ export default (superClass) => {
 
     _renderDate (d) {
       var date = d;
-      if (typeof d === 'object' && d.value) {
+      if (d && typeof d === 'object' && d.value) {
         date = d.value;
       }
       var nd = new Date(date);

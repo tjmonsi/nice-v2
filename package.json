@@ -25,9 +25,11 @@
     "indexeddbshim": "^3.0.4",
     "intersection-observer": "^0.4.2",
     "marked": "^0.3.6",
+    "papaparse": "^4.3.6",
     "path-to-regexp": "^1.7.0",
     "polymer-redux": "^1.0.3",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "slug": "^0.9.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

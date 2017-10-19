@@ -41,6 +41,13 @@
     "resource-page": "modules/nice-module/pages/resource-page/resource-page.js",
     "community-page": "modules/nice-module/pages/community-page/community-page.js",
     "thread-page": "modules/nice-module/pages/thread-page/thread-page.js",
+    "dashboard-page": "modules/nice-module/pages/dashboard-page/dashboard-page.js",
+    "dashboard-member-page": "modules/nice-module/pages/dashboard-member-page/dashboard-member-page.js",
+    "dashboard-research-page": "modules/nice-module/pages/dashboard-research-page/dashboard-research-page.js",
+    "dashboard-cbe-recommends-page": "modules/nice-module/pages/dashboard-cbe-recommends-page/dashboard-cbe-recommends-page.js",
+    "dashboard-pas-page": "modules/nice-module/pages/dashboard-pas-page/dashboard-pas-page.js",
+    "dashboard-about-page": "modules/nice-module/pages/dashboard-about-page/dashboard-about-page.js",
+    "dashboard-price-watch-page": "modules/nice-module/pages/dashboard-price-watch-page/dashboard-price-watch-page.js",
     "not-found-page": "modules/nice-module/pages/not-found-page/not-found-page.js",
     "not-authorized-page": "modules/nice-module/pages/not-authorized-page/not-authorized-page.js",
     "nice-header": "modules/nice-module/components/nice-header/nice-header.js",
@@ -89,6 +96,34 @@
     "/thread/:id?": {
       "name": "thread-page",
       "auth": "checkMember"
+    },
+    "/dashboard": {
+      "name": "dashboard-page",
+      "auth": "checkStaff"
+    },
+    "/dashboard-price-watch": {
+      "name": "dashboard-price-watch-page",
+      "auth": "checkStaff"
+    },
+    "/dashboard-research": {
+      "name": "dashboard-research-page",
+      "auth": "checkStaff"
+    },
+    "/dashboard-cbe-recommends": {
+      "name": "dashboard-cbe-recommends-page",
+      "auth": "checkStaff"
+    },
+    "/dashboard-pas": {
+      "name": "dashboard-pas-page",
+      "auth": "checkStaff"
+    },
+    "/dashboard-about": {
+      "name": "dashboard-about-page",
+      "auth": "checkStaff"
+    },
+    "/dashboard-members": {
+      "name": "dashboard-member-page",
+      "auth": "checkAdmin"
     }
 
   },

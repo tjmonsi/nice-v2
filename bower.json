@@ -36,7 +36,11 @@
     "paper-dropdown-menu": "PolymerElements/paper-dropdown-menu#^2.0.0",
     "paper-listbox": "PolymerElements/paper-listbox#^2.0.0",
     "paper-item": "PolymerElements/paper-item#^2.0.0",
-    "paper-fab": "PolymerElements/paper-fab#^2.0.0"
+    "paper-fab": "PolymerElements/paper-fab#^2.0.0",
+    "web-animations-js": "web-animations/web-animations-js#^2.3.1",
+    "iron-ajax": "PolymerElements/iron-ajax#^2.0.5",
+    "papaparse": "^4.3.6",
+    "slug": "^0.9.1"
   },
   "devDependencies": {
     "web-component-tester": "^6.0.0"

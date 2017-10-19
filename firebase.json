@@ -205,6 +205,34 @@
       {
         "source": "/thread",
         "destination": "/index.html"
+      },
+      {
+        "source": "/dashboard",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dashboard-price-watch",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dashboard-research",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dashboard-cbe-recommends",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dashboard-pas",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dashboard-about",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dashboard-members",
+        "destination": "/index.html"
       }
     ],
     "public": "./dist/public"

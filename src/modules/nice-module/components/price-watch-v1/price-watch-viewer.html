@@ -1,0 +1,84 @@
+<!-- Polymer dependencies -->
+<link rel="import" href="../../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../../../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../../../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="./price-watch-commodity-picker.html">
+<link rel="import" href="./price-watch-behavior.html">
+
+<dom-module id="pricewatch-viewer">
+  <template>
+    <link rel="stylesheet" href="./price-watch-viewer.scss">
+    <style is="custom-style" include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+      }
+    </style>
+
+    <!--<firebase-query path="[[pricewatchPath.commodityGroup]]" data="{{commodityGroup}}"></firebase-query>-->
+    <!--<firebase-query path="[[pricewatchPath.markets]]" data="{{markets}}"></firebase-query>-->
+      <paper-material class="weather-object">
+        <h1>Price Watch</h1>
+        <paper-dropdown-menu id="market-selector" label="Select Market:">
+          <paper-listbox slot="dropdown-content" attr-for-selected="market-id">
+            <template is="dom-repeat" items="[[markets]]">
+              <paper-item market-id="[[item.$key]]" on-tap="_selectMarket">[[item.name]]</paper-item>
+            </template>
+          </paper-listbox>
+        </paper-dropdown-menu>
+  
+        <template is="dom-repeat" items="[[commodityGroup]]" sort="_priceSorter">
+          <h3>[[item.name]]</h3>
+          <pricewatch-commodity-picker key="[[item.$key]]" market="[[marketId]]"></pricewatch-commodity-picker>
+        </template>  
+      </paper-material>
+      
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'pricewatch-viewer',
+      properties: {
+        marketId: {
+          type: String,
+          value: 'metromanilaprevailingprice'
+        },
+      },
+      behaviors: [
+        NICEV1.PricewatchBehavior
+      ],
+      attached: function() {
+        firebase.database().ref(this.pricewatchPath.commodityGroup).once('value').then(snapshot => {
+          var list = [];
+          snapshot.forEach(item => {
+            var obj = item.val();
+            obj.$key = item.key
+            list.push(obj)
+          })
+          // console.log(list)
+          this.commodityGroup = list;
+        })
+        
+        firebase.database().ref(this.pricewatchPath.markets).once('value').then(snapshot => {
+          var list = [];
+          snapshot.forEach(item => {
+            var obj = item.val();
+            obj.$key = item.key
+            list.push(obj)
+          })
+          // console.log(list)
+          this.markets = list;
+        })
+      },
+      _selectMarket: function(e) {
+        this.marketId = e.target.marketId || 'metromanilaprevailingprice';
+        // console.log(this.marketId)
+      },
+      _priceSorter: function(a, b) {
+        return a.order - b.order;
+      }
+    });
+  </script>
+</dom-module>

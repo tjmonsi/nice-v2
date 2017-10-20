@@ -3,8 +3,8 @@
 
 .banner {
   display: block;
-  height: 60vh;
-  min-height: 250px;
+  min-height: 60vh;
+  // min-height: 250px;
   width: 100%;
   text-align: left;
   @media screen and (max-width: 840px) {
@@ -14,10 +14,11 @@
 
 .logo {
   padding-top: 20px;
-  width: 80%;
-  max-width: 400px;
-  padding-left: 100px;
+  width: 35%;
+  max-width: 600px;
+  padding-left: 50px;
   @media screen and (max-width: 840px) {
+    width: 80%;
     padding-left: 0px;
   }
 }
@@ -25,16 +26,34 @@
 .cta {
   background: #2B88F0;
   color: white;
-  margin-left: 250px;
+  // margin-left: 250px;
   @media screen and (max-width: 840px) {
     margin-left: 0px;
+  }
+}
+
+.anchor {
+  text-decoration: none;
+}
+
+.text {
+  color: white;
+  font-size: 13px;
+  max-width: 600px;
+  width: 35%;
+  margin-left: 50px;
+  margin-top: -20px;
+  text-align: center;
+  padding-bottom: 50px;
+  @media screen and (max-width: 840px) {
+    margin: 0 auto;
   }
 }
 
 .cta-2 {
   background: #2B88F0;
   color: white;
-  margin-left: 177px;
+  // margin-left: 177px;
   @media screen and (max-width: 840px) {
     margin-left: 0px;
   }

@@ -5,16 +5,19 @@
 .weather-object {
   padding: 20px;
   
-  h1 {
-    padding: 0px;
-    margin: 0px;
-  }
   
-  .price-watch {
-    text-decoration: none;
-    color: inherit;
-  }
 }
+
+h1 {
+  padding: 0px;
+  margin: 0px;
+}
+
+.price-watch {
+  text-decoration: none;
+  color: inherit;
+}
+
 
 .location {
   margin: 0px;

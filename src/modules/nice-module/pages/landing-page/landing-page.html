@@ -11,20 +11,33 @@
     
     <div class="banner" style="background: url('/images/assets/banner.jpg') center/cover no-repeat">
       <img class="logo" src="/images/assets/logo1.png">
-      <template is="dom-if" if="[[!user]]">
-        <a href="/login">
-          <br/>
-          <paper-button class="cta">Login</paper-button>  
-        </a>
-      </template>
+      <p class="text">
+        The SAP focuses on laying the grounds for forging societal partnerships and innovation centers that seek to help end poverty and achieve food security. As part of establishing innovation centers, the SAP started building the NICE platform as a virtual hub for completed sustainable researches from different state universities and colleges (SUCs), research and development institutions (RDIs), government offices, and civil society organizations (CSOs).
+        <br>
+        <template is="dom-if" if="[[!user]]">
+          <a href="/login" class="anchor">
+            <paper-button class="cta">Login</paper-button>  
+          </a>
+        </template>
+        <template is="dom-if" if="[[user]]">
+          <a href="/community" class="anchor">
+            <br/>
+            <paper-button class="cta-2">Explore the Community</paper-button>  
+          </a>
+        </template>
       
-      <template is="dom-if" if="[[user]]">
-        <a href="/community">
-          <br/>
-          <paper-button class="cta-2">Explore the Community</paper-button>  
-        </a>
-      </template>
+      </p>
+      
+      
+      
     </div>
+    
+    
+    
+
+    <nice-story-row></nice-story-row>
+    <!--<nice-pas-row></nice-pas-row>-->
+    <nice-dl-row></nice-dl-row>
     
     <div class="row">
       <div class="flex">
@@ -34,11 +47,6 @@
       
       <pricewatch-viewer class="flex"></pricewatch-viewer>  
     </div>
-    
-
-    <nice-story-row></nice-story-row>
-    <nice-pas-row></nice-pas-row>
-    <nice-dl-row></nice-dl-row>
 
     <nice-footer></nice-footer>
   </template>

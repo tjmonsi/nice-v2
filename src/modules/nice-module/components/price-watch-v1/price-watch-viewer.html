@@ -18,7 +18,7 @@
 
     <!--<firebase-query path="[[pricewatchPath.commodityGroup]]" data="{{commodityGroup}}"></firebase-query>-->
     <!--<firebase-query path="[[pricewatchPath.markets]]" data="{{markets}}"></firebase-query>-->
-      <paper-material class="weather-object">
+      <!--<paper-material class="weather-object">-->
         <h1>Price Watch</h1>
         <paper-dropdown-menu id="market-selector" label="Select Market:">
           <paper-listbox slot="dropdown-content" attr-for-selected="market-id">
@@ -32,7 +32,7 @@
           <h3>[[item.name]]</h3>
           <pricewatch-commodity-picker key="[[item.$key]]" market="[[marketId]]"></pricewatch-commodity-picker>
         </template>  
-      </paper-material>
+      <!--</paper-material>-->
       
 
   </template>

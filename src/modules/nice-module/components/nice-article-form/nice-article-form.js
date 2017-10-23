@@ -12,12 +12,12 @@ import Article from '../article-model/article-model.js'
 import Category from '../category-model/category-model.js'
 import './nice-article-form.html'
 
-class NiceArticleForm extends Category(Article(Polymer.Element)) {
+class NiceArticleForm extends Polymer.GestureEventListeners(Category(Article(Polymer.Element))) {
   static get is () { return 'nice-article-form' }
 
   static get properties () {
     return {
-      preview: {
+      previewFlag: {
         type: Boolean,
         value: false
       },
@@ -112,11 +112,14 @@ class NiceArticleForm extends Category(Article(Polymer.Element)) {
   }
 
   _edit () {
-    this.preview = false
+    this.previewFlag = false
   }
 
   _preview () {
-    this.preview = true
+    console.log(this.previewFlag)
+    console.log('preview')
+    this.previewFlag = true
+    console.log(this.previewFlag)
   }
 
   _toggleCategory (cat, sub) {
@@ -284,6 +287,7 @@ class NiceArticleForm extends Category(Article(Polymer.Element)) {
       updates[`${path}/bannerImage`] = this.article.bannerImage || ''
       updates[`${path}/body`] = this.article.body || ''
       updates[`${path}/published`] = this.article.published || false
+      updates[`${path}/order`] = this.article.order || ''
       for (var i in this.article.categoryMain) {
         updates[`${path}/categoryMain/${i}/value`] = this.article.categoryMain[i].value ? true : null
       }

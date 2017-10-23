@@ -1,0 +1,27 @@
+@import '../../styles/components/_page.scss';
+@import '../../styles/components/_typography.scss';
+@import '../../styles/mixins/_flex.scss';
+
+.row {
+  @include layout-horizontal;
+  margin: 0 auto;
+  max-width: 1400px;
+
+  @media screen and (max-width: 1440px) {
+    margin: 0 20px;
+  }
+}
+
+.main-list {
+  @include layout-flex-9;
+  max-width: 1000px;
+  min-height: calc(100vh - 360px);
+}
+
+.sidebar {
+  @include layout-flex-3;
+
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
+}

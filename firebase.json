@@ -91,6 +91,26 @@
         "destination": "/index.html"
       },
       {
+        "source": "/pas-technology",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/pas-crop",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/pas-training",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/pas-credit",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/pas-amenities",
+        "destination": "/index.html"
+      },
+      {
         "source": "/story/**/**",
         "destination": "/index.html"
       },
@@ -100,6 +120,18 @@
       },
       {
         "source": "/story",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/quickfacts/**/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/quickfacts/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/quickfacts",
         "destination": "/index.html"
       },
       {
@@ -219,6 +251,10 @@
         "destination": "/index.html"
       },
       {
+        "source": "/dashboard-resource",
+        "destination": "/index.html"
+      },
+      {
         "source": "/dashboard-cbe-recommends",
         "destination": "/index.html"
       },
@@ -232,6 +268,14 @@
       },
       {
         "source": "/dashboard-members",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dashboard-quick-facts",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/story-category/**",
         "destination": "/index.html"
       }
     ],

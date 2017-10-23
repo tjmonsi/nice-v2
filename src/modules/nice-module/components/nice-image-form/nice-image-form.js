@@ -40,8 +40,11 @@ class NiceImageForm extends Image(Polymer.Element) {
 
   _save () {
     var updates = {}
-    updates[`v2/${this.type}/list/image/${this.articleId}/${this.imageId}/name`] = this.image.name || ''
-    updates[`v2/${this.type}/list/image/${this.articleId}/${this.imageId}/caption`] = this.image.caption || ''
+    if (this.image) {
+      updates[`v2/${this.type}/list/image/${this.articleId}/${this.imageId}/name`] = this.image.name || ''
+      updates[`v2/${this.type}/list/image/${this.articleId}/${this.imageId}/caption`] = this.image.caption || ''  
+    }
+    
 
     return updates
   }

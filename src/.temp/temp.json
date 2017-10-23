@@ -31,9 +31,16 @@
     "landing-page": "modules/nice-module/pages/landing-page/landing-page.js",
     "login-page": "modules/nice-module/pages/login-page/login-page.js",
     "story-page": "modules/nice-module/pages/story-page/story-page.js",
+    "quick-facts-page": "modules/nice-module/pages/quick-facts-page/quick-facts-page.js",
+    "story-category-page": "modules/nice-module/pages/story-category-page/story-category-page.js",
     "about-page": "modules/nice-module/pages/about-page/about-page.js",
     "cbe-page": "modules/nice-module/pages/cbe-page/cbe-page.js",
     "pas-page": "modules/nice-module/pages/pas-page/pas-page.js",
+    "pas-credit-page": "modules/nice-module/pages/pas-credit-page/pas-credit-page.js",
+    "pas-crop-page": "modules/nice-module/pages/pas-crop-page/pas-crop-page.js",
+    "pas-amenities-page": "modules/nice-module/pages/pas-amenities-page/pas-amenities-page.js",
+    "pas-technology-page": "modules/nice-module/pages/pas-technology-page/pas-technology-page.js",
+    "pas-training-page": "modules/nice-module/pages/pas-training-page/pas-training-page.js",
     "cbe-recommends-page": "modules/nice-module/pages/cbe-recommends-page/cbe-recommends-page.js",
     "dl-page": "modules/nice-module/pages/dl-page/dl-page.js",
     "dl-state-universities-page": "modules/nice-module/pages/dl-state-universities-page/dl-state-universities-page.js",
@@ -47,6 +54,8 @@
     "dashboard-cbe-recommends-page": "modules/nice-module/pages/dashboard-cbe-recommends-page/dashboard-cbe-recommends-page.js",
     "dashboard-pas-page": "modules/nice-module/pages/dashboard-pas-page/dashboard-pas-page.js",
     "dashboard-about-page": "modules/nice-module/pages/dashboard-about-page/dashboard-about-page.js",
+    "dashboard-resource-page": "modules/nice-module/pages/dashboard-resource-page/dashboard-resource-page.js",
+    "dashboard-quick-facts-page": "modules/nice-module/pages/dashboard-quick-facts-page/dashboard-quick-facts-page.js",
     "dashboard-price-watch-page": "modules/nice-module/pages/dashboard-price-watch-page/dashboard-price-watch-page.js",
     "not-found-page": "modules/nice-module/pages/not-found-page/not-found-page.js",
     "not-authorized-page": "modules/nice-module/pages/not-authorized-page/not-authorized-page.js",
@@ -57,8 +66,18 @@
     "/": "landing-page",
     "/login": "login-page",
     "/cbe": "cbe-page",
+    "/pas-technology": "pas-technology-page",
+    "/pas-crop": "pas-crop-page",
+    "/pas-training": "pas-training-page",
+    "/pas-credit": "pas-credit-page",
+    "/pas-amenities": "pas-amenities-page",
+    
     "/story/:id?/:edit?": {
       "name": "story-page",
+      "auth": "checkRole"
+    },
+    "/quickfacts/:id?/:edit?": {
+      "name": "quick-facts-page",
       "auth": "checkRole"
     },
     "/about/:id?/:edit?": {
@@ -109,6 +128,10 @@
       "name": "dashboard-research-page",
       "auth": "checkStaff"
     },
+    "/dashboard-resource": {
+      "name": "dashboard-resource-page",
+      "auth": "checkStaff"
+    },
     "/dashboard-cbe-recommends": {
       "name": "dashboard-cbe-recommends-page",
       "auth": "checkStaff"
@@ -124,8 +147,14 @@
     "/dashboard-members": {
       "name": "dashboard-member-page",
       "auth": "checkAdmin"
+    },
+    "/dashboard-quick-facts": {
+      "name": "dashboard-quick-facts-page",
+      "auth": "checkAdmin"
+    },
+    "/story-category/:category": {
+      "name": "story-category-page"
     }
-
   },
   "httpCodes": {
     "not-found": "not-found-page",

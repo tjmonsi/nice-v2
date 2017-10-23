@@ -1,6 +1,6 @@
 import 'polymer/polymer.html'
 import '../../components/nice-footer/nice-footer.js'
-import '../../components/nice-pas-row/nice-pas-row.js'
+import '../../components/nice-article/nice-article.js'
 import '../../components/nice-pas-nav/nice-pas-nav.js'
 import './cbe-page.html'
 

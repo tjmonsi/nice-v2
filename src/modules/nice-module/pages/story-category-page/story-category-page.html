@@ -1,0 +1,16 @@
+<dom-module id="story-category-page">
+  <template>
+    <link rel="stylesheet" href="./story-category-page.scss">
+
+    <div class="row">
+      <nice-list class="main-list" type="story" title="[[setTitle(params.category)]]" query="[[params.category]]" limit="-1"></nice-list>
+      <aside class="sidebar">
+      </aside>
+    </div>
+    
+    <template is="dom-if" if="[[_checkRole(user, permission.role, 'staff')]]">
+      <paper-fab class="add" icon="nice:add" on-tap="addItem"></paper-fab>
+    </template>
+    <nice-footer></nice-footer>
+  </template>
+</dom-module>

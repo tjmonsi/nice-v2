@@ -5,7 +5,13 @@
     <template is="dom-if" if="[[list.length]]">
       <template is="dom-if" if="[[title]]">
         <header class="header">
-          <h1 class="title">[[title]]</h1>
+          <template is="dom-if" if="[[isEqual(type, 'story')]]">
+            <h1 class="title"><a href="/story-category/[[query]]" class="anchor-title">[[title]]</a></h1>
+          </template>
+          <template is="dom-if" if="[[!isEqual(type, 'story')]]">
+            <h1 class="title">[[title]]</h1>
+          </template>
+          
         </header>
       </template>
       <template is="dom-repeat" items="[[list]]">
@@ -14,7 +20,7 @@
         </template>
 
         <template is="dom-if" if="[[index]]">
-          <nice-item article-id="[[item.$key]]" type="[[type]]"></nice-item>
+          <nice-small-item article-id="[[item.$key]]" type="[[type]]"></nice-small-item>
         </template>
       </template>
     </template>

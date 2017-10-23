@@ -15,7 +15,7 @@
         </a>
       </nav>
 
-      <template is="dom-if" if="[[!preview]]">
+      <template is="dom-if" if="[[!previewFlag]]">
         <h1 class="form-title">Title and Summary</h1>
 
         <paper-input label="Title" placeholder="Title" value="{{article.title}}"></paper-input>
@@ -150,7 +150,7 @@
       </template>
     </section>
 
-    <template is="dom-if" if="[[preview]]" restamp>
+    <template is="dom-if" if="[[previewFlag]]" restamp>
       <nice-article article="{{article}}" article-images="{{articleImages}}" article-files="{{articleFiles}}"></nice-article>
     </template>
 

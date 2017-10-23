@@ -1,0 +1,17 @@
+<dom-module id="dashboard-quick-facts-page">
+  <template>
+
+    <link rel="stylesheet" href="./dashboard-quick-facts-page.scss">
+
+    <section class="row">
+      <nice-dashboard-nav class="sidebar"></nice-dashboard-nav>
+      <nice-list class="main-list" type="quickfacts" title="Pending Quick Facts" query="draft" limit="-1"></nice-list>
+    </section>
+    
+    <template is="dom-if" if="[[_checkRole(user, permission.role, 'staff')]]">
+      <paper-fab class="add" icon="nice:add" on-tap="addItem"></paper-fab>
+    </template>
+
+    <nice-footer></nice-footer>
+  </template>
+</dom-module>

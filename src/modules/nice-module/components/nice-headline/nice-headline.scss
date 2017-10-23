@@ -1,3 +1,4 @@
+@import '../../styles/components/_typography';
 
 .banner {
   display: block;
@@ -25,7 +26,8 @@
 
 :host {
   display: block;
-  height: 500px;
+  height: auto;
+  overflow: hidden;
 
   @media screen and (max-width: 900px) {
     height: auto;

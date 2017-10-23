@@ -18,7 +18,7 @@ class NiceFileForm extends File(Polymer.Element) {
     var updates = {}
     var storagePath = this.file.storagePath
     updates[`v2/${this.type}/list/file/${this.articleId}/${this.fileId}`] = null
-    updates[`v2/file/data/${this.id}`] = null
+    updates[`v2/file/data/${this.fileId}`] = null
 
     var promises = [
       firebase.database().ref().update(updates),

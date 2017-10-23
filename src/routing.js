@@ -3,7 +3,13 @@
       '/': () => { return import(/* webpackChunkName: "landing-page" */ './modules/nice-module/pages/landing-page/landing-page.js') }, 
 '/login': () => { return import(/* webpackChunkName: "login-page" */ './modules/nice-module/pages/login-page/login-page.js') }, 
 '/cbe': () => { return import(/* webpackChunkName: "cbe-page" */ './modules/nice-module/pages/cbe-page/cbe-page.js') }, 
+'/pas-technology': () => { return import(/* webpackChunkName: "pas-technology-page" */ './modules/nice-module/pages/pas-technology-page/pas-technology-page.js') }, 
+'/pas-crop': () => { return import(/* webpackChunkName: "pas-crop-page" */ './modules/nice-module/pages/pas-crop-page/pas-crop-page.js') }, 
+'/pas-training': () => { return import(/* webpackChunkName: "pas-training-page" */ './modules/nice-module/pages/pas-training-page/pas-training-page.js') }, 
+'/pas-credit': () => { return import(/* webpackChunkName: "pas-credit-page" */ './modules/nice-module/pages/pas-credit-page/pas-credit-page.js') }, 
+'/pas-amenities': () => { return import(/* webpackChunkName: "pas-amenities-page" */ './modules/nice-module/pages/pas-amenities-page/pas-amenities-page.js') }, 
 '/story/:id?/:edit?': () => { return import(/* webpackChunkName: "story-page" */ './modules/nice-module/pages/story-page/story-page.js') }, 
+'/quickfacts/:id?/:edit?': () => { return import(/* webpackChunkName: "quick-facts-page" */ './modules/nice-module/pages/quick-facts-page/quick-facts-page.js') }, 
 '/about/:id?/:edit?': () => { return import(/* webpackChunkName: "about-page" */ './modules/nice-module/pages/about-page/about-page.js') }, 
 '/cberecommends/:id?/:edit?': () => { return import(/* webpackChunkName: "cbe-recommends-page" */ './modules/nice-module/pages/cbe-recommends-page/cbe-recommends-page.js') }, 
 '/pas/:id?/:edit?': () => { return import(/* webpackChunkName: "pas-page" */ './modules/nice-module/pages/pas-page/pas-page.js') }, 
@@ -16,9 +22,12 @@
 '/dashboard': () => { return import(/* webpackChunkName: "dashboard-page" */ './modules/nice-module/pages/dashboard-page/dashboard-page.js') }, 
 '/dashboard-price-watch': () => { return import(/* webpackChunkName: "dashboard-price-watch-page" */ './modules/nice-module/pages/dashboard-price-watch-page/dashboard-price-watch-page.js') }, 
 '/dashboard-research': () => { return import(/* webpackChunkName: "dashboard-research-page" */ './modules/nice-module/pages/dashboard-research-page/dashboard-research-page.js') }, 
+'/dashboard-resource': () => { return import(/* webpackChunkName: "dashboard-resource-page" */ './modules/nice-module/pages/dashboard-resource-page/dashboard-resource-page.js') }, 
 '/dashboard-cbe-recommends': () => { return import(/* webpackChunkName: "dashboard-cbe-recommends-page" */ './modules/nice-module/pages/dashboard-cbe-recommends-page/dashboard-cbe-recommends-page.js') }, 
 '/dashboard-pas': () => { return import(/* webpackChunkName: "dashboard-pas-page" */ './modules/nice-module/pages/dashboard-pas-page/dashboard-pas-page.js') }, 
 '/dashboard-about': () => { return import(/* webpackChunkName: "dashboard-about-page" */ './modules/nice-module/pages/dashboard-about-page/dashboard-about-page.js') }, 
-'/dashboard-members': () => { return import(/* webpackChunkName: "dashboard-member-page" */ './modules/nice-module/pages/dashboard-member-page/dashboard-member-page.js') }
+'/dashboard-members': () => { return import(/* webpackChunkName: "dashboard-member-page" */ './modules/nice-module/pages/dashboard-member-page/dashboard-member-page.js') }, 
+'/dashboard-quick-facts': () => { return import(/* webpackChunkName: "dashboard-quick-facts-page" */ './modules/nice-module/pages/dashboard-quick-facts-page/dashboard-quick-facts-page.js') }, 
+'/story-category/:category': () => { return import(/* webpackChunkName: "story-category-page" */ './modules/nice-module/pages/story-category-page/story-category-page.js') }
     }
   

@@ -1,0 +1,17 @@
+<dom-module id="pas-amenities-page">
+  <template>
+    <link rel="stylesheet" href="./pas-amenities-page.scss">
+
+ 
+    <div class="row">
+      <nice-pas-nav class="sidebar"></nice-pas-nav>
+      <nice-list class="main-list" type="pas" title="Amenities" query="amenities" limit="-1"></nice-list>
+    </div>
+    
+    <template is="dom-if" if="[[_checkRole(user, permission.role, 'staff')]]">
+      <paper-fab class="add" icon="nice:add" on-tap="addItem"></paper-fab>
+    </template>
+
+    <nice-footer></nice-footer>
+  </template>
+</dom-module>

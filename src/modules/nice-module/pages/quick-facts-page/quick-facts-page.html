@@ -1,0 +1,28 @@
+<dom-module id="quick-facts-page">
+  <template>
+    <link rel="stylesheet" href="./quick-facts-page.scss">
+
+    <template is="dom-if" if="[[!params.id]]">
+      <div class="row">
+        <nice-list class="main-list" type="quickfacts" title="Quick Facts" query="published" limit="-1"></nice-list>
+        <aside class="sidebar">
+        </aside>
+      </div>
+
+    </template>
+
+    <template is="dom-if" if="[[params.id]]">
+      <template is="dom-if" if="[[!_checkEdit(params.edit)]]">
+        <nice-article type="quickfacts" article-id="[[params.id]]"></nice-article>
+      </template>
+      <template is="dom-if" if="[[_checkEdit(params.edit)]]">
+        <nice-article-form type="quickfacts" article-id="[[params.id]]" preview="[[params.preview]]"></nice-article-form>
+      </template>
+    </template>
+    
+    <template is="dom-if" if="[[_checkRole(user, permission.role, 'staff')]]">
+      <paper-fab class="add" icon="nice:add" on-tap="addItem"></paper-fab>
+    </template>
+    <nice-footer></nice-footer>
+  </template>
+</dom-module>

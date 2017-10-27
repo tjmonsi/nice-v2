@@ -1,4 +1,9 @@
 @import '../../styles/mixins/_flex.scss';
+@import '../../styles/components/_typography.scss';
+
+.year-form {
+  width: 200px;
+}
 
 .form {
   margin: 20px auto;

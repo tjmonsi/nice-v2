@@ -24,5 +24,20 @@
         </li>
       </ul>
     </nav>
+    
+    <h2 class="title">Filters</h2>
+    <p class="filters">
+      <paper-input value="{{year}}" label="Year Published" class="year"></paper-input>
+          
+      <paper-dropdown-menu label="Research Institution">
+        <paper-listbox slot="dropdown-content" selected="{{researchInstitution}}" attr-for-selected="key">
+          <template is="dom-repeat" items="[[categoryResearchInstitution]]">
+            <paper-item key$="[[item.$key]]">[[item.name]]</paper-item>  
+          </template>
+        </paper-listbox>
+      </paper-dropdown-menu><br/>
+      
+      <paper-button on-tap="resetSearch" class="search-button">Reset Filters</paper-button>
+    </p>
   </template>
 </dom-module>

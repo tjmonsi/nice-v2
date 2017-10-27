@@ -18,6 +18,10 @@ class NiceAboutNav extends ArticleList(Polymer.Element) {
       }
     }
   }
+  
+  isEqual (a, b) {
+    return a === b
+  }
 }
 
 customElements.define(NiceAboutNav.is, NiceAboutNav)

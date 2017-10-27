@@ -2,6 +2,30 @@ const functions = require('firebase-functions')
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
+exports.createProfile = functions.auth.user().onCreate(event => {
+  const user = event.data;
+  const email = user.email;
+  const displayName = user.displayName || email;
+  const uid = user.uid;
+  const image = user.photoURL;
+  const updates = {};
+  const path = `v2/user/data/${uid}`;
+  updates[`${path}/email`] = email;
+  updates[`${path}/displayName`] = displayName;
+  updates[`${path}/firstName`] = displayName;
+  updates[`${path}/lastName`] = '';
+  updates[`${path}/image`] = image;
+  updates[`${path}/agree`] = false;
+  updates[`${path}/address`] = '';
+  updates[`${path}/contact`] = '';
+  updates[`${path}/position`] = '';
+  updates[`${path}/work`] = '';
+  updates[`${path}/dateJoined`] = admin.database.ServerValue.TIMESTAMP;
+  // updates[`${path}/cross/ticketEmail`] = '';
+  return admin.database().ref().update(updates);
+  // ...
+});
+
 exports.saveBasedOnPublish = functions.database.ref('/v2/{model}/data/{id}/')
   .onWrite(event => {
     // // Exit when the data is deleted.

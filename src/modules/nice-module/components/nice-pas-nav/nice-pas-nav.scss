@@ -1,5 +1,9 @@
 @import '../../styles/components/_typography.scss';
 
+:host {
+  padding: 20px;
+}
+
 .nav-list {
   list-style-type: none;
 }

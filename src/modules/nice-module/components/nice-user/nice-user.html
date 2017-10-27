@@ -18,6 +18,11 @@
       <template is="dom-if" if="[[member.position]]">
         <div class="work">
           <h3 class="title-work">Position: {{member.position}}</h3>
+          <template is="dom-if" if="[[member.userType]]">
+            <p>
+              Category: [[_getMemberType(member.userType, categoryUser)]]
+            </p>
+          </template>
           <p>{{member.work}}</p>
         </div>
       </template>

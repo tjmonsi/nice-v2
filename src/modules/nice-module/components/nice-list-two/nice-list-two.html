@@ -1,0 +1,14 @@
+<dom-module id="nice-list-two">
+  <template>
+    <link rel="stylesheet" href="./nice-list-two.scss">
+
+    <template is="dom-if" if="[[title]]">
+      <header class="header">
+        <h1 class="title">[[title]]</h1>
+      </header>
+    </template>
+    <template is="dom-repeat" items="[[list]]">
+      <nice-item article-id="[[item.$key]]" type="[[item.type]]"></nice-item>
+    </template>
+  </template>
+</dom-module>

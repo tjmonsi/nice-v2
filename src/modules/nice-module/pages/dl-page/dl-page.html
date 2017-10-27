@@ -4,9 +4,24 @@
 
     <template is="dom-if" if="[[!params.id]]">
       <div class="row">
-        <nice-dl-nav class="sidebar"></nice-dl-nav>
+        <nice-dl-nav class="sidebar" year="{{year}}" research-institution="{{researchInstitution}}"></nice-dl-nav>
         <div class="main-list">
-          <nice-list type="dl" title="Digital Library" query="published"></nice-list>
+          <div class="search-row">
+            <paper-input class="search-input" label="Search query" value="{{query}}"></paper-input>
+            <paper-button class="search-button" on-tap="search" raised>Search</paper-button>
+            <template is="dom-if" if="[[searchObj]]">
+              <paper-button class="search-button" on-tap="resetSearch" raised >Clear</paper-button>  
+            </template>
+          </div>
+          <div class="search-advance">
+            
+          </div>
+          <template is="dom-if" if="[[!searchObj]]">
+            <nice-list type="dl" title="Digital Library" query="published"></nice-list>  
+          </template>
+          <template is="dom-if" if="[[searchObj]]">
+            <nice-list-two title="Digital Library: Search Results" list="[[searchResults]]" ></nice-list-two>  
+          </template>
         </div>
 
       </div>

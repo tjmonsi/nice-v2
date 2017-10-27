@@ -2,11 +2,15 @@ import 'polymer/polymer.html'
 import 'paper-input/paper-input.html'
 import 'paper-input/paper-textarea.html'
 import 'paper-dialog/paper-dialog.html'
+import 'paper-dropdown-menu/paper-dropdown-menu.html'
+import 'paper-listbox/paper-listbox.html'
+import 'paper-item/paper-item.html'
 import '../nice-user-tos/nice-user-tos.js'
 import Profile from '../user-model/member-model.js'
+import Category from '../category-user-model/category-user-model.js';
 import './nice-user-form.html'
 
-class NiceUserForm extends Profile(Polymer.Element) {
+class NiceUserForm extends Category(Profile(Polymer.Element)) {
   static get is () { return 'nice-user-form' }
 
   static get properties () {
@@ -79,6 +83,7 @@ class NiceUserForm extends Profile(Polymer.Element) {
       updates[`${path}/address`] = this.member.address || ''
       updates[`${path}/image`] = this.member.image || ''
       updates[`${path}/work`] = this.member.work || ''
+      updates[`${path}/userType`] = this.member.userType || ''
       updates[`${path}/position`] = this.member.position || ''
 
       var images = this.shadowRoot.querySelectorAll('nice-image-form')

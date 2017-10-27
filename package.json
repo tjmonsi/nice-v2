@@ -21,6 +21,7 @@
     "build-production": "cd gulp && ./node_modules/.bin/gulp --prod"
   },
   "dependencies": {
+    "algoliasearch": "^3.24.5",
     "clipboard": "^1.7.1",
     "indexeddbshim": "^3.0.4",
     "intersection-observer": "^0.4.2",

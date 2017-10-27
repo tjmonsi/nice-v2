@@ -10,6 +10,10 @@
   @media screen and (max-width: 1440px) {
     margin: 0 20px;
   }
+
+  @media screen and (max-width: 900px) {
+    display: block;
+  }
 }
 
 .main-list {
@@ -21,28 +25,5 @@
 .sidebar {
   @include layout-flex-3;
 
-  @media screen and (max-width: 900px) {
-    display: none;
-  }
-}
 
-.add {
-  z-index: 200;
-  bottom: 20px;
-  right: 20px;
-  position: fixed;
-}
-
-.search-row {
-  @include layout-horizontal;
-  padding: 20px 0px 20px 0px;
-}
-
-.search-input {
-  @include layout-flex;
-}
-
-.search-button {
-  color: white;
-  background-color: #4286f4;
 }

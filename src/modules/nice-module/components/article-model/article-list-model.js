@@ -54,7 +54,7 @@ export default (superClass) => {
           
         // }
       })
-      console.log(list)
+      // console.log(list)
       list.sort((a, b) => {
         if (this.reverse) {
           return a.value - b.value

@@ -10,6 +10,15 @@
       debounce-duration="300"></iron-ajax>
     
     <div class="banner" style="background: url('/images/assets/banner-2.jpg') center/cover no-repeat">
+      <div class="banner-logo">
+        <img class="logo" src="/images/assets/rsz_1logo1.png">
+        <p class="logo-text">
+          The SAP focuses on laying the grounds for forging societal partnerships and innovation centers that seek to help end poverty and achieve food security. As part of establishing innovation centers, the SAP started building the NICE platform as a virtual hub for completed sustainable researches from different state universities and colleges (SUCs), research and development institutions (RDIs), government offices, and civil society organizations (CSOs).
+        </p>
+      </div>
+      
+      
+      
       <!--<img class="logo" src="/images/assets/logo1.png">-->
       <!--<p class="text">-->
       <!--  The SAP focuses on laying the grounds for forging societal partnerships and innovation centers that seek to help end poverty and achieve food security. As part of establishing innovation centers, the SAP started building the NICE platform as a virtual hub for completed sustainable researches from different state universities and colleges (SUCs), research and development institutions (RDIs), government offices, and civil society organizations (CSOs).-->
@@ -26,6 +35,55 @@
       <!--    </a>-->
       <!--  </template>-->
       <!--</p>-->
+    </div>
+    
+    <div class="banner-container">
+      
+      <div class="banner-row">
+        <div class="banner-column">
+          <p class="banner-text">
+            <iron-icon icon="nice:read" class="banner-icon"></iron-icon><br/>
+            <a href="/story" class="banner-button-anchor">
+              <paper-button class="banner-button">Read</paper-button>
+            </a><br/>
+            Read the stories behind the statistics and figures. Hear the stories of modern heroes--see their faces, the struggles and successes, and the aspirations and inspirations behind every tear and sweat that touch the soil.
+          </p>
+        </div>
+        <div class="banner-column">
+          <p class="banner-text">
+            <iron-icon icon="nice:access" class="banner-icon"></iron-icon><br/>
+            <a href="/dl" class="banner-button-anchor">
+              <paper-button class="banner-button">Access</paper-button>
+            </a><br/>
+            Access sustainable agricultural research from different SUCs, RDIs, etc. and downloadable materials that suit your needs--from organic-based practices to academic research and quick facts to photos.  
+          </p>
+        </div>
+        <div class="banner-column">
+          <p class="banner-text">
+            <iron-icon icon="nice:join" class="banner-icon"></iron-icon><br/>
+            <template is="dom-if" if="[[user]]">
+              <template is="dom-if" if="[[_checkRole(user, permission.role, 'member')]]">
+                <a href="/community" class="banner-button-anchor">
+                  <paper-button class="banner-button">Join</paper-button>
+                </a>
+              </template>
+              <template is="dom-if" if="[[!_checkRole(user, permission.role, 'member')]]">
+                <a href$="/community/[[user.uid]]" class="banner-button-anchor">
+                  <paper-button class="banner-button">Join</paper-button>
+                </a>
+              </template>
+            </template>
+            <template is="dom-if" if="[[!user]]">
+              <a href="/login" class="banner-button-anchor">
+                <paper-button class="banner-button">Join</paper-button>
+              </a>
+            </template>
+            <br/>
+            Join in the community of agripreneurs, entrepreneurs, researchers, students, and policy-makers. Collaborate, share ideas, and contribute stories and information. Let’s keep the sustainable agriculture movement going!
+          </p>
+        </div>
+      </div>
+      
     </div>
     
     <nice-story-row></nice-story-row>

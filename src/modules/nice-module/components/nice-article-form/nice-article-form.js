@@ -4,6 +4,9 @@ import 'paper-input/paper-textarea.html'
 import 'paper-progress/paper-progress.html'
 import 'paper-button/paper-button.html'
 import 'paper-toggle-button/paper-toggle-button.html'
+import 'paper-dropdown-menu/paper-dropdown-menu.html'
+import 'paper-listbox/paper-listbox.html'
+import 'paper-item/paper-item.html'
 import 'paper-dialog/paper-dialog.html'
 import '../nice-article/nice-article.js'
 import '../nice-image-form/nice-image-form.js'
@@ -288,6 +291,8 @@ class NiceArticleForm extends Polymer.GestureEventListeners(Category(Article(Pol
       updates[`${path}/body`] = this.article.body || ''
       updates[`${path}/published`] = this.article.published || false
       updates[`${path}/order`] = this.article.order || ''
+      updates[`${path}/year`] = this.article.year || ''
+      updates[`${path}/researchInstitution`] = this.article.researchInstitution || ''
       for (var i in this.article.categoryMain) {
         updates[`${path}/categoryMain/${i}/value`] = this.article.categoryMain[i].value ? true : null
       }

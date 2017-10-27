@@ -62,7 +62,6 @@
         '_checkCommodityId(commodityId)'
       ],
       attached: function() {
-        console.log(this.key)
         firebase.database().ref(`${this.pricewatchPath.commodityGroup}/${this.key}/groups`).once('value').then(snapshot => {
           var list = [];
           snapshot.forEach(item => {

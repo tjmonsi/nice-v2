@@ -8,6 +8,9 @@ export default (superClass) => {
         },
         categorySub: {
           type: Array
+        },
+        categoryResearchInstitution: {
+          type: Array
         }
       }
     }
@@ -16,9 +19,11 @@ export default (superClass) => {
       super.connectedCallback()
       this.__categoryMain = firebase.database().ref(`v2/categoryMain/data`)
       this.__categorySub = firebase.database().ref(`v2/categorySub/data`)
+      this.__categoryResearchInstitution = firebase.database().ref(`v2/categoryResearchInstitution/data`)
 
       this.__categoryMain.on('value', this._loadCategoryMainSnapshot, this._onError, this)
       this.__categorySub.on('value', this._loadCategorySubSnapshot, this._onError, this)
+      this.__categoryResearchInstitution.on('value', this._loadCategoryResearchInstitutionSnapshot, this._onError, this)
     }
 
     disconnectedCallback () {
@@ -26,6 +31,7 @@ export default (superClass) => {
 
       if (this.__categoryMain) this.__categoryMain.off('value', this._loadCategoryMainSnapshot, this)
       if (this.__categorySub) this.__categorySub.off('value', this._loadCategorySubSnapshot, this)
+      if (this.__categoryResearchInstitution) this.__categoryResearchInstitution.off('value', this._loadCategoryResearchInstitutionSnapshot, this)
     }
 
     _loadCategoryMainSnapshot (snapshot) {
@@ -54,6 +60,18 @@ export default (superClass) => {
         return 0;
       })
       this.categorySub = list
+    }
+    
+    _loadCategoryResearchInstitutionSnapshot (snapshot) {
+      var list = []
+      snapshot.forEach(child => {
+        var obj = Object.assign({}, child.val(), {
+          $key: child.key
+        })
+        list.push(obj)
+      })
+      // console.log(list)
+      this.categoryResearchInstitution = list
     }
 
     _onError (error) {

@@ -23,6 +23,13 @@
         <paper-textarea label="Address" value="{{member.address}}"></paper-textarea>
 
         <h1 class="title">Work Information</h1>
+        <paper-dropdown-menu label="Work Category">
+          <paper-listbox slot="dropdown-content" selected="{{member.userType}}" attr-for-selected="key">
+            <template is="dom-repeat" items="[[categoryUser]]">
+              <paper-item key$="[[item.$key]]">[[item.name]]</paper-item>  
+            </template>
+          </paper-listbox>
+        </paper-dropdown-menu><br/>
         <paper-input label="Work" value="{{member.position}}"></paper-input>
         <paper-textarea label="Work Description" value="{{member.work}}"></paper-textarea>
 

@@ -36,7 +36,7 @@ export default {
   checkMember: (self) => {
     const main = store.getState().main
     
-    if (main.user) {
+    if (main && main.user) {
       if (self.params) {
         if (self.params.edit === 'edit') {
           return main && main.permission && main.user && main.user.uid === self.params.id

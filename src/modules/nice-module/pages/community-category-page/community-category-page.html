@@ -5,10 +5,7 @@
     <template is="dom-if" if="[[!params.id]]">
       <div class="row">
         <nice-community-nav class="sidebar"></nice-community-nav>
-        <div class="main-list">
-          <nice-user-list type="permission" query="member" title="The Community"></nice-user-list>  
-        </div>
-        
+        <nice-user-list type="permission" query="member" class="main-list" title="The Community"></nice-user-list>
       </div>
     </template>
 

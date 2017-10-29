@@ -4,9 +4,25 @@
 
     <template is="dom-if" if="[[!params.id]]">
       <div class="row">
-        <nice-list class="main-list" type="story" title="Stories" query="published" limit="-1"></nice-list>
-        <aside class="sidebar">
-        </aside>
+        <nice-story-nav class="sidebar"></nice-story-nav>
+        <div class="main-list">
+          <div class="search-row">
+            <paper-input class="search-input" label="Search query" value="{{query}}"></paper-input>
+            <paper-button class="search-button" on-tap="search" raised>Search</paper-button>
+            <template is="dom-if" if="[[searchObj]]">
+              <paper-button class="search-button" on-tap="resetSearch" raised >Clear</paper-button>  
+            </template>
+          </div>
+          
+          <template is="dom-if" if="[[!searchObj]]">
+            <nice-list type="story" title="Stories" query="published" limit="-1"></nice-list>    
+          </template>
+          <template is="dom-if" if="[[searchObj]]">
+            <nice-list-two title="Stories" list="[[searchResults]]" ></nice-list-two>  
+          </template>
+          
+        </div>
+        
       </div>
 
     </template>

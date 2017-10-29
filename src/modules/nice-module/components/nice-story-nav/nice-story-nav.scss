@@ -1,0 +1,22 @@
+@import '../../styles/components/_typography.scss';
+
+:host {
+  padding: 20px;
+}
+
+.nav-list {
+  list-style-type: none;
+}
+
+.nav-anchor {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-item {
+  margin-bottom: 10px;
+  
+  .nav-list {
+    margin-top: 10px;
+  }
+}

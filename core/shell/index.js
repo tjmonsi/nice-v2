@@ -90,7 +90,8 @@ class AppShell extends QueryParamsMixin(LocationMixin(Polymer.Element)) {
   static get observers () {
     return [
       '_pathChanged(path)',
-      '_updateUrl(path, query, hash)'
+      '_updateUrl(path, query, hash)',
+      '_setParamsAndQueryParams(params, paramsObject)'
     ]
   }
 
@@ -259,6 +260,13 @@ class AppShell extends QueryParamsMixin(LocationMixin(Polymer.Element)) {
       this._loadPage(route)
     }
   }
+  
+  _setParamsAndQueryParams (params, queryParams) {
+    // console.log(params, queryParams)
+    var route = this.currentRoute;
+    if (route && this._routes && this._routes[route] && this._routes[route].element && this._routes[route].element._setProperty) this._routes[route].element._setProperty('params', params)
+    if (route && this._routes && this._routes[route] && this._routes[route].element && this._routes[route].element._setProperty) this._routes[route].element._setProperty('queryParams', queryParams)
+  }
 
   _loadPage (route) {
     const routes = Object.assign({}, routing, httpCodes)
@@ -271,6 +279,8 @@ class AppShell extends QueryParamsMixin(LocationMixin(Polymer.Element)) {
     }
     if (this._routes[route]) {
       routes[route]().then(() => {
+        // console.log(this.paramsObject)
+        this.set('currentRoute', route)
         this._routes[route].element._setProperty('params', this.params)
         this._routes[route].element._setProperty('queryParams', this.paramsObject)
         if (this._routes[route].element.reload) {

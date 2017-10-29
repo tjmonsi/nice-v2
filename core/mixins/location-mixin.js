@@ -3,6 +3,20 @@ import resolveUrl from '../utils/resolve-url.js'
 
 export default (superClass) => {
   return class extends superClass {
+    
+    static get properties () {
+    return {
+      // location-mixin
+      path: {
+        type: String
+      },
+
+      query: {
+        type: String,
+        observer: '_queryChanged'
+      }
+    }
+  }
     // static get observedAttributes () {
     //   const observedAttributes = super.observedAttributes || []
     //   return observedAttributes.concat(['path', 'query', 'urlSpaceRegex', 'hash', 'dwellTime', 'urlSpaceRegex', '_urlSpaceRegExp', '_lastChangedAt', '_initialized'])
@@ -75,7 +89,7 @@ export default (superClass) => {
       this._dontUpdateUrl = true
       this._hashChanged()
       this.path = window.decodeURIComponent(window.location.pathname)
-      this.query = window.location.search.substring(1)
+      this.set('query', window.location.search.substring(1))
       this._dontUpdateUrl = false
       this._updateUrl()
     }

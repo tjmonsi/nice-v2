@@ -33,17 +33,18 @@ export default (superClass) => {
     // }
 
     _queryChanged (query) {
+      // console.log(query)
       this.paramsString = query
     }
 
     _paramsStringChanged () {
       this._dontReact = true
-      this.paramsObject = this._decodeParams(this.paramsString)
+      // this.paramsObject = this._decodeParams(this.paramsString)
+      this.set('paramsObject', this._decodeParams(this.paramsString))
       this._dontReact = false
     }
 
     paramsObjectChanged () {
-      console.log('paramsObject')
       if (this._dontReact) {
         return
       }

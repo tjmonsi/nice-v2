@@ -1,0 +1,43 @@
+@import '../../styles/mixins/_flex.scss';
+@import '../../styles/components/_typography';
+
+:host {
+  display: block;
+  padding-bottom: 40px;
+}
+
+.title {
+  max-width: 1200px;
+  margin: 20px auto;
+
+  @media screen and (max-width: 1200px) {
+    margin: 20px;
+  }
+}
+
+hr {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row {
+  @include layout-horizontal;
+  @include layout-wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 1200px) {
+    margin: 0 20px;
+  }
+
+  @media screen and (max-width: 900px) {
+    display: block;
+    margin: 0px;
+  }
+}
+
+nice-small-column {
+  @include layout-flex;
+  min-width: 250px;
+  margin: 0 10px;
+}

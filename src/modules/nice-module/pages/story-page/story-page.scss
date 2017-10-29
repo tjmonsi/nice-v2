@@ -32,3 +32,17 @@
   right: 20px;
   position: fixed;
 }
+
+.search-row {
+  @include layout-horizontal;
+  padding: 20px 0px 20px 0px;
+}
+
+.search-input {
+  @include layout-flex;
+}
+
+.search-button {
+  color: white;
+  background-color: #4286f4;
+}

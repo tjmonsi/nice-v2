@@ -1,0 +1,18 @@
+<dom-module id="nice-resource-nav">
+  <template>
+    <link rel="stylesheet" href="./nice-resource-nav.scss">
+
+    <h1 class="title">Resources</h1>
+    <nav>
+      <ul class="nav-list">
+        <template is="dom-repeat" items="[[categorySub]]">
+          <li class="nav-item">
+            <a href="/resource?subcategory=[[item.$key]]" class="nav-anchor">
+              [[item.name]]
+            </a>
+          </li>
+        </template>
+      </ul>
+    </nav>
+  </template>
+</dom-module>

@@ -17,6 +17,10 @@ class PasTechnologyPage extends Permission(User(Polymer.Element))  {
       '_checkEdit(edit)'
     ]
   }
+  
+  reload () {
+    document.title = `Project NICE | Technologies Page`
+  }
 
   _checkEdit (edit) {
     return edit === 'edit'

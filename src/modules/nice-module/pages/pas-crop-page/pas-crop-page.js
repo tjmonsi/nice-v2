@@ -17,6 +17,10 @@ class PasCropPage extends Permission(User(Polymer.Element))  {
       '_checkEdit(edit)'
     ]
   }
+  
+  reload () {
+    document.title = `Project NICE | Farm Produce Page`
+  }
 
   _checkEdit (edit) {
     return edit === 'edit'

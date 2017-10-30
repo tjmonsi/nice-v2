@@ -14,6 +14,10 @@ class LoginPage extends Permission(User(Polymer.Element)) {
       '_checkUser(user.uid, permission.role, profile, profile.agree)'
     ]
   }
+  
+  reload () {
+    document.title = `Project NICE | Login Page`
+  }
 
   _checkUser (user, role, profile, agree) {
     if (!user) {

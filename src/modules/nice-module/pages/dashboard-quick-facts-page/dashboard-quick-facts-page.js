@@ -10,6 +10,10 @@ import './dashboard-quick-facts-page.html'
 class DashboardPage extends Permission(User(Polymer.Element)) {
   static get is () { return 'dashboard-quick-facts-page' }
   
+  reload () {
+    document.title = `Project NICE | Dashboard for Quick Facts Pages`
+  }
+  
   addItem () {
     var updates = {}
     var path = `v2/quickfacts`

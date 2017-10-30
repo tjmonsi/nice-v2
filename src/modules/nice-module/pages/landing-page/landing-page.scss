@@ -3,7 +3,7 @@
 
 .banner {
   display: block;
-  min-height: 60vh;
+  min-height: calc(100vh - 224px);
   // min-height: 250px;
   width: 100%;
   text-align: left;
@@ -38,11 +38,9 @@
 
 .text {
   color: white;
-  font-size: 13px;
-  max-width: 600px;
-  width: 35%;
-  margin-left: 50px;
-  margin-top: -20px;
+  font-size: 27px;
+  font-style: italic;
+  margin-top: 30px;
   text-align: center;
   padding-bottom: 50px;
   @media screen and (max-width: 840px) {
@@ -84,9 +82,7 @@ nice-small-column {
 }
 
 .banner-logo {
-  @apply --layout-horizontal;
-  @apply --layout-center;
-  @apply --layout-wrap;
+  text-align: center;
   
   @media screen and (max-width: 600px) {
     display: block;
@@ -95,11 +91,12 @@ nice-small-column {
   }
   max-width: 1200px;
   margin: 0 auto;
-  padding-top: 150px;
+  padding-top: 20px;
 }
 
 .logo {
-  width: 20%;
+  width: 40%;
+  min-width: 250px;
   
   @media screen and (max-width: 600px) {
     width: 60%;
@@ -173,4 +170,23 @@ nice-small-column {
   color: white;
   margin: 0;
   padding: 0 20px 20px;
+}
+
+.landing-about {
+  margin: -15px 0 0;
+  max-width: inherit;
+  
+  .flex {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.landing-about-container {
+  padding: 20px !important;
+  min-height: 300px;
+}
+
+.text-landing-about {
+  color: #666;
 }

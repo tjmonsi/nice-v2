@@ -7,7 +7,9 @@
         <nice-dl-nav class="sidebar"></nice-dl-nav>
         <div class="main-list">
           <div class="search-row">
-            <paper-input class="search-input" label="Search query" value="{{query}}"></paper-input>
+            <paper-input class="search-input" label="Search query" value="{{query}}">
+              <img src="https://www.algolia.com/static_assets/images/pricing/pricing_new/algolia-powered-by-14773f38.svg" slot="suffix">
+            </paper-input>
             <paper-button class="search-button" on-tap="search" raised>Search</paper-button>
             <template is="dom-if" if="[[searchObj]]">
               <paper-button class="search-button" on-tap="resetSearch" raised >Clear</paper-button>  

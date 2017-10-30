@@ -34,6 +34,10 @@ class CommunityPage extends Permission(User(Polymer.Element)) {
       }
     }
   }
+  
+  reload () {
+    document.title = `Project NICE | Community`
+  }
 
   static get observers () {
     return [

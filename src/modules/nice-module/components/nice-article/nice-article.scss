@@ -62,3 +62,21 @@
 img {
   width: 100%;
 }
+
+.body {
+  thead {
+    background: #CCC;
+  }
+  tr:nth-child(even) {
+    background: #CCC;
+  }
+  th {
+    padding: 10px;
+  }
+  td:first-child {
+    padding: 10px 10px 10px 20px;
+  }
+  td {
+    padding: 10px 20px;
+  }
+}

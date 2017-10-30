@@ -42,6 +42,10 @@ class ResourcePage extends Permission(User(Polymer.Element))  {
       '_checkFilter(queryParams.category, queryParams.subcategory, queryParams.type)'
     ]
   }
+  
+  reload () {
+    document.title = `Project NICE | Resources Page`
+  }
 
   _checkEdit (edit) {
     return edit === 'edit'

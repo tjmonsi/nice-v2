@@ -1,5 +1,9 @@
 const functions = require('firebase-functions')
 const admin = require('firebase-admin');
+const algoliasearch = require('algoliasearch');
+const settings = require('./settings.json'); 
+const client = algoliasearch(settings.algolia.apikey, settings.algolia.secretkey);
+const articles = client.initIndex('nice_articles');
 admin.initializeApp(functions.config().firebase);
 
 exports.createProfile = functions.auth.user().onCreate(event => {
@@ -49,8 +53,60 @@ exports.saveBasedOnPublish = functions.database.ref('/v2/{model}/data/{id}/')
       const mainSnapshot = results[0];
       const subSnapshot = results[1];
       const data = event.data.val();
+      const key = event.data.key
       
       console.log(data)
+      
+      var categoryMain = []
+      for (var i in data.categoryMain) {
+        categoryMain.push(i)
+      }
+      
+      var categorySub = []
+      for (var j in data.categorySub) {
+        categorySub.push(j)
+      }
+      
+      var types = []
+      for (var k in data.type) {
+        types.push(k)
+      }
+      
+      var obj = {
+        body: data.body,
+        categoryMain: categoryMain,
+        categorySub: categorySub,
+        datePublished: data.datePublished,
+        published: data.published,
+        summary: data.summary,
+        title: data.title,
+        year: data.year,
+        userType: data.userType,
+        position: data.position,
+        address: data.address,
+        lastName: data.lastName,
+        firstName: data.firstName,
+        work: data.work,
+        researchInstitution: data.researchInstitution,
+        types,
+        model: type,
+        objectID: key
+      }
+      
+      if (type !== 'permission') {
+        articles.saveObject(obj, (err, content) => {
+          if (err) return console.log(err);
+          console.log(content, model)
+        })  
+      } else {
+        articles.partialUpdateObject({
+          role: data.role,
+          objectID: key
+        }, (err, content) => {
+          if (err) return console.log(err);
+        })
+      }
+      
       
       if (data.published) {
         if (type === 'about') {

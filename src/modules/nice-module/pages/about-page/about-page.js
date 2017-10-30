@@ -17,6 +17,10 @@ class AboutPage extends Permission(User(Polymer.Element))  {
       '_checkEdit(edit)'
     ]
   }
+  
+  reload () {
+    document.title = `Project NICE | About Nice`
+  }
 
   _checkEdit (edit) {
     return edit === 'edit'

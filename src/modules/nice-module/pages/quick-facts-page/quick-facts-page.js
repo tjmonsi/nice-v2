@@ -17,6 +17,10 @@ class QuickFactsPage extends Permission(User(Polymer.Element))  {
       '_checkEdit(edit)'
     ]
   }
+  
+  reload () {
+    document.title = `Project NICE | Quick facts Page`
+  }
 
   _checkEdit (edit) {
     return edit === 'edit'

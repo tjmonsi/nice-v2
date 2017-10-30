@@ -17,7 +17,11 @@ class PasAmentitiesPage extends Permission(User(Polymer.Element))  {
       '_checkEdit(edit)'
     ]
   }
-
+  
+  reload () {
+    document.title = `Project NICE | Amenities Page`
+  }
+  
   _checkEdit (edit) {
     return edit === 'edit'
   }

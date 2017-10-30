@@ -6,23 +6,25 @@
     <nav>
       <ul class="nav-list">
         <template is="dom-repeat" items="[[categoryMain]]">
-          <li class="nav-item">
-            <a href="/story?category=[[item.$key]]" class="nav-anchor">
-              [[item.name]]
-            </a>
-            
-            <ul class="nav-list">
-              <template is="dom-repeat" items="[[categorySub]]" as="sub">
-                <template is="dom-if" if="[[isEqual(item.$key, sub.parent)]]">
-                  <li class="nav-item">
-                    <a href="/story?subcategory=[[sub.$key]]" class="nav-anchor">
-                      [[sub.name]]
-                    </a>
-                  </li>
+          <template is="dom-if" if="[[isEqual(item.$key, 'crops', 'technology', 'training')]]">
+            <li class="nav-item">
+              <a href="/story?category=[[item.$key]]" class="nav-anchor">
+                [[item.name]]
+              </a>
+              
+              <ul class="nav-list">
+                <template is="dom-repeat" items="[[categorySub]]" as="sub">
+                  <template is="dom-if" if="[[isEqual(item.$key, sub.parent)]]">
+                    <li class="nav-item">
+                      <a href="/story?subcategory=[[sub.$key]]" class="nav-anchor">
+                        [[sub.name]]
+                      </a>
+                    </li>
+                  </template>
                 </template>
-              </template>
-            </ul>
-          </li>
+              </ul>
+            </li>
+          </template>
         </template>
         
         <li class="nav-item">
@@ -33,7 +35,7 @@
         
         <li class="nav-item">
           <a href="/story?type=socialagripreneurs" class="nav-anchor">
-            Social Agripreneurs
+            Social Entrepreneurs
           </a>
         </li>
         

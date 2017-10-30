@@ -54,6 +54,10 @@ class DlOtherPartnersPage extends Permission(User(Polymer.Element))  {
       '_checkFilter(year, researchInstitution)'
     ]
   }
+  
+  reload () {
+    document.title = `Project NICE | Digital Libraries from Other Partners`
+  }
 
   _checkEdit (edit) {
     return edit === 'edit'

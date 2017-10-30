@@ -54,6 +54,10 @@ class DlPage extends Permission(User(Polymer.Element))  {
       '_checkFilter(year, researchInstitution)'
     ]
   }
+  
+  reload () {
+    document.title = `Project NICE | Digital Libraries`
+  }
 
   _checkEdit (edit) {
     return edit === 'edit'

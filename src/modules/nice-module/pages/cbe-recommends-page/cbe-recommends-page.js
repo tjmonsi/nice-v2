@@ -17,6 +17,10 @@ class CbeRecommendsPage extends Permission(User(Polymer.Element))  {
       '_checkEdit(edit)'
     ]
   }
+  
+  reload () {
+    document.title = `Project NICE | CBE Organic-based Farm Practices`
+  }
 
   _checkEdit (edit) {
     return edit === 'edit'

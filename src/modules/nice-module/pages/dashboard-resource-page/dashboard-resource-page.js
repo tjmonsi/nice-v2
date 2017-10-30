@@ -6,6 +6,10 @@ import './dashboard-resource-page.html'
 
 class DashboardPage extends Polymer.Element {
   static get is () { return 'dashboard-resource-page' }
+  
+  reload () {
+    document.title = `Project NICE | Dashboard for Resource Pages`
+  }
 }
 
 customElements.define(DashboardPage.is, DashboardPage)

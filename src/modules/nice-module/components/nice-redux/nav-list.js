@@ -4,14 +4,16 @@ export default [
     url: '/cbe',
     role: null
   },
-  {
-    label: 'Digital Library',
-    url: '/dl',
-    role: null
-  },
+  
   {
     label: 'Stories',
     url: '/story',
+    role: null
+  },
+  
+  {
+    label: 'Digital Library',
+    url: '/dl',
     role: null
   },
   {

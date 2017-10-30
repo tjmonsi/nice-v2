@@ -54,6 +54,10 @@ class DlStateUniversitiesPage extends Permission(User(Polymer.Element))  {
       '_checkFilter(year, researchInstitution)'
     ]
   }
+  
+  reload () {
+    document.title = `Project NICE | Digital Libraries from State Universities`
+  }
 
   _checkEdit (edit) {
     return edit === 'edit'

@@ -42,6 +42,10 @@ class StoryPage extends Permission(User(Polymer.Element))  {
       '_checkFilter(queryParams.category, queryParams.subcategory, queryParams.type)'
     ]
   }
+  
+  reload () {
+    document.title = `Project NICE | Stories`
+  }
 
   _checkEdit (edit) {
     return edit === 'edit'

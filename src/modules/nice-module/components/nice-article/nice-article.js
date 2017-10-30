@@ -20,6 +20,16 @@ class NiceArticle extends Permission(User(Article(Polymer.Element))) {
       }
     }
   }
+  
+  static get observers () {
+    return [
+      '_setTitle(article.title)'  
+    ]
+  }
+  
+  _setTitle (title) {
+    document.title = `Project NICE | ${title}`
+  }
 }
 
 customElements.define(NiceArticle.is, NiceArticle)

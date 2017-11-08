@@ -1,0 +1,19 @@
+<dom-module id="nice-feedback-item">
+  <template>
+    <link rel="stylesheet" href="./nice-feedback-item.scss">
+
+      <template is="dom-if" if="[[member.image]]">
+        <a href="/community/[[memberId]]" style="background: url([[member.image]]) center/cover no-repeat" class="image"></a>
+      </template>
+      <div class="text-area">
+        <p>
+          [[feedback.body]] 
+        </p>
+        <span class="meta">
+          - [[member.displayName]] : [[_renderDate(feedback.dateSent)]]
+        </span>
+      </div>
+        
+    </section>
+  </template>
+</dom-module>

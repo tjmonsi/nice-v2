@@ -8,6 +8,14 @@
     <h1 class="title">{{article.title}}</h1>
 
     <div class="meta">
+      <a href="https://www.facebook.com/sharer.php?u=[[_thisUrl()]]" class="meta-icon" target="_blank">
+        <paper-icon-button src="https://firebasestorage.googleapis.com/v0/b/project-nice-polymer.appspot.com/o/icons%2Ffacebook_circle_color-128.png?alt=media&token=e3b0bb20-d29b-4da3-b6de-80a17f561797"></paper-icon-button>
+      </a>
+      <a href="https://twitter.com/share?text=[[_textToUrl(article.title)]]&url=[[_thisUrl()]]" class="meta-icon" target="_blank">
+        <paper-icon-button src="https://firebasestorage.googleapis.com/v0/b/project-nice-polymer.appspot.com/o/icons%2Ftwitter_circle_color-256.png?alt=media&token=0a32bc85-8464-4b97-811b-ec1c3aa750bf"></paper-icon-button>
+      </a>
+      <!--<a href="#">-->
+      <paper-icon-button icon="nice:email" class="meta-icon" on-tap="_sendEmail"></paper-icon-button>
       {{_renderDate(article.datePublished)}}
     </div>
 
@@ -41,6 +49,34 @@
         
       </div>
     </template>
-
+    
+    <template is="dom-if" if="[[articleId]]">
+      <template is="dom-if" if="[[_checkRole(user.uid, permission.role, 'member')]]">
+        <div class="feedback-container">
+          <hr>
+          <nice-feedback-form type="[[type]]" article-id="[[articleId]]"></nice-feedback-form>
+          <hr>
+          
+          <template is="dom-if" if="[[_checkRole(user.uid, permission.role, 'staff')]]">
+            <nice-feedback-list feedback-query="[[type]]::[[articleId]]"></nice-feedback-list>
+          </template>  
+        </div>
+        
+      </template>
+    </template>
+    <!-- send email -->
+    <paper-dialog id="email-dialog">
+      <div class="dialog-box">
+        <h3>Send Email</h3>
+        <paper-input id="email" label="email" type="email" auto-validate required>
+          <iron-icon icon="default:email" prefix></iron-icon>
+        </paper-input>
+        <a href="mailto:[[emailAddress]]?Subject=[[emailSubject]]" id="emailLink">
+          <paper-button on-tap="_tapSendEmail">Send Email</paper-button>
+        </a>
+        <paper-button on-tap="_closeSendEmail">Close</paper-button>    
+      </div>
+    
+    </paper-dialog>
   </template>
 </dom-module>

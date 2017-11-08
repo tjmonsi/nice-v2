@@ -1,0 +1,9 @@
+<dom-module id="nice-feedback-list">
+  <template>
+    <link rel="stylesheet" href="./nice-feedback-list.scss">
+
+    <template is="dom-repeat" items="[[feedbackList]]">
+      <nice-feedback-item feedback-id="[[item.$key]]"></nice-feedback-item>
+    </template>
+  </template>
+</dom-module>

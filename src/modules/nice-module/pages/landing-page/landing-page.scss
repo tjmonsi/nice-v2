@@ -173,7 +173,7 @@ nice-small-column {
 }
 
 .landing-about {
-  margin: -15px 0 0;
+  margin: -28px 0 0;
   max-width: inherit;
   
   .flex {
@@ -189,4 +189,17 @@ nice-small-column {
 
 .text-landing-about {
   color: #666;
+}
+
+.contact {
+  background: #666;
+  color: white;
+  padding: 10px 0px;
+}
+
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+  font-style: normal;
 }

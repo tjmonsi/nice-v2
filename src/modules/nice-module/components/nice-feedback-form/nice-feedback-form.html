@@ -1,0 +1,19 @@
+<dom-module id="nice-feedback-form">
+  <template>
+    <link rel="stylesheet" href="./nice-feedback-form.scss">
+
+    <div class="row">
+      <template is="dom-if" if="[[profile.image]]">
+        <div style="background: url([[profile.image]]) center/cover no-repeat" class="image"></div>
+      </template>
+
+      <section class="text-area row">
+        <div class="body-area">
+          <paper-textarea id="body" label="Feedback"></paper-textarea>
+        </div>
+
+        <paper-button class="send" on-tap="_sendFeedback" raised>Send</paper-button>
+      </section>
+    </div>
+  </template>
+</dom-module>

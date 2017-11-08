@@ -93,87 +93,95 @@ exports.saveBasedOnPublish = functions.database.ref('/v2/{model}/data/{id}/')
         objectID: key
       }
       
-      if (type !== 'permission') {
+      if (type !== 'permission' && type !== 'feedback') {
         articles.saveObject(obj, (err, content) => {
           if (err) return console.log(err);
           console.log(content, model)
-        })  
-      } else {
+        })
+        
+        if (data.published) {
+          if (type === 'about') {
+            updates[`/query/published/${id}/value`] = data.order
+          } else {
+            updates[`/query/published/${id}/value`] = admin.database.ServerValue.TIMESTAMP
+          }
+          
+          updates[`/query/draft/${id}`] = null
+        } else {
+          updates[`/query/draft/${id}/value`] = admin.database.ServerValue.TIMESTAMP
+          updates[`/query/published/${id}`] = null
+        }
+        
+        mainSnapshot.forEach(item => {
+          if (data.categoryMain && data.categoryMain[item.key] && data.published) {
+            updates[`/query/${item.key}/${id}/value`] = admin.database.ServerValue.TIMESTAMP
+          } else {
+            updates[`/query/${item.key}/${id}`] = null
+          }
+        })
+        
+        subSnapshot.forEach(item => {
+          if (data.categorySub && data.categorySub[item.key] && data.published) {
+            updates[`/query/${item.key}/${id}/value`] = admin.database.ServerValue.TIMESTAMP
+          } else {
+            updates[`/query/${item.key}/${id}`] = null
+          }
+        })
+        
+        if (data.type && data.type.farmer && data.type.farmer.value && data.published) {
+          updates[`/query/farmer/${id}/value`] = admin.database.ServerValue.TIMESTAMP
+        } else {
+          updates[`/query/farmer/${id}`] = null
+        }
+        
+        if (data.type && data.type.socialagripreneurs && data.type.socialagripreneurs.value && data.published) {
+          updates[`/query/socialagripreneurs/${id}/value`] = admin.database.ServerValue.TIMESTAMP
+        } else {
+          updates[`/query/socialagripreneurs/${id}`] = null
+        }
+        
+        if (data.type && data.type.agroprocessing && data.type.agroprocessing.value && data.published) {
+          updates[`/query/agroprocessing/${id}/value`] = admin.database.ServerValue.TIMESTAMP
+        } else {
+          updates[`/query/agroprocessing/${id}`] = null
+        }
+        
+        if (data.type && data.type.bayanihan && data.type.bayanihan.value && data.published) {
+          updates[`/query/bayanihan/${id}/value`] = admin.database.ServerValue.TIMESTAMP
+        } else {
+          updates[`/query/bayanihan/${id}`] = null
+        }
+        
+        if (data.type && data.type.stateuniversities && data.type.stateuniversities.value && data.published) {
+          updates[`/query/stateuniversities/${id}/value`] = admin.database.ServerValue.TIMESTAMP
+        } else {
+          updates[`/query/stateuniversities/${id}`] = null
+        }
+        
+        if (data.type && data.type.otherpartners && data.type.otherpartners.value && data.published) {
+          updates[`/query/otherpartners/${id}/value`] = admin.database.ServerValue.TIMESTAMP
+        } else {
+          updates[`/query/otherpartners/${id}`] = null
+        }
+        
+        return model.update(updates);
+        
+      } else if (type === 'permission') {
+        
         articles.partialUpdateObject({
           role: data.role,
           objectID: key
         }, (err, content) => {
           if (err) return console.log(err);
         })
-      }
-      
-      
-      if (data.published) {
-        if (type === 'about') {
-          updates[`/query/published/${id}/value`] = data.order
-        } else {
-          updates[`/query/published/${id}/value`] = admin.database.ServerValue.TIMESTAMP
-        }
         
-        updates[`/query/draft/${id}`] = null
-      } else {
-        updates[`/query/draft/${id}/value`] = admin.database.ServerValue.TIMESTAMP
-        updates[`/query/published/${id}`] = null
+        return Promise.resolve();
+        
+      } else if (type === 'feedback') {
+        updates[`/query/all/${id}/value`] = admin.database.ServerValue.TIMESTAMP
+        updates[`/query/${data.type}::${data.articleId}/${id}/value`] = admin.database.ServerValue.TIMESTAMP
+        return model.update(updates);
       }
-      
-      mainSnapshot.forEach(item => {
-        if (data.categoryMain && data.categoryMain[item.key] && data.published) {
-          updates[`/query/${item.key}/${id}/value`] = admin.database.ServerValue.TIMESTAMP
-        } else {
-          updates[`/query/${item.key}/${id}`] = null
-        }
-      })
-      
-      subSnapshot.forEach(item => {
-        if (data.categorySub && data.categorySub[item.key] && data.published) {
-          updates[`/query/${item.key}/${id}/value`] = admin.database.ServerValue.TIMESTAMP
-        } else {
-          updates[`/query/${item.key}/${id}`] = null
-        }
-      })
-      
-      if (data.type && data.type.farmer && data.type.farmer.value && data.published) {
-        updates[`/query/farmer/${id}/value`] = admin.database.ServerValue.TIMESTAMP
-      } else {
-        updates[`/query/farmer/${id}`] = null
-      }
-      
-      if (data.type && data.type.socialagripreneurs && data.type.socialagripreneurs.value && data.published) {
-        updates[`/query/socialagripreneurs/${id}/value`] = admin.database.ServerValue.TIMESTAMP
-      } else {
-        updates[`/query/socialagripreneurs/${id}`] = null
-      }
-      
-      if (data.type && data.type.agroprocessing && data.type.agroprocessing.value && data.published) {
-        updates[`/query/agroprocessing/${id}/value`] = admin.database.ServerValue.TIMESTAMP
-      } else {
-        updates[`/query/agroprocessing/${id}`] = null
-      }
-      
-      if (data.type && data.type.bayanihan && data.type.bayanihan.value && data.published) {
-        updates[`/query/bayanihan/${id}/value`] = admin.database.ServerValue.TIMESTAMP
-      } else {
-        updates[`/query/bayanihan/${id}`] = null
-      }
-      
-      if (data.type && data.type.stateuniversities && data.type.stateuniversities.value && data.published) {
-        updates[`/query/stateuniversities/${id}/value`] = admin.database.ServerValue.TIMESTAMP
-      } else {
-        updates[`/query/stateuniversities/${id}`] = null
-      }
-      
-      if (data.type && data.type.otherpartners && data.type.otherpartners.value && data.published) {
-        updates[`/query/otherpartners/${id}/value`] = admin.database.ServerValue.TIMESTAMP
-      } else {
-        updates[`/query/otherpartners/${id}`] = null
-      }
-      
-      return model.update(updates);
     })
   })
 

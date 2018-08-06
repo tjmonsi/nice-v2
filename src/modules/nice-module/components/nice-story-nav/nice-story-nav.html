@@ -5,31 +5,49 @@
     <h1 class="title">Stories</h1>
     <nav>
       <ul class="nav-list">
-        <template is="dom-repeat" items="[[categoryMain]]">
-          <template is="dom-if" if="[[isEqual(item.$key, 'crops', 'technology', 'training')]]">
-            <li class="nav-item">
-              <a href="/story?category=[[item.$key]]" class="nav-anchor">
-                [[item.name]]
-              </a>
+        <!--<template is="dom-repeat" items="[[categoryMain]]">-->
+        <!--  <template is="dom-if" if="[[isEqual(item.$key, 'crops', 'technology', 'training')]]">-->
+        <!--    <li class="nav-item">-->
+        <!--      <a href="/story?category=[[item.$key]]" class="nav-anchor">-->
+        <!--        [[item.name]]-->
+        <!--      </a>-->
               
-              <ul class="nav-list">
-                <template is="dom-repeat" items="[[categorySub]]" as="sub">
-                  <template is="dom-if" if="[[isEqual(item.$key, sub.parent)]]">
-                    <li class="nav-item">
-                      <a href="/story?subcategory=[[sub.$key]]" class="nav-anchor">
-                        [[sub.name]]
-                      </a>
-                    </li>
-                  </template>
-                </template>
-              </ul>
-            </li>
-          </template>
-        </template>
+              <!--<ul class="nav-list">-->
+              <!--  <template is="dom-repeat" items="[[categorySub]]" as="sub">-->
+              <!--    <template is="dom-if" if="[[isEqual(item.$key, sub.parent)]]">-->
+              <!--      <li class="nav-item">-->
+              <!--        <a href="/story?subcategory=[[sub.$key]]" class="nav-anchor">-->
+              <!--          [[sub.name]]-->
+              <!--        </a>-->
+              <!--      </li>-->
+              <!--    </template>-->
+              <!--  </template>-->
+              <!--</ul>-->
+        <!--    </li>-->
+        <!--  </template>-->
+        <!--</template>-->
+        
+        <li class="nav-item">
+          <a href="/story?type=topstories" class="nav-anchor">
+            Top Stories
+          </a>
+        </li>
         
         <li class="nav-item">
           <a href="/story?type=farmer" class="nav-anchor">
-            Farmer
+            Farmers
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="/story?type=products" class="nav-anchor">
+            Products, training, and support services
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="/story?type=sustainable" class="nav-anchor">
+            Sustainable agricultural technology
           </a>
         </li>
         
@@ -48,6 +66,12 @@
         <li class="nav-item">
           <a href="/story?type=bayanihan" class="nav-anchor">
             Bayanihan Economics
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="/story?type=otherstories" class="nav-anchor">
+            Other Stories
           </a>
         </li>
       </ul>

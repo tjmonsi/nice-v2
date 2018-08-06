@@ -57,6 +57,7 @@
         }
       },
       _processData: function(data) {
+        console.log(data)
         document.querySelector('app-shell').showMessage('Processing...', null, null, null, 5000)
         this._upload = true;
         // check meta
@@ -107,10 +108,10 @@
             }
           }
         }
-        firebase.database().ref().update(updates).then(() => {
-          document.querySelector('app-shell').showMessage('File Uploaded and Processed', null, null, null, 5000)
-          this._upload = false;
-        }).catch(this._catchError.bind(this));
+        // firebase.database().ref().update(updates).then(() => {
+        //   document.querySelector('app-shell').showMessage('File Uploaded and Processed', null, null, null, 5000)
+        //   this._upload = false;
+        // }).catch(this._catchError.bind(this));
       }
     });
   </script>

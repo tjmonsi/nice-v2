@@ -134,6 +134,18 @@ exports.saveBasedOnPublish = functions.database.ref('/v2/{model}/data/{id}/')
           updates[`/query/farmer/${id}`] = null
         }
         
+        if (data.type && data.type.topstories && data.type.topstories.value && data.published) {
+          updates[`/query/topstories/${id}/value`] = admin.database.ServerValue.TIMESTAMP
+        } else {
+          updates[`/query/topstories/${id}`] = null
+        }
+        
+        if (data.type && data.type.otherstories && data.type.otherstories.value && data.published) {
+          updates[`/query/otherstories/${id}/value`] = admin.database.ServerValue.TIMESTAMP
+        } else {
+          updates[`/query/otherstories/${id}`] = null
+        }
+        
         if (data.type && data.type.socialagripreneurs && data.type.socialagripreneurs.value && data.published) {
           updates[`/query/socialagripreneurs/${id}/value`] = admin.database.ServerValue.TIMESTAMP
         } else {

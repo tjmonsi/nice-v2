@@ -12,7 +12,7 @@ export default [
   },
   
   {
-    label: 'Digital Library',
+    label: 'Library',
     url: '/dl',
     role: null
   },

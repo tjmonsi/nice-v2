@@ -1,0 +1,58 @@
+<dom-module id="carousel-image">
+  <template>
+    <link rel="stylesheet" href="./carousel-image.scss">
+    
+    <!-- Styles MUST be inside template -->
+    <style>
+  
+      :host {
+        display: block;
+        position: relative;
+        overflow: hidden;
+      }
+    
+      div > ::slotted(:not([selected])) {
+        display: none;
+      }
+      
+      button {
+        position: absolute;
+        top: calc(50% - 20px);
+        padding: 0;
+        line-height: 40px;
+        border: none;
+        background: none;
+        color: #333;
+        font-size: 40px;
+        font-weight: bold;
+        opacity: 0.7;
+        cursor: pointer;
+      }
+      
+      button:hover,
+      button:focus {
+        opacity: 1;
+      }
+      
+      #prevBtn {
+        left: 12px;
+      }
+      
+      #nextBtn {
+        right: 12px;
+      }
+      
+      button[disabled] {
+        opacity: 0.4;
+      }
+  
+    </style>
+  
+    <div>
+      <slot></slot>
+    </div>
+    
+    <button id="prevBtn" on-click="previous">&#x276E;</button>
+    <button id="nextBtn" on-click="next">&#x276F;</button>
+  </template>
+</dom-module>

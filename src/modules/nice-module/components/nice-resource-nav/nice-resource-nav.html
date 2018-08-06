@@ -5,13 +5,39 @@
     <h1 class="title">Resources</h1>
     <nav>
       <ul class="nav-list">
-        <template is="dom-repeat" items="[[categorySub]]">
-          <li class="nav-item">
-            <a href="/resource?subcategory=[[item.$key]]" class="nav-anchor">
-              [[item.name]]
-            </a>
-          </li>
-        </template>
+        <!--<template is="dom-repeat" items="[[categoryMain]]">-->
+        <!--  <li class="nav-item">-->
+        <!--    <a href="/resource?subcategory=[[item.$key]]" class="nav-anchor">-->
+        <!--      [[item.name]]-->
+        <!--    </a>-->
+        <!--  </li>-->
+        <!--</template>-->
+        
+        <li class="nav-item">
+          <a href="/resource?type=productionguide" class="nav-anchor">
+            Production Guide
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="/resource?type=investmentguide" class="nav-anchor">
+            Investment Guide
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="/resource?type=policyguide" class="nav-anchor">
+            Policies
+          </a>
+        </li>
+        
+        
+        
+        <!--<li class="nav-item">-->
+        <!--  <a href="/resource?type=bayanihan" class="nav-anchor">-->
+        <!--    Bayanihan Economics-->
+        <!--  </a>-->
+        <!--</li>-->
       </ul>
     </nav>
   </template>

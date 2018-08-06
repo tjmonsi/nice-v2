@@ -5,10 +5,23 @@ import './nice-headline.html'
 class NiceHeadline extends Article(Polymer.Element) {
   static get is () { return 'nice-headline' }
   
+  static get properties () {
+    return {
+      noSummary: {
+        type: Boolean,
+        value: false
+      }
+    }
+  }
+  
   static get observers () {
     return [
       '_checkImage(article.bannerImage)'
     ]
+  }
+  
+  _smallBanner (noSummary) {
+    return noSummary ? 'small-banner' : '';
   }
   
   _checkImage (image) {

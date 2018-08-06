@@ -1,0 +1,14 @@
+<dom-module id="nice-story-block">
+  <template>
+    <link rel="stylesheet" href="./nice-story-block.scss">
+
+    <h1 class="title">[[title]]</h1>
+    <hr>
+    
+    <div class="grid">
+      <template is="dom-repeat" items="[[list]]">
+        <nice-headline class="item" article-id="[[item.$key]]" type="[[type]]" no-summary="[[index]]"></nice-headline>
+      </template>
+    </div>
+  </template>
+</dom-module>

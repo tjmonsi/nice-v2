@@ -14,7 +14,7 @@ import Permission from '../../components/permission-model/permission-model.js'
 import User from '../../components/user-model/user-model.js'
 import './dl-page.html'
 
-const client = algoliasearch("KPABG9X1BC", "67ce428bbd3db7a52768cd22ce4d995c");
+const client = algoliasearch("0M86UIGKEC", "c185f46b9b8fd9e6de36ddbb214976de");
 const index = client.initIndex('nice_articles')
 
 class DlPage extends Permission(User(Polymer.Element))  {
@@ -37,6 +37,9 @@ class DlPage extends Permission(User(Polymer.Element))  {
       researchInstitution: {
         type: String
       },
+      type: {
+        type: String
+      },
       searchObj: {
         type: Object,
         value: null
@@ -51,7 +54,7 @@ class DlPage extends Permission(User(Polymer.Element))  {
   static get observers () {
     return [
       '_checkEdit(edit)',
-      '_checkFilter(year, researchInstitution)'
+      '_checkFilter(year, researchInstitution, type)'
     ]
   }
   
@@ -63,9 +66,9 @@ class DlPage extends Permission(User(Polymer.Element))  {
     return edit === 'edit'
   }
   
-  _checkFilter (year, researchInstitution) {
+  _checkFilter (year, researchInstitution, type) {
     // console.log(year, researchInstitution)
-    if (year || researchInstitution) {
+    if (year || researchInstitution || type) {
       this.search();
     } else if (!this.query) {
       this.resetSearch();
@@ -81,6 +84,10 @@ class DlPage extends Permission(User(Polymer.Element))  {
     
     if (this.researchInstitution) {
       filters.push(`researchInstitution:${this.researchInstitution}`)
+    }
+    
+    if (this.type) {
+      filters.push(`types:${this.type}`)
     }
     
     var searchObj = {

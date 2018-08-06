@@ -14,7 +14,7 @@ import Permission from '../../components/permission-model/permission-model.js'
 import User from '../../components/user-model/user-model.js'
 import './dl-state-universities-page.html'
 
-const client = algoliasearch("KPABG9X1BC", "67ce428bbd3db7a52768cd22ce4d995c");
+const client = algoliasearch("0M86UIGKEC", "c185f46b9b8fd9e6de36ddbb214976de");
 const index = client.initIndex('nice_articles')
 
 class DlStateUniversitiesPage extends Permission(User(Polymer.Element))  {

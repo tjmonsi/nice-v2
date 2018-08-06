@@ -39,15 +39,25 @@
         <div class="category-row">
           <div class="category-column">
             <h2 class="category-title">Top-Level Category</h2>
+            
+            <template is="dom-if" if="[[_isEqual(type, 'story')]]">
+              <paper-toggle-button checked="[[article.type.topstories.value]]" data-key="topstories" on-checked-changed="toggleType">
+                Top Stories
+              </paper-toggle-button><br/>
+              
+              <paper-toggle-button checked="[[article.type.otherstories.value]]" data-key="otherstories" on-checked-changed="toggleType">
+                Other Stories
+              </paper-toggle-button><br/>
+            </template>
 
             <template is="dom-repeat" items="[[categoryMain]]">
               <paper-toggle-button data-key$="[[item.$key]]" data-level="categoryMain" checked="[[_toggleCategory('categoryMain', item.$key)]]" on-checked-changed="toggleCategory">
                 [[item.name]]
               </paper-toggle-button><br/>
             </template>
-
+            
             <paper-toggle-button checked="[[article.type.farmer.value]]" data-key="farmer" on-checked-changed="toggleType">
-              Farmer
+              Farmers
             </paper-toggle-button><br/>
             
             <!--<template is="dom-if" if="[[_isEqual(type, 'story')]]">-->
@@ -60,7 +70,25 @@
               <paper-toggle-button checked="[[article.type.bayanihan.value]]" data-key="bayanihan" on-checked-changed="toggleType">
                 Bayanihan
               </paper-toggle-button><br/>
+              <paper-toggle-button checked="[[article.type.products.value]]" data-key="products" on-checked-changed="toggleType">
+                Products, Training, and Support Services
+              </paper-toggle-button><br/>
+              <paper-toggle-button checked="[[article.type.sustainable.value]]" data-key="sustainable" on-checked-changed="toggleType">
+                Sustainable Agricultural Technology
+              </paper-toggle-button><br/>
             <!--</template>-->
+            
+            <template is="dom-if" if="[[_isEqual(type, 'resource')]]">
+              <paper-toggle-button checked="[[article.type.productionguide.value]]" data-key="productionguide" on-checked-changed="toggleType">
+                Production Guide
+              </paper-toggle-button><br/>
+              <paper-toggle-button checked="[[article.type.investmentguide.value]]" data-key="investmentguide" on-checked-changed="toggleType">
+                Investment Guide
+              </paper-toggle-button><br/>
+              <paper-toggle-button checked="[[article.type.policyguide.value]]" data-key="policyguide" on-checked-changed="toggleType">
+                Policies
+              </paper-toggle-button><br/>
+            </template>
           </div>
 
           <div class="category-column">

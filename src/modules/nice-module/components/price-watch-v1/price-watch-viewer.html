@@ -65,8 +65,11 @@
           var list = [];
           snapshot.forEach(item => {
             var obj = item.val();
-            obj.$key = item.key
-            list.push(obj)
+            if (obj && typeof(obj) !== 'object') {
+              obj.$key = item.key
+              list.push(obj)  
+            }
+            
           })
           // console.log(list)
           this.markets = list;

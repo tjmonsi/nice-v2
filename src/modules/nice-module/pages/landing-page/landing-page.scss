@@ -1,15 +1,116 @@
 @import '../../styles/components/_page.scss';
+@import '../../styles/mixins/_flex.scss';
 @import '../../styles/components/_typography.scss';
 
 .banner {
-  display: block;
+  // display: block;
+  position: relative;
   min-height: calc(100vh - 224px);
   // min-height: 250px;
   width: 100%;
-  text-align: left;
-  @media screen and (max-width: 840px) {
-    text-align: center;
+  
+  // text-align: left;
+  // @media screen and (max-width: 840px) {
+  //   text-align: center;
+  // }
+}
+
+.banner-1-container {
+  position: absolute;
+  margin-top: 100px;
+  bottom: 100px;
+  left: 0px;
+  width: 100%;
+}
+
+.banner-1-image {
+  max-width: 300px;
+  min-width: 175px;
+  width: 30%;
+}
+
+.banner-1 {
+  background: white;
+  padding: 10px 0px;
+}
+
+.banner-1-text-container {
+  background: #4488EF;
+  color: white;
+  padding: 10px 0px;
+}
+
+.banner-1-text {
+  background: #4488EF;
+  padding: 0px 20px;
+  margin: 0px;
+}
+
+.banner-2-container {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  margin-top: 100px;
+  width: 100%;
+  @include layout-horizontal;
+}
+
+.banner-2-bar {
+  margin-left: 100px;
+  width: 20px;
+  background: #4488EF;
+}
+
+.banner-2-text {
+  @include layout-flex;
+  font-size: 25px;
+  color: white;
+  margin-bottom: 100px;
+  padding-right: 50px;
+  padding-left: 10px;
+  
+  p {
+    margin: 0px;
   }
+}
+
+.banner-3-container {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  margin-top: 100px;
+}
+
+.banner-3-text {
+  margin-bottom: 20px;
+  margin-left: 50px;
+  padding: 10px 20px;
+  color: white;
+  background: #4488EF;
+  
+  h1 {
+    margin: 10px 0 0 0;
+  }
+}
+
+.carousel {
+  width: 100%;
+  contain: content;
+  min-height: calc(100vh - 224px);
+}
+
+// .carousel::after {
+//   display: block;
+//   content: '';
+  
+//   // padding-top: 75%; /* 4:3 = height is 75% of width */
+// }
+
+.carousel .banner {
+  position: absolute;
+  width: 100%;
+  // height: 100%;
 }
 
 // .logo {
@@ -151,11 +252,19 @@ nice-small-column {
   
   color: #666;
   margin-bottom: 20px;
+  
+  &.blue {
+    background: #4488EF;
+    margin: 0;
+    color: #fff;
+  }
 }
 
 .banner-button-anchor {
   color: inherit;
   text-decoration: none;
+  
+  
 }
 
 .dl {
@@ -202,4 +311,46 @@ nice-small-column {
   margin: 0 auto;
   padding-top: 20px;
   font-style: normal;
+}
+
+.banner-inner-container {
+  min-height: calc(100vh - 224px);
+  width: 100%;
+  @include layout;
+  @include layout-center;
+}
+
+.banner-left-container {
+  margin: 20px auto 20px 40px;
+  background: rgba(255, 255, 255, 0.8);
+  max-width: 40%;
+  text-align: center;
+  padding: 20px;
+  color: #000;
+  
+  @media screen and (max-width: 600px) {
+    max-width: 90%;
+  }
+}
+
+.banner-right-container {
+  margin: 20px 40px 20px auto;
+  background: rgba(255, 255, 255, 0.8);
+  max-width: 40%;
+  text-align: center;
+  padding: 20px;
+  color: #000;
+  
+  @media screen and (max-width: 600px) {
+    max-width: 90%;
+  }
+}
+  
+.banner-image {
+  width: 250px;
+}
+
+.banner-row-image {
+  width: 80%;
+  margin-bottom: 20px;
 }

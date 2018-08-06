@@ -27,6 +27,7 @@ bower_components/
 
 settings
 settings.json
+security.json
 
 build
 public

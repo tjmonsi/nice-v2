@@ -14,7 +14,7 @@ import Permission from '../../components/permission-model/permission-model.js'
 import User from '../../components/user-model/user-model.js'
 import './resource-page.html'
 
-const client = algoliasearch("KPABG9X1BC", "67ce428bbd3db7a52768cd22ce4d995c");
+const client = algoliasearch("0M86UIGKEC", "c185f46b9b8fd9e6de36ddbb214976de");
 const index = client.initIndex('nice_articles')
 
 class ResourcePage extends Permission(User(Polymer.Element))  {
@@ -86,6 +86,8 @@ class ResourcePage extends Permission(User(Polymer.Element))  {
       filters: filters.join(' AND ')
     }
     this.searchObj = searchObj;
+    
+    console.log(this.searchObj)
     
     index.search(this.searchObj, (err, content) => {
       if (err) return console.error(err);

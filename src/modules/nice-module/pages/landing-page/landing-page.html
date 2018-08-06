@@ -8,14 +8,169 @@
       handle-as="json"
       on-response="handleResponse"
       debounce-duration="300"></iron-ajax>
-    
-    <div class="banner" style="background: url('/images/assets/banner-2.jpg') top/cover no-repeat">
-      <div class="banner-logo">
-        <!--<img class="logo" src="/images/assets/nice-logo-for-banner.png">-->
-        <p class="text">
-          "Sustainable agriculture within reach."
-        </p>
+      
+    <carousel-image class="carousel">
+      <div class="banner" style="background: url('/images/assets/Banner1.jpg') center/cover no-repeat">
+        <div class="banner-inner-container">
+          <div class="banner-right-container">
+            <img src="/images/assets/rsz_nice_logo.png" class="banner-image">
+            <p class="banner-text">
+              The NICE Platform is a community hub for agripreneurs, social entrepreneurs, researchers, students, LGUs, policy-makers,
+              and other sustainable agriculture practitioners; a knowledge mine for organic production guides and completed research on
+              sustainable agriculture from different SUCs, RDIs, etc.; and repository of stories of our modern heroes who contributes to 
+              the advancement and promotion of sustainable agriculture.
+            </p>
+          </div>
+        </div>
+        <!--<div class="banner-1-container">-->
+          <!--<img src="/images/assets/rsz_nice_logo.png" class="banner-1-image">-->
+          <!--<div class="banner-1">-->
+          <!--  <div class="banner-1-text-container">-->
+          <!--    <p class="banner-1-text">-->
+          <!--      The NICE Platform is a community hub for agripreneurs, social entrepreneurs, researchers, students, LGUs, policy-makers,-->
+          <!--      and other sustainable agriculture practitioners; a knowledge mine for organic production guides and completed research on-->
+          <!--      sustainable agriculture from different SUCs, RDIs, etc.; and repository of stories of our modern heroes who contributes to -->
+          <!--      the advancement and promotion of sustainable agriculture.-->
+          <!--    </p>-->
+          <!--  </div>-->
+          <!--</div>  -->
+        <!--</div>-->
       </div>
+      <div class="banner" style="background: url('/images/assets/Banner2.jpg') center/cover no-repeat">
+        <div class="banner-inner-container">
+          <div class="banner-left-container">
+            <p class="banner-text">
+              Read the stories behind the statistics and figures. Hear the stories of modern heroes--see their faces, the struggles and successes, and the aspirations and inspirations behind every tear and sweat that touch the soil.
+            </p>
+            <p>
+              <a href="/story" class="banner-button-anchor ">
+                <paper-button class="banner-button blue">Read</paper-button>
+              </a>
+            </p>
+          </div>
+        </div>
+        <!--<div class="banner-2-container">-->
+          <!--<div class="banner-2-bar"></div>-->
+          <!--<div class="banner-2-text">-->
+          <!--  <p>-->
+          <!--    Experience an overnight stay at the farm! Learn the farm practices and technologies, tour the CBE Complex, and join a boodle fight.-->
+          <!--  </p>-->
+          <!--</div>-->
+        <!--</div>-->
+      </div>
+      <div class="banner" style="background: url('/images/assets/Banner3.jpg') center/cover no-repeat">
+        <div class="banner-inner-container">
+          <div class="banner-right-container">
+            <p class="banner-text">
+              Access sustainable agricultural research from different SUCs, RDIs, etc. and downloadable materials that suit your needs--from organic-based practices to academic research and quick facts to photos.  
+            </p>
+            <p>
+              <a href="/dl" class="banner-button-anchor">
+                <paper-button class="banner-button blue">Access</paper-button>
+              </a>
+            </p>
+          </div>
+        </div>
+        <!--<div class="banner-3-container">-->
+        <!--  <div class="banner-3-text">-->
+        <!--    <h1>-->
+        <!--      CBE offers organic-based farm practices training and mentoring-->
+        <!--    </h1>-->
+        <!--    <p>-->
+        <!--      The training is designed to meet the requirements of the farmer-partners' capability building needs and instill in them-->
+        <!--      an appreciation on the Bayanihan economics mindsent and sustainable agri-based entreprenuership. It centers on organic-based-->
+        <!--      agricultural production as a sustainable livelihood enterprise which provides a promising market potential. It covers topics-->
+        <!--      on organic-based farming practices entrepreneurship, financial management, supply chain, and farmer-partners cluster formation.-->
+        <!--    </p>-->
+        <!--  </div>-->
+          
+        <!--</div>-->
+      </div>
+      <div class="banner" style="background: url('/images/assets/Banner4.jpg') center/cover no-repeat">
+        <div class="banner-inner-container">
+          <div class="banner-left-container">
+            <p class="banner-text">
+              Join in the community of agripreneurs, entrepreneurs, researchers, students, and policy-makers. Collaborate, share ideas, and contribute stories and information. Let’s keep the sustainable agriculture movement going!
+            </p>
+            <p>
+              <template is="dom-if" if="[[user]]">
+                <template is="dom-if" if="[[_checkRole(user, permission.role, 'member')]]">
+                  <a href="/community" class="banner-button-anchor ">
+                    <paper-button class="banner-button blue">Join</paper-button>
+                  </a>
+                </template>
+                <template is="dom-if" if="[[!_checkRole(user, permission.role, 'member')]]">
+                  <a href$="/community/[[user.uid]]" class="banner-button-anchor">
+                    <paper-button class="banner-button blue">Join</paper-button>
+                  </a>
+                </template>
+              </template>
+              <template is="dom-if" if="[[!user]]">
+                <a href="/login" class="banner-button-anchor">
+                  <paper-button class="banner-button blue">Join</paper-button>
+                </a>
+              </template>
+            </p>
+          </div>
+        </div>
+        <!--<div class="banner-3-container">-->
+        <!--  <div class="banner-3-text">-->
+        <!--    <h1>-->
+        <!--      CBE offers organic-based farm practices training and mentoring-->
+        <!--    </h1>-->
+        <!--    <p>-->
+        <!--      The training is designed to meet the requirements of the farmer-partners' capability building needs and instill in them-->
+        <!--      an appreciation on the Bayanihan economics mindsent and sustainable agri-based entreprenuership. It centers on organic-based-->
+        <!--      agricultural production as a sustainable livelihood enterprise which provides a promising market potential. It covers topics-->
+        <!--      on organic-based farming practices entrepreneurship, financial management, supply chain, and farmer-partners cluster formation.-->
+        <!--    </p>-->
+        <!--  </div>-->
+          
+        <!--</div>-->
+      </div>
+      
+      <div class="banner" style="background: url('/images/assets/Product.jpg') center/cover no-repeat">
+        <div class="banner-inner-container">
+          <div class="banner-right-container">
+            <p class="banner-text">
+              From organic rice to organic vegetables, from potted herbs to seedlings, from vermicompost to processed products, you can find here at CBE! 
+            </p>
+            <p>
+              <a href="/pas-crop" class="banner-button-anchor">
+                <paper-button class="banner-button blue">Buy CBE Products</paper-button>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="banner" style="background: url('/images/assets/Immerse.jpg') center/cover no-repeat">
+        <div class="banner-inner-container">
+          <div class="banner-right-container">
+            <p class="banner-text">
+              Learn the farm practices and technologies, tour the CBE Complex, and join the boodle fight during lunch and dinner with the farmers and CBE staff.
+            </p>
+            <p>
+              <a href="/pas-training" class="banner-button-anchor">
+                <paper-button class="banner-button blue">Experience Sustainable Farming</paper-button>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+        
+      <!--<img class="banner" src="/images/assets/rsz_banner1.png">-->
+      <!--<img class="banner" src="/images/assets/rsz_banner2.png">-->
+      <!--<img class="banner" src="/images/assets/rsz_banner3.png">-->
+    </carousel-image>
+    
+    <!--<div class="banner" style="background: url('/images/assets/banner-2.jpg') top/cover no-repeat">-->
+    <!--  <div class="banner-logo">-->
+        <!--<img class="logo" src="/images/assets/nice-logo-for-banner.png">-->
+    <!--    <p class="text">-->
+    <!--      "Sustainable agriculture within reach."-->
+    <!--    </p>-->
+    <!--  </div>-->
       
       
       
@@ -35,25 +190,25 @@
       <!--    </a>-->
       <!--  </template>-->
       <!--</p>-->
-    </div>
+    <!--</div>-->
     
-    <div class="row landing-about">
-      <div class="flex" style="background: url('/images/assets/nice-pic-about-3.jpg') top/cover no-repeat"></div>
-      <div class="flex landing-about-container">
-        <h1>About NICE</h1>
+    <!--<div class="row landing-about">-->
+    <!--  <div class="flex" style="background: url('/images/assets/nice-pic-about-3.jpg') top/cover no-repeat"></div>-->
+    <!--  <div class="flex landing-about-container">-->
+    <!--    <h1>About NICE</h1>-->
         
-        <p class="text-landing-about">
-          The NICE Platform is a community hub for agripreneurs, social entrepreneurs, researchers, students, LGUs, policy-makers, and other sustainable agriculture practitioners; a knowledge mine for organic production guides and completed research on sustainable agriculture from different SUCs, RDIs, etc.; and repository of stories of our modern heroes who contributes to the advancement and promotion of sustainable agriculture.
-        </p>
-      </div>
-    </div>
+    <!--    <p class="text-landing-about">-->
+    <!--      The NICE Platform is a community hub for agripreneurs, social entrepreneurs, researchers, students, LGUs, policy-makers, and other sustainable agriculture practitioners; a knowledge mine for organic production guides and completed research on sustainable agriculture from different SUCs, RDIs, etc.; and repository of stories of our modern heroes who contributes to the advancement and promotion of sustainable agriculture.-->
+    <!--    </p>-->
+    <!--  </div>-->
+    <!--</div>-->
     
     <div class="banner-container">
       
       <div class="banner-row">
         <div class="banner-column">
           <p class="banner-text">
-            <iron-icon icon="nice:read" class="banner-icon"></iron-icon><br/>
+            <img src="/images/assets/Read.jpg" class="banner-row-image"><br>
             <a href="/story" class="banner-button-anchor">
               <paper-button class="banner-button">Read</paper-button>
             </a><br/>
@@ -62,7 +217,7 @@
         </div>
         <div class="banner-column">
           <p class="banner-text">
-            <iron-icon icon="nice:access" class="banner-icon"></iron-icon><br/>
+            <img src="/images/assets/Access.jpg" class="banner-row-image"><br>
             <a href="/dl" class="banner-button-anchor">
               <paper-button class="banner-button">Access</paper-button>
             </a><br/>
@@ -71,7 +226,7 @@
         </div>
         <div class="banner-column">
           <p class="banner-text">
-            <iron-icon icon="nice:join" class="banner-icon"></iron-icon><br/>
+            <img src="/images/assets/Join.jpg" class="banner-row-image"><br>
             <template is="dom-if" if="[[user]]">
               <template is="dom-if" if="[[_checkRole(user, permission.role, 'member')]]">
                 <a href="/community" class="banner-button-anchor">
@@ -97,7 +252,19 @@
       
     </div>
     
-    <nice-story-row></nice-story-row>
+    <nice-story-block query="topstories" type="story" title="Top Stories" limit="5"></nice-story-block>
+    
+    <nice-story-block query="farmer" type="story" title="Farmers" limit="5"></nice-story-block>
+    <nice-story-block query="training" type="story" title="Products, Training, and Support Services" limit="5"></nice-story-block>
+    <nice-story-block query="technology" type="story" title="Sustainable Agricultural Technology" limit="5"></nice-story-block>
+    
+    <nice-story-block query="socialagripreneurs" type="story" title="Social Agri-Entrepreneurs" limit="5"></nice-story-block>
+    <nice-story-block query="agroprocessing" type="story" title="Agro-Processing" limit="5"></nice-story-block>
+    <nice-story-block query="bayanihan" type="story" title="Bayanihan Economic Enterprise" limit="5"></nice-story-block>
+    
+    <nice-story-block query="otherstories" type="story" title="Other Stories" limit="5"></nice-story-block>
+    
+    <!--<nice-story-row></nice-story-row>-->
     <!--<nice-pas-row></nice-pas-row>-->
     <div class="row">
       <nice-dl-row class="dl flex"></nice-dl-row>

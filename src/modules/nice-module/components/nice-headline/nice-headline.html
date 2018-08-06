@@ -2,7 +2,7 @@
   <template>
     <link rel="stylesheet" href="./nice-headline.scss">
     <template is="dom-if" if="[[article.bannerImage]]">
-      <a href="/[[type]]/[[articleId]]" class="banner" style="background: url([[article.bannerImage]]) center/cover no-repeat">
+      <a href="/[[type]]/[[articleId]]" class$="banner [[_smallBanner(noSummary)]]" style="background: url([[article.bannerImage]]) center/cover no-repeat">
       </a>  
     </template>
     
@@ -12,6 +12,8 @@
     <!--</p>-->
 
 
-    <p class="summary">[[article.summary]]</p>
+    <template is="dom-if" if="[[!noSummary]]">
+      <p class="summary">[[article.summary]]</p>
+    </template>
   </template>
 </dom-module>

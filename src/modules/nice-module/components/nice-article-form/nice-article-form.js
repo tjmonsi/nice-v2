@@ -372,6 +372,9 @@ class NiceArticleForm extends Polymer.GestureEventListeners(Category(Article(Pol
       }
 
       updates[`${path}/query/farmer/${this.articleId}/value`] = null
+      updates[`${path}/query/otherstories/${this.articleId}/value`] = null
+      updates[`${path}/query/topstories/${this.articleId}/value`] = null
+      
       updates[`${path}/query/draft/${this.articleId}/value`] = null
       updates[`${path}/query/published/${this.articleId}/value`] = null
 

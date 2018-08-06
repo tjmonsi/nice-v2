@@ -17,11 +17,11 @@
           </a>
         </li>
 
-        <li class="nav-item">
-          <a href="/dl-other-partners" class="nav-anchor">
-            Research from Other Partners
-          </a>
-        </li>
+        <!--<li class="nav-item">-->
+        <!--  <a href="/dl-other-partners" class="nav-anchor">-->
+        <!--    Research from Other Partners-->
+        <!--  </a>-->
+        <!--</li>-->
       </ul>
     </nav>
     
@@ -36,6 +36,14 @@
           </template>
         </paper-listbox>
       </paper-dropdown-menu><br/>
+      
+      <paper-dropdown-menu label="Topic">
+        <paper-listbox slot="dropdown-content" selected="{{type}}" attr-for-selected="key">
+          <template is="dom-repeat" items="[[topics]]">
+            <paper-item key$="[[item.$key]]">[[item.name]]</paper-item>  
+          </template>
+        </paper-listbox>
+      </paper-dropdown-menu><br/><br/>
       
       <paper-button on-tap="resetSearch" class="search-button">Reset Filters</paper-button>
     </p>

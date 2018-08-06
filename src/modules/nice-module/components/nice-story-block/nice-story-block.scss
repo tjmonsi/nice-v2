@@ -1,0 +1,60 @@
+@import '../../styles/mixins/_flex.scss';
+@import '../../styles/components/_typography';
+
+:host {
+  display: block;
+  padding-bottom: 40px;
+}
+
+.title {
+  max-width: 1200px;
+  font-size: 20px;
+  margin: 20px auto;
+
+  @media screen and (max-width: 1200px) {
+    margin: 20px;
+  }
+}
+
+hr {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid {
+  padding-top: 20px;
+  display: grid;
+  max-width: 1200px;
+  margin: 0 auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  grid-template-areas: 
+    "main side1 side2"
+    "main side3 side4";
+    
+  .item {
+    border: 1px solid #eee;
+  }
+  
+  .item:first-child {
+    grid-area: main;  
+  }
+  
+  .item:nth-child(2) {
+    grid-area: side1;
+  }
+  
+  .item:nth-child(3) {
+    grid-area: side2;
+  }
+  
+  .item:nth-child(4) {
+    grid-area: side3;
+  }
+  
+  .item:nth-child(5) {
+    grid-area: side4;
+  }
+}

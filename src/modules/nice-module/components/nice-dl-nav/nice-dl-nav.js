@@ -19,6 +19,39 @@ class NiceDlNav extends Category(Polymer.Element) {
       researchInstitution: {
         type: String,
         notify: true
+      },
+      type: {
+        type: String,
+        notify: true
+      },
+      topics: {
+        type: Array,
+        value: [
+          {
+            $key: 'farmer',
+            name: 'Farmers'
+          },
+          {
+            $key: 'products',
+            name: 'Products, training, and support services'
+          },
+          {
+            $key: 'sustainable',
+            name: 'Sustainable agricultural technology '
+          },
+          {
+            $key: 'socialagripreneurs',
+            name: 'Social Entrepreneurs '
+          },
+          {
+            $key: 'agroprocessing',
+            name: 'Agro-Processing '
+          },
+          {
+            $key: 'bayanihan',
+            name: 'Bayanihan Economics'
+          }
+        ]
       }
     }
   }
@@ -26,6 +59,7 @@ class NiceDlNav extends Category(Polymer.Element) {
   resetSearch () {
     this.year = '';
     this.researchInstitution = ''
+    this.type = '';
   }
 }
 

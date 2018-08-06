@@ -7,8 +7,14 @@
   width: 100%;
 }
 
+.small-banner {
+  height: 7.5%;
+  min-height: 175px;
+}
+
 .title {
   font-size: 20px;
+  padding: 0px 10px;
 }
 
 .title-anchor {
@@ -22,6 +28,7 @@
 
 .summary {
   font-size: 14px;
+  padding: 0px 10px;
 }
 
 :host {

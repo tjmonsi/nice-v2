@@ -28,7 +28,7 @@ gulp.task('default', (done) => {
   return runSequence(
     'delete-destination',
     'create-destination',
-    'create-image',
+    // 'create-image',
     'create-routing',
     'create-partials',
     'create-http-codes',

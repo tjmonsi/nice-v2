@@ -39,21 +39,28 @@
       _parseFile: function(files, i) {
         if (i < files.length) {
           var file = files[i];
-          var data = [];
-          Papa.parse(file, {
-            header: true,
-            dynamicTyping: true,
-            worker: true,
-            // skipEmptyLines: true,
-            step: (row) => {
-              data.push(row);
-            },
-            complete: (results) => {
-              console.log(results)
-              this._processData(data);
-              this._parseFile(files, i+1);
-            }
-          })
+          console.log(file)
+          if (file.type === 'text/csv') {
+            var data = [];
+            Papa.parse(file, {
+              header: true,
+              dynamicTyping: true,
+              worker: true,
+              // skipEmptyLines: true,
+              step: (row) => {
+                data.push(row);
+              },
+              complete: (results) => {
+                console.log(results)
+                this._processData(data);
+                this._parseFile(files, i+1);
+              }
+            })
+          } else {
+            console.log('Error: Not CSV File');
+            this._showMessage('Error: Not CSV File')
+          }
+          
         }
       },
       _processData: function(data) {
@@ -87,31 +94,36 @@
             var subGroupFlag = true;
             var row = d[k];
             var commodity = row[trueCommodityGroup];
-            var sluggedCommodity = slug(commodity.toLowerCase().trim());
-            var path = subGroup ? subGroup + '-' + sluggedCommodity : sluggedCommodity
-            for (var m in markets) {
-              if (row[markets[m]] !== '' && row[markets[m]] !== undefined) {
-                subGroupFlag = false;
-                var pricePath = this.pricewatchPath.prices + '/' + path + '/' + m;
-                var priceKey = firebase.database().ref(pricePath).push().key
-                // console.log(markets[m], row[markets[m]])
-                updates[pricePath + '/' + priceKey + '/price'] = row[markets[m]];
-                updates[pricePath + '/' + priceKey + '/date'] = firebase.database.ServerValue.TIMESTAMP;
+            if (commodity) {
+              var sluggedCommodity = slug(commodity.toLowerCase().trim());
+              var path = subGroup ? subGroup + '-' + sluggedCommodity : sluggedCommodity
+              for (var m in markets) {
+                if (row[markets[m]] !== '' && row[markets[m]] !== undefined) {
+                  subGroupFlag = false;
+                  var pricePath = this.pricewatchPath.prices + '/' + path + '/' + m;
+                  var priceKey = firebase.database().ref(pricePath).push().key
+                  // console.log(markets[m], row[markets[m]])
+                  updates[pricePath + '/' + priceKey + '/price'] = row[markets[m]];
+                  updates[pricePath + '/' + priceKey + '/date'] = firebase.database.ServerValue.TIMESTAMP;
+                }
+              }
+
+              if (subGroupFlag) {
+                subGroup = sluggedCommodity;
+              } else {
+                // console.log(subGroup)
+                updates[this.pricewatchPath.commodityGroup + '/' + commodityGroup + '/groups/' + path + '/name'] = subGroup ? commodity + ' (' + subGroup + ')' : commodity;;
+                updates[this.pricewatchPath.commodities + '/' + path + '/name'] = subGroup ? commodity + ' (' + subGroup + ')' : commodity;
               }
             }
-            if (subGroupFlag) {
-              subGroup = sluggedCommodity;
-            } else {
-              // console.log(subGroup)
-              updates[this.pricewatchPath.commodityGroup + '/' + commodityGroup + '/groups/' + path + '/name'] = subGroup ? commodity + ' (' + subGroup + ')' : commodity;;
-              updates[this.pricewatchPath.commodities + '/' + path + '/name'] = subGroup ? commodity + ' (' + subGroup + ')' : commodity;
-            }
+            
           }
         }
-        // firebase.database().ref().update(updates).then(() => {
-        //   document.querySelector('app-shell').showMessage('File Uploaded and Processed', null, null, null, 5000)
-        //   this._upload = false;
-        // }).catch(this._catchError.bind(this));
+        // console.log(updates)
+        firebase.database().ref().update(updates).then(() => {
+          document.querySelector('app-shell').showMessage('File Uploaded and Processed', null, null, null, 5000)
+          this._upload = false;
+        }).catch(this._catchError.bind(this));
       }
     });
   </script>

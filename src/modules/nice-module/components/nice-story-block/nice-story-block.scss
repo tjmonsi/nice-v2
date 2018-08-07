@@ -32,7 +32,15 @@ hr {
   grid-row-gap: 20px;
   grid-template-areas: 
     "main side1 side2"
-    "main side3 side4";
+    "main side3 side4";  
+
+  @media screen and (max-width: 1200px) {
+    margin: 0 20px;
+  }
+
+  @media screen and (max-width: 800px) {
+    display: block;
+  }
     
   .item {
     border: 1px solid #eee;

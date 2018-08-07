@@ -91,6 +91,10 @@ module.exports = (test) => {
       {
         from: path.resolve(__dirname, `../../src/config/${env}.json`),
         to: '../../src/.temp/temp.json'
+      },
+      {
+        from: path.resolve(__dirname, `../../src/images`),
+        to: 'images'
       }
     ]),
     new GenerateAssetPlugin({
